@@ -1,5 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, Image, TouchableOpacity, StyleSheet, StyleProp, ViewStyle, ImageSourcePropType } from 'react-native';
+import {
+  View,
+  Text,
+  Image,
+  TouchableOpacity,
+  StyleSheet,
+  StyleProp,
+  ViewStyle,
+  ImageSourcePropType,
+} from 'react-native';
 import { getMobileTheme } from '@podji/design-tokens';
 
 export interface FeedCardProps {

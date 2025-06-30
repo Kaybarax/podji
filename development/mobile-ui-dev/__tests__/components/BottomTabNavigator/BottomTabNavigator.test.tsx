@@ -50,9 +50,7 @@ describe('BottomTabNavigator', () => {
   ];
 
   it('renders all tabs', () => {
-    const { getByText } = render(
-      <BottomTabNavigator tabs={mockTabs} activeTab="home" onTabPress={() => {}} />
-    );
+    const { getByText } = render(<BottomTabNavigator tabs={mockTabs} activeTab="home" onTabPress={() => {}} />);
 
     mockTabs.forEach(tab => {
       expect(getByText(tab.label)).toBeTruthy();
@@ -62,9 +60,7 @@ describe('BottomTabNavigator', () => {
 
   it('calls onTabPress with correct tab key when a tab is pressed', () => {
     const onTabPressMock = jest.fn();
-    const { getByText } = render(
-      <BottomTabNavigator tabs={mockTabs} activeTab="home" onTabPress={onTabPressMock} />
-    );
+    const { getByText } = render(<BottomTabNavigator tabs={mockTabs} activeTab="home" onTabPress={onTabPressMock} />);
 
     fireEvent.press(getByText('Library'));
     expect(onTabPressMock).toHaveBeenCalledWith('library');
@@ -75,16 +71,14 @@ describe('BottomTabNavigator', () => {
 
   it('applies active styles to the active tab', () => {
     const { rerender, getByText } = render(
-      <BottomTabNavigator tabs={mockTabs} activeTab="home" onTabPress={() => {}} />
+      <BottomTabNavigator tabs={mockTabs} activeTab="home" onTabPress={() => {}} />,
     );
 
     // We can't directly test the styles in this test environment,
     // but we can at least verify the component renders with different active tabs
     expect(getByText('Home')).toBeTruthy();
 
-    rerender(
-      <BottomTabNavigator tabs={mockTabs} activeTab="library" onTabPress={() => {}} />
-    );
+    rerender(<BottomTabNavigator tabs={mockTabs} activeTab="library" onTabPress={() => {}} />);
 
     expect(getByText('Library')).toBeTruthy();
   });

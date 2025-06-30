@@ -90,105 +90,71 @@ const mockItems = [
 describe('Dropdown', () => {
   it('renders correctly with default props', () => {
     const onValueChange = jest.fn();
-    const { getByText } = render(
-      <Dropdown 
-        items={mockItems} 
-        onValueChange={onValueChange} 
-      />
-    );
-    
+    const { getByText } = render(<Dropdown items={mockItems} onValueChange={onValueChange} />);
+
     expect(getByText('Select an option')).toBeTruthy();
   });
 
   it('renders with custom placeholder', () => {
     const onValueChange = jest.fn();
     const { getByText } = render(
-      <Dropdown 
-        items={mockItems} 
-        onValueChange={onValueChange} 
-        placeholder="Choose an item"
-      />
+      <Dropdown items={mockItems} onValueChange={onValueChange} placeholder="Choose an item" />,
     );
-    
+
     expect(getByText('Choose an item')).toBeTruthy();
   });
 
   it('renders with label', () => {
     const onValueChange = jest.fn();
-    const { getByText } = render(
-      <Dropdown 
-        items={mockItems} 
-        onValueChange={onValueChange} 
-        label="Select Item"
-      />
-    );
-    
+    const { getByText } = render(<Dropdown items={mockItems} onValueChange={onValueChange} label="Select Item" />);
+
     expect(getByText('Select Item')).toBeTruthy();
   });
 
   it('renders selected item', () => {
     const onValueChange = jest.fn();
-    const { getByText } = render(
-      <Dropdown 
-        items={mockItems} 
-        onValueChange={onValueChange} 
-        selectedValue="item1"
-      />
-    );
-    
+    const { getByText } = render(<Dropdown items={mockItems} onValueChange={onValueChange} selectedValue="item1" />);
+
     expect(getByText('Item 1')).toBeTruthy();
   });
 
   it('renders helper text when provided', () => {
     const onValueChange = jest.fn();
     const { getByText } = render(
-      <Dropdown 
-        items={mockItems} 
-        onValueChange={onValueChange} 
-        helperText="Please select an item"
-      />
+      <Dropdown items={mockItems} onValueChange={onValueChange} helperText="Please select an item" />,
     );
-    
+
     expect(getByText('Please select an item')).toBeTruthy();
   });
 
   it('renders error message when provided', () => {
     const onValueChange = jest.fn();
     const { getByText } = render(
-      <Dropdown 
-        items={mockItems} 
-        onValueChange={onValueChange} 
-        error="Selection is required"
-      />
+      <Dropdown items={mockItems} onValueChange={onValueChange} error="Selection is required" />,
     );
-    
+
     expect(getByText('Selection is required')).toBeTruthy();
   });
 
   it('prioritizes error message over helper text', () => {
     const onValueChange = jest.fn();
     const { getByText, queryByText } = render(
-      <Dropdown 
-        items={mockItems} 
-        onValueChange={onValueChange} 
+      <Dropdown
+        items={mockItems}
+        onValueChange={onValueChange}
         helperText="Please select an item"
         error="Selection is required"
-      />
+      />,
     );
-    
+
     expect(getByText('Selection is required')).toBeTruthy();
     expect(queryByText('Please select an item')).toBeNull();
   });
 
   it('opens dropdown when pressed', () => {
     const onValueChange = jest.fn();
-    const { getByText } = render(
-      <Dropdown 
-        items={mockItems} 
-        onValueChange={onValueChange} 
-      />
-    );
-    
+    const { getByText } = render(<Dropdown items={mockItems} onValueChange={onValueChange} />);
+
     fireEvent.press(getByText('Select an option'));
     // Since we mocked the Modal and animations, we can't easily test if it's visible
     // But we can verify the component doesn't crash when opening
@@ -196,14 +162,8 @@ describe('Dropdown', () => {
 
   it('does not open dropdown when disabled', () => {
     const onValueChange = jest.fn();
-    const { getByText } = render(
-      <Dropdown 
-        items={mockItems} 
-        onValueChange={onValueChange} 
-        disabled={true}
-      />
-    );
-    
+    const { getByText } = render(<Dropdown items={mockItems} onValueChange={onValueChange} disabled={true} />);
+
     fireEvent.press(getByText('Select an option'));
     // Since we mocked the Modal and animations, we can't easily test if it's visible
     // But we can verify the component doesn't crash when trying to open while disabled

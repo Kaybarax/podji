@@ -29,13 +29,10 @@ type Story = StoryObj<typeof meta>;
 // Interactive modal that maintains its own state
 const InteractiveModal = ({ children, ...props }: any) => {
   const [visible, setVisible] = useState(false);
-  
+
   return (
     <View>
-      <Button 
-        title={props.buttonTitle || "Open Modal"} 
-        onPress={() => setVisible(true)} 
-      />
+      <Button title={props.buttonTitle || 'Open Modal'} onPress={() => setVisible(true)} />
       <Modal
         {...props}
         visible={visible}
@@ -65,40 +62,40 @@ const FormContent = () => (
     <Text style={{ fontSize: 18, fontWeight: 'bold', marginBottom: 16 }}>Contact Form</Text>
     <View style={{ marginBottom: 16 }}>
       <Text style={{ marginBottom: 8 }}>Name</Text>
-      <TextInput 
-        style={{ 
-          borderWidth: 1, 
-          borderColor: '#ccc', 
-          borderRadius: 4, 
-          padding: 8 
-        }} 
+      <TextInput
+        style={{
+          borderWidth: 1,
+          borderColor: '#ccc',
+          borderRadius: 4,
+          padding: 8,
+        }}
         placeholder="Enter your name"
       />
     </View>
     <View style={{ marginBottom: 16 }}>
       <Text style={{ marginBottom: 8 }}>Email</Text>
-      <TextInput 
-        style={{ 
-          borderWidth: 1, 
-          borderColor: '#ccc', 
-          borderRadius: 4, 
-          padding: 8 
-        }} 
+      <TextInput
+        style={{
+          borderWidth: 1,
+          borderColor: '#ccc',
+          borderRadius: 4,
+          padding: 8,
+        }}
         placeholder="Enter your email"
         keyboardType="email-address"
       />
     </View>
     <View style={{ marginBottom: 16 }}>
       <Text style={{ marginBottom: 8 }}>Message</Text>
-      <TextInput 
-        style={{ 
-          borderWidth: 1, 
-          borderColor: '#ccc', 
-          borderRadius: 4, 
+      <TextInput
+        style={{
+          borderWidth: 1,
+          borderColor: '#ccc',
+          borderRadius: 4,
           padding: 8,
           height: 100,
-          textAlignVertical: 'top'
-        }} 
+          textAlignVertical: 'top',
+        }}
         placeholder="Enter your message"
         multiline
         numberOfLines={4}
@@ -116,10 +113,9 @@ const LongContent = () => (
     <Text style={{ fontSize: 18, fontWeight: 'bold', marginBottom: 16 }}>Terms and Conditions</Text>
     {Array.from({ length: 10 }).map((_, i) => (
       <Text key={i} style={{ marginBottom: 16 }}>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod, nisl eget
-        aliquam ultricies, nunc nisl aliquet nunc, quis aliquam nisl nunc quis nisl.
-        Nullam euismod, nisl eget aliquam ultricies, nunc nisl aliquet nunc, quis aliquam
-        nisl nunc quis nisl.
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod, nisl eget aliquam ultricies, nunc nisl
+        aliquet nunc, quis aliquam nisl nunc quis nisl. Nullam euismod, nisl eget aliquam ultricies, nunc nisl aliquet
+        nunc, quis aliquam nisl nunc quis nisl.
       </Text>
     ))}
     <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginTop: 16 }}>
@@ -130,7 +126,7 @@ const LongContent = () => (
 );
 
 export const Default: Story = {
-  render: (args) => (
+  render: args => (
     <InteractiveModal {...args}>
       <SimpleContent />
     </InteractiveModal>
@@ -138,7 +134,7 @@ export const Default: Story = {
 };
 
 export const CenterPosition: Story = {
-  render: (args) => (
+  render: args => (
     <InteractiveModal {...args} position="center" buttonTitle="Open Center Modal">
       <SimpleContent />
     </InteractiveModal>
@@ -146,7 +142,7 @@ export const CenterPosition: Story = {
 };
 
 export const BottomPosition: Story = {
-  render: (args) => (
+  render: args => (
     <InteractiveModal {...args} position="bottom" buttonTitle="Open Bottom Modal">
       <SimpleContent />
     </InteractiveModal>
@@ -154,7 +150,7 @@ export const BottomPosition: Story = {
 };
 
 export const WithoutBackdrop: Story = {
-  render: (args) => (
+  render: args => (
     <InteractiveModal {...args} hasBackdrop={false} buttonTitle="Open Without Backdrop">
       <SimpleContent />
     </InteractiveModal>
@@ -162,11 +158,13 @@ export const WithoutBackdrop: Story = {
 };
 
 export const NonDismissible: Story = {
-  render: (args) => (
+  render: args => (
     <InteractiveModal {...args} closeOnBackdropPress={false} buttonTitle="Open Non-Dismissible Modal">
       <View>
         <Text style={{ fontSize: 18, fontWeight: 'bold', marginBottom: 16 }}>Non-Dismissible Modal</Text>
-        <Text style={{ marginBottom: 24 }}>This modal cannot be closed by tapping outside. You must use the close button.</Text>
+        <Text style={{ marginBottom: 24 }}>
+          This modal cannot be closed by tapping outside. You must use the close button.
+        </Text>
         <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
           <Button title="Close Modal" onPress={args.onClose} />
         </View>
@@ -176,7 +174,7 @@ export const NonDismissible: Story = {
 };
 
 export const ScrollableContent: Story = {
-  render: (args) => (
+  render: args => (
     <InteractiveModal {...args} scrollable={true} buttonTitle="Open Scrollable Modal">
       <LongContent />
     </InteractiveModal>
@@ -184,7 +182,7 @@ export const ScrollableContent: Story = {
 };
 
 export const WithForm: Story = {
-  render: (args) => (
+  render: args => (
     <InteractiveModal {...args} avoidKeyboard={true} buttonTitle="Open Form Modal">
       <FormContent />
     </InteractiveModal>
@@ -192,10 +190,10 @@ export const WithForm: Story = {
 };
 
 export const CustomStyles: Story = {
-  render: (args) => (
-    <InteractiveModal 
-      {...args} 
-      contentStyle={{ 
+  render: args => (
+    <InteractiveModal
+      {...args}
+      contentStyle={{
         backgroundColor: '#f0f0f0',
         borderRadius: 16,
         padding: 24,
@@ -208,9 +206,7 @@ export const CustomStyles: Story = {
         <Text style={{ fontSize: 20, fontWeight: 'bold', marginBottom: 16, color: '#6200ee' }}>
           Custom Styled Modal
         </Text>
-        <Text style={{ marginBottom: 24 }}>
-          This modal has custom styling applied to it.
-        </Text>
+        <Text style={{ marginBottom: 24 }}>This modal has custom styling applied to it.</Text>
         <View style={{ flexDirection: 'row', justifyContent: 'flex-end' }}>
           <Button title="Close" color="#6200ee" onPress={args.onClose} />
         </View>
@@ -220,16 +216,10 @@ export const CustomStyles: Story = {
 };
 
 export const ConfirmationDialog: Story = {
-  render: (args) => (
-    <InteractiveModal 
-      {...args} 
-      position="center"
-      buttonTitle="Show Confirmation Dialog"
-    >
+  render: args => (
+    <InteractiveModal {...args} position="center" buttonTitle="Show Confirmation Dialog">
       <View>
-        <Text style={{ fontSize: 18, fontWeight: 'bold', marginBottom: 16, textAlign: 'center' }}>
-          Confirm Action
-        </Text>
+        <Text style={{ fontSize: 18, fontWeight: 'bold', marginBottom: 16, textAlign: 'center' }}>Confirm Action</Text>
         <Text style={{ marginBottom: 24, textAlign: 'center' }}>
           Are you sure you want to delete this item? This action cannot be undone.
         </Text>
@@ -243,20 +233,12 @@ export const ConfirmationDialog: Story = {
 };
 
 export const SuccessMessage: Story = {
-  render: (args) => (
-    <InteractiveModal 
-      {...args} 
-      position="center"
-      buttonTitle="Show Success Message"
-    >
+  render: args => (
+    <InteractiveModal {...args} position="center" buttonTitle="Show Success Message">
       <View style={{ alignItems: 'center', padding: 16 }}>
         <Text style={{ fontSize: 24, marginBottom: 16 }}>✅</Text>
-        <Text style={{ fontSize: 18, fontWeight: 'bold', marginBottom: 16, textAlign: 'center' }}>
-          Success!
-        </Text>
-        <Text style={{ marginBottom: 24, textAlign: 'center' }}>
-          Your changes have been saved successfully.
-        </Text>
+        <Text style={{ fontSize: 18, fontWeight: 'bold', marginBottom: 16, textAlign: 'center' }}>Success!</Text>
+        <Text style={{ marginBottom: 24, textAlign: 'center' }}>Your changes have been saved successfully.</Text>
         <Button title="OK" onPress={args.onClose} />
       </View>
     </InteractiveModal>

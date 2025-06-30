@@ -65,43 +65,27 @@ describe('Toast', () => {
   it('renders correctly when visible', () => {
     const onClose = jest.fn();
     const { getByText } = render(
-      <Toast 
-        message="This is a toast message" 
-        visible={true} 
-        onClose={onClose} 
-        testID="toast"
-      />
+      <Toast message="This is a toast message" visible={true} onClose={onClose} testID="toast" />,
     );
-    
+
     expect(getByText('This is a toast message')).toBeTruthy();
   });
 
   it('does not render when not visible', () => {
     const onClose = jest.fn();
     const { queryByText } = render(
-      <Toast 
-        message="This is a toast message" 
-        visible={false} 
-        onClose={onClose} 
-        testID="toast"
-      />
+      <Toast message="This is a toast message" visible={false} onClose={onClose} testID="toast" />,
     );
-    
+
     expect(queryByText('This is a toast message')).toBeNull();
   });
 
   it('renders with success type', () => {
     const onClose = jest.fn();
     const { getByText } = render(
-      <Toast 
-        message="Success message" 
-        type="success"
-        visible={true} 
-        onClose={onClose} 
-        testID="toast"
-      />
+      <Toast message="Success message" type="success" visible={true} onClose={onClose} testID="toast" />,
     );
-    
+
     expect(getByText('Success message')).toBeTruthy();
     expect(getByText('✓')).toBeTruthy(); // Success icon
   });
@@ -109,15 +93,9 @@ describe('Toast', () => {
   it('renders with error type', () => {
     const onClose = jest.fn();
     const { getByText } = render(
-      <Toast 
-        message="Error message" 
-        type="error"
-        visible={true} 
-        onClose={onClose} 
-        testID="toast"
-      />
+      <Toast message="Error message" type="error" visible={true} onClose={onClose} testID="toast" />,
     );
-    
+
     expect(getByText('Error message')).toBeTruthy();
     expect(getByText('✕')).toBeTruthy(); // Error icon (might be multiple if dismissible is true)
   });
@@ -125,15 +103,9 @@ describe('Toast', () => {
   it('renders with warning type', () => {
     const onClose = jest.fn();
     const { getByText } = render(
-      <Toast 
-        message="Warning message" 
-        type="warning"
-        visible={true} 
-        onClose={onClose} 
-        testID="toast"
-      />
+      <Toast message="Warning message" type="warning" visible={true} onClose={onClose} testID="toast" />,
     );
-    
+
     expect(getByText('Warning message')).toBeTruthy();
     expect(getByText('⚠')).toBeTruthy(); // Warning icon
   });
@@ -141,36 +113,22 @@ describe('Toast', () => {
   it('renders with info type', () => {
     const onClose = jest.fn();
     const { getByText } = render(
-      <Toast 
-        message="Info message" 
-        type="info"
-        visible={true} 
-        onClose={onClose} 
-        testID="toast"
-      />
+      <Toast message="Info message" type="info" visible={true} onClose={onClose} testID="toast" />,
     );
-    
+
     expect(getByText('Info message')).toBeTruthy();
     expect(getByText('ℹ')).toBeTruthy(); // Info icon
   });
 
   it('calls onClose when duration expires', () => {
     const onClose = jest.fn();
-    render(
-      <Toast 
-        message="This is a toast message" 
-        visible={true} 
-        duration={1000}
-        onClose={onClose} 
-        testID="toast"
-      />
-    );
-    
+    render(<Toast message="This is a toast message" visible={true} duration={1000} onClose={onClose} testID="toast" />);
+
     // Fast-forward time
     act(() => {
       jest.advanceTimersByTime(1000);
     });
-    
+
     // The onClose should be called after the animation completes
     expect(onClose).toHaveBeenCalled();
   });
@@ -178,15 +136,9 @@ describe('Toast', () => {
   it('renders with dismiss button when dismissible is true', () => {
     const onClose = jest.fn();
     const { getAllByText } = render(
-      <Toast 
-        message="Dismissible toast" 
-        visible={true} 
-        dismissible={true}
-        onClose={onClose} 
-        testID="toast"
-      />
+      <Toast message="Dismissible toast" visible={true} dismissible={true} onClose={onClose} testID="toast" />,
     );
-    
+
     // There should be a close icon (✕) for the dismiss button
     const closeIcons = getAllByText('✕');
     expect(closeIcons.length).toBeGreaterThan(0);
@@ -195,15 +147,9 @@ describe('Toast', () => {
   it('does not render dismiss button when dismissible is false', () => {
     const onClose = jest.fn();
     const { queryAllByText } = render(
-      <Toast 
-        message="Non-dismissible toast" 
-        visible={true} 
-        dismissible={false}
-        onClose={onClose} 
-        testID="toast"
-      />
+      <Toast message="Non-dismissible toast" visible={true} dismissible={false} onClose={onClose} testID="toast" />,
     );
-    
+
     // There should not be a close icon (✕) for the dismiss button
     // Note: This might fail if the toast type is "error" which also uses ✕
     const closeIcons = queryAllByText('✕');
@@ -213,19 +159,13 @@ describe('Toast', () => {
   it('calls onClose when dismiss button is pressed', () => {
     const onClose = jest.fn();
     const { getAllByText } = render(
-      <Toast 
-        message="Dismissible toast" 
-        visible={true} 
-        dismissible={true}
-        onClose={onClose} 
-        testID="toast"
-      />
+      <Toast message="Dismissible toast" visible={true} dismissible={true} onClose={onClose} testID="toast" />,
     );
-    
+
     // Find the dismiss button (close icon)
     const closeIcons = getAllByText('✕');
     fireEvent.press(closeIcons[0]);
-    
+
     // The onClose should be called
     expect(onClose).toHaveBeenCalled();
   });
@@ -235,9 +175,9 @@ describe('Toast', () => {
     const { getByText } = render(
       <ToastProvider>
         <Text>Child Component</Text>
-      </ToastProvider>
+      </ToastProvider>,
     );
-    
+
     expect(getByText('Child Component')).toBeTruthy();
   });
 });

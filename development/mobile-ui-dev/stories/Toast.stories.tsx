@@ -9,71 +9,87 @@ import { Toast, ToastProvider, useToast } from '@/lib/components/Toast';
 // Component to demonstrate the useToast hook
 const ToastDemo = () => {
   const toast = useToast();
-  
+
   return (
     <View style={{ padding: 20 }}>
-      <Button 
-        title="Show Success Toast" 
-        onPress={() => toast.show({ 
-          message: 'Success! Your action was completed.', 
-          type: 'success' 
-        })} 
+      <Button
+        title="Show Success Toast"
+        onPress={() =>
+          toast.show({
+            message: 'Success! Your action was completed.',
+            type: 'success',
+          })
+        }
       />
       <View style={{ height: 10 }} />
-      <Button 
-        title="Show Error Toast" 
-        onPress={() => toast.show({ 
-          message: 'Error! Something went wrong.', 
-          type: 'error' 
-        })} 
+      <Button
+        title="Show Error Toast"
+        onPress={() =>
+          toast.show({
+            message: 'Error! Something went wrong.',
+            type: 'error',
+          })
+        }
       />
       <View style={{ height: 10 }} />
-      <Button 
-        title="Show Warning Toast" 
-        onPress={() => toast.show({ 
-          message: 'Warning! This action might have consequences.', 
-          type: 'warning' 
-        })} 
+      <Button
+        title="Show Warning Toast"
+        onPress={() =>
+          toast.show({
+            message: 'Warning! This action might have consequences.',
+            type: 'warning',
+          })
+        }
       />
       <View style={{ height: 10 }} />
-      <Button 
-        title="Show Info Toast" 
-        onPress={() => toast.show({ 
-          message: 'Info: Here is some information for you.', 
-          type: 'info' 
-        })} 
+      <Button
+        title="Show Info Toast"
+        onPress={() =>
+          toast.show({
+            message: 'Info: Here is some information for you.',
+            type: 'info',
+          })
+        }
       />
       <View style={{ height: 10 }} />
-      <Button 
-        title="Show Top Toast" 
-        onPress={() => toast.show({ 
-          message: 'This toast appears at the top.', 
-          position: 'top' 
-        })} 
+      <Button
+        title="Show Top Toast"
+        onPress={() =>
+          toast.show({
+            message: 'This toast appears at the top.',
+            position: 'top',
+          })
+        }
       />
       <View style={{ height: 10 }} />
-      <Button 
-        title="Show Bottom Toast" 
-        onPress={() => toast.show({ 
-          message: 'This toast appears at the bottom.', 
-          position: 'bottom' 
-        })} 
+      <Button
+        title="Show Bottom Toast"
+        onPress={() =>
+          toast.show({
+            message: 'This toast appears at the bottom.',
+            position: 'bottom',
+          })
+        }
       />
       <View style={{ height: 10 }} />
-      <Button 
-        title="Show Long Duration Toast" 
-        onPress={() => toast.show({ 
-          message: 'This toast stays visible for 5 seconds.', 
-          duration: 5000 
-        })} 
+      <Button
+        title="Show Long Duration Toast"
+        onPress={() =>
+          toast.show({
+            message: 'This toast stays visible for 5 seconds.',
+            duration: 5000,
+          })
+        }
       />
       <View style={{ height: 10 }} />
-      <Button 
-        title="Show Non-dismissible Toast" 
-        onPress={() => toast.show({ 
-          message: 'This toast cannot be dismissed manually.', 
-          dismissible: false 
-        })} 
+      <Button
+        title="Show Non-dismissible Toast"
+        onPress={() =>
+          toast.show({
+            message: 'This toast cannot be dismissed manually.',
+            dismissible: false,
+          })
+        }
       />
     </View>
   );
@@ -82,16 +98,16 @@ const ToastDemo = () => {
 // Wrapper component for direct Toast stories
 const ToastWrapper = ({ children }: { children: React.ReactNode }) => {
   const [visible, setVisible] = useState(false);
-  
+
   useEffect(() => {
     // Show the toast after a short delay
     const timer = setTimeout(() => {
       setVisible(true);
     }, 500);
-    
+
     return () => clearTimeout(timer);
   }, []);
-  
+
   return (
     <View style={{ flex: 1, padding: 20, justifyContent: 'center', alignItems: 'center' }}>
       {children}

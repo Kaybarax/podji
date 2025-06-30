@@ -33,7 +33,7 @@ const InteractiveRadioButton = (props: any) => {
     <RadioButton
       {...props}
       selected={selected}
-      onValueChange={(newValue) => {
+      onValueChange={newValue => {
         setSelected(newValue);
         props.onValueChange?.(newValue);
       }}
@@ -44,7 +44,7 @@ const InteractiveRadioButton = (props: any) => {
 // Radio group that maintains selection state
 const RadioGroup = ({ options, initialSelected, onChange }: any) => {
   const [selectedOption, setSelectedOption] = useState(initialSelected || null);
-  
+
   return (
     <View style={{ gap: 16 }}>
       {options.map((option: any) => (
@@ -63,14 +63,14 @@ const RadioGroup = ({ options, initialSelected, onChange }: any) => {
 };
 
 export const Default: Story = {
-  render: (args) => <InteractiveRadioButton {...args} />,
+  render: args => <InteractiveRadioButton {...args} />,
   args: {
     label: 'Default radio button',
   },
 };
 
 export const Selected: Story = {
-  render: (args) => <InteractiveRadioButton {...args} />,
+  render: args => <InteractiveRadioButton {...args} />,
   args: {
     label: 'Selected radio button',
     selected: true,
@@ -78,7 +78,7 @@ export const Selected: Story = {
 };
 
 export const Unselected: Story = {
-  render: (args) => <InteractiveRadioButton {...args} />,
+  render: args => <InteractiveRadioButton {...args} />,
   args: {
     label: 'Unselected radio button',
     selected: false,
@@ -86,7 +86,7 @@ export const Unselected: Story = {
 };
 
 export const WithLabelOnRight: Story = {
-  render: (args) => <InteractiveRadioButton {...args} />,
+  render: args => <InteractiveRadioButton {...args} />,
   args: {
     label: 'Label on right',
     labelPosition: 'right',
@@ -94,7 +94,7 @@ export const WithLabelOnRight: Story = {
 };
 
 export const WithLabelOnLeft: Story = {
-  render: (args) => <InteractiveRadioButton {...args} />,
+  render: args => <InteractiveRadioButton {...args} />,
   args: {
     label: 'Label on left',
     labelPosition: 'left',
@@ -102,7 +102,7 @@ export const WithLabelOnLeft: Story = {
 };
 
 export const Disabled: Story = {
-  render: (args) => <InteractiveRadioButton {...args} />,
+  render: args => <InteractiveRadioButton {...args} />,
   args: {
     label: 'Disabled radio button',
     disabled: true,
@@ -110,7 +110,7 @@ export const Disabled: Story = {
 };
 
 export const DisabledSelected: Story = {
-  render: (args) => <InteractiveRadioButton {...args} />,
+  render: args => <InteractiveRadioButton {...args} />,
   args: {
     label: 'Disabled selected radio button',
     disabled: true,
@@ -119,7 +119,7 @@ export const DisabledSelected: Story = {
 };
 
 export const WithCustomStyles: Story = {
-  render: (args) => <InteractiveRadioButton {...args} />,
+  render: args => <InteractiveRadioButton {...args} />,
   args: {
     label: 'Custom styled radio button',
     containerStyle: { backgroundColor: '#f0f0f0', padding: 10, borderRadius: 8 },

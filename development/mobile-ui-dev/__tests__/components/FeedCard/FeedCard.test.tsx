@@ -61,7 +61,7 @@ describe('FeedCard', () => {
 
   it('renders correctly with all props', () => {
     const { getByText } = render(<FeedCard {...mockProps} />);
-    
+
     expect(getByText('Summer Vibes Mix')).toBeTruthy();
     expect(getByText('by DJ Cool')).toBeTruthy();
     expect(getByText('42')).toBeTruthy();
@@ -71,20 +71,20 @@ describe('FeedCard', () => {
 
   it('renders heart icon when liked', () => {
     const { getByText } = render(<FeedCard {...mockProps} isLiked={true} />);
-    
+
     expect(getByText('❤️')).toBeTruthy();
   });
 
   it('renders empty heart icon when not liked', () => {
     const { getByText } = render(<FeedCard {...mockProps} isLiked={false} />);
-    
+
     expect(getByText('🤍')).toBeTruthy();
   });
 
   it('calls onPress when card is pressed', () => {
     const onPressMock = jest.fn();
     const { getByText } = render(<FeedCard {...mockProps} onPress={onPressMock} />);
-    
+
     fireEvent.press(getByText('Summer Vibes Mix'));
     expect(onPressMock).toHaveBeenCalledTimes(1);
   });
@@ -92,7 +92,7 @@ describe('FeedCard', () => {
   it('calls onLikePress when like button is pressed', () => {
     const onLikePressMock = jest.fn();
     const { getByText } = render(<FeedCard {...mockProps} onLikePress={onLikePressMock} />);
-    
+
     fireEvent.press(getByText('🤍'));
     expect(onLikePressMock).toHaveBeenCalledTimes(1);
   });
@@ -100,7 +100,7 @@ describe('FeedCard', () => {
   it('calls onCommentPress when comment button is pressed', () => {
     const onCommentPressMock = jest.fn();
     const { getByText } = render(<FeedCard {...mockProps} onCommentPress={onCommentPressMock} />);
-    
+
     fireEvent.press(getByText('💬'));
     expect(onCommentPressMock).toHaveBeenCalledTimes(1);
   });
@@ -108,7 +108,7 @@ describe('FeedCard', () => {
   it('calls onSharePress when share button is pressed', () => {
     const onSharePressMock = jest.fn();
     const { getByText } = render(<FeedCard {...mockProps} onSharePress={onSharePressMock} />);
-    
+
     fireEvent.press(getByText('🔄'));
     expect(onSharePressMock).toHaveBeenCalledTimes(1);
   });

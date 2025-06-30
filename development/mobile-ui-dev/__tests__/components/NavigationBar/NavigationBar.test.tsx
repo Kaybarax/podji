@@ -55,20 +55,16 @@ describe('NavigationBar', () => {
 
   it('calls onNotificationPress when notification icon is pressed', () => {
     const onNotificationPress = jest.fn();
-    const { getByText } = render(
-      <NavigationBar showNotification onNotificationPress={onNotificationPress} />
-    );
-    
+    const { getByText } = render(<NavigationBar showNotification onNotificationPress={onNotificationPress} />);
+
     fireEvent.press(getByText('🔔'));
     expect(onNotificationPress).toHaveBeenCalledTimes(1);
   });
 
   it('calls onSearchPress when search icon is pressed', () => {
     const onSearchPress = jest.fn();
-    const { getByText } = render(
-      <NavigationBar showSearch onSearchPress={onSearchPress} />
-    );
-    
+    const { getByText } = render(<NavigationBar showSearch onSearchPress={onSearchPress} />);
+
     fireEvent.press(getByText('🔍'));
     expect(onSearchPress).toHaveBeenCalledTimes(1);
   });

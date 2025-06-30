@@ -33,7 +33,7 @@ const InteractiveToggle = (props: any) => {
     <Toggle
       {...props}
       value={value}
-      onValueChange={(newValue) => {
+      onValueChange={newValue => {
         setValue(newValue);
         props.onValueChange?.(newValue);
       }}
@@ -42,14 +42,14 @@ const InteractiveToggle = (props: any) => {
 };
 
 export const Default: Story = {
-  render: (args) => <InteractiveToggle {...args} />,
+  render: args => <InteractiveToggle {...args} />,
   args: {
     label: 'Toggle me',
   },
 };
 
 export const On: Story = {
-  render: (args) => <InteractiveToggle {...args} />,
+  render: args => <InteractiveToggle {...args} />,
   args: {
     label: 'Toggle me',
     value: true,
@@ -57,7 +57,7 @@ export const On: Story = {
 };
 
 export const Off: Story = {
-  render: (args) => <InteractiveToggle {...args} />,
+  render: args => <InteractiveToggle {...args} />,
   args: {
     label: 'Toggle me',
     value: false,
@@ -65,7 +65,7 @@ export const Off: Story = {
 };
 
 export const WithLabelOnRight: Story = {
-  render: (args) => <InteractiveToggle {...args} />,
+  render: args => <InteractiveToggle {...args} />,
   args: {
     label: 'Label on right',
     labelPosition: 'right',
@@ -73,7 +73,7 @@ export const WithLabelOnRight: Story = {
 };
 
 export const WithLabelOnLeft: Story = {
-  render: (args) => <InteractiveToggle {...args} />,
+  render: args => <InteractiveToggle {...args} />,
   args: {
     label: 'Label on left',
     labelPosition: 'left',
@@ -81,7 +81,7 @@ export const WithLabelOnLeft: Story = {
 };
 
 export const Disabled: Story = {
-  render: (args) => <InteractiveToggle {...args} />,
+  render: args => <InteractiveToggle {...args} />,
   args: {
     label: 'Disabled toggle',
     disabled: true,
@@ -89,7 +89,7 @@ export const Disabled: Story = {
 };
 
 export const DisabledOn: Story = {
-  render: (args) => <InteractiveToggle {...args} />,
+  render: args => <InteractiveToggle {...args} />,
   args: {
     label: 'Disabled toggle (on)',
     disabled: true,
@@ -98,7 +98,7 @@ export const DisabledOn: Story = {
 };
 
 export const WithCustomStyles: Story = {
-  render: (args) => <InteractiveToggle {...args} />,
+  render: args => <InteractiveToggle {...args} />,
   args: {
     label: 'Custom styled toggle',
     containerStyle: { backgroundColor: '#f0f0f0', padding: 10, borderRadius: 8 },

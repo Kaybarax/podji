@@ -71,44 +71,38 @@ describe('TextInput', () => {
 
   it('prioritizes error message over helper text', () => {
     const { getByText, queryByText } = render(
-      <TextInput helperText="Enter your username" error="Username is required" />
+      <TextInput helperText="Enter your username" error="Username is required" />,
     );
-    
+
     expect(getByText('Username is required')).toBeTruthy();
     expect(queryByText('Enter your username')).toBeNull();
   });
 
   it('calls onChangeText when text is entered', () => {
     const onChangeTextMock = jest.fn();
-    const { getByPlaceholderText } = render(
-      <TextInput placeholder="Enter username" onChangeText={onChangeTextMock} />
-    );
-    
+    const { getByPlaceholderText } = render(<TextInput placeholder="Enter username" onChangeText={onChangeTextMock} />);
+
     fireEvent.changeText(getByPlaceholderText('Enter username'), 'testuser');
     expect(onChangeTextMock).toHaveBeenCalledWith('testuser');
   });
 
   it('disables input when disabled prop is true', () => {
-    const { getByPlaceholderText } = render(
-      <TextInput placeholder="Enter username" disabled />
-    );
-    
+    const { getByPlaceholderText } = render(<TextInput placeholder="Enter username" disabled />);
+
     const input = getByPlaceholderText('Enter username');
     expect(input.props.editable).toBe(false);
   });
 
   it('renders with different variants', () => {
-    const { rerender, getByPlaceholderText } = render(
-      <TextInput placeholder="Outlined input" variant="outlined" />
-    );
-    
+    const { rerender, getByPlaceholderText } = render(<TextInput placeholder="Outlined input" variant="outlined" />);
+
     // We can't directly test the styles in this test environment,
     // but we can at least verify the component renders with different variants
     expect(getByPlaceholderText('Outlined input')).toBeTruthy();
-    
+
     rerender(<TextInput placeholder="Filled input" variant="filled" />);
     expect(getByPlaceholderText('Filled input')).toBeTruthy();
-    
+
     rerender(<TextInput placeholder="Underlined input" variant="underlined" />);
     expect(getByPlaceholderText('Underlined input')).toBeTruthy();
   });

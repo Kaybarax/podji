@@ -30,70 +30,52 @@ jest.mock('@podji/design-tokens', () => ({
 
 describe('FloatingActionButton', () => {
   it('renders correctly with string icon', () => {
-    const { getByText } = render(
-      <FloatingActionButton icon="+" onPress={() => {}} />
-    );
-    
+    const { getByText } = render(<FloatingActionButton icon="+" onPress={() => {}} />);
+
     expect(getByText('+')).toBeTruthy();
   });
 
   it('calls onPress when pressed', () => {
     const onPressMock = jest.fn();
-    const { getByText } = render(
-      <FloatingActionButton icon="+" onPress={onPressMock} />
-    );
-    
+    const { getByText } = render(<FloatingActionButton icon="+" onPress={onPressMock} />);
+
     fireEvent.press(getByText('+'));
     expect(onPressMock).toHaveBeenCalledTimes(1);
   });
 
   it('renders with different sizes', () => {
-    const { rerender, getByText } = render(
-      <FloatingActionButton icon="+" size="small" onPress={() => {}} />
-    );
-    
+    const { rerender, getByText } = render(<FloatingActionButton icon="+" size="small" onPress={() => {}} />);
+
     // We can't directly test the styles in this test environment,
     // but we can at least verify the component renders with different sizes
     expect(getByText('+')).toBeTruthy();
-    
-    rerender(
-      <FloatingActionButton icon="+" size="medium" onPress={() => {}} />
-    );
-    
+
+    rerender(<FloatingActionButton icon="+" size="medium" onPress={() => {}} />);
+
     expect(getByText('+')).toBeTruthy();
-    
-    rerender(
-      <FloatingActionButton icon="+" size="large" onPress={() => {}} />
-    );
-    
+
+    rerender(<FloatingActionButton icon="+" size="large" onPress={() => {}} />);
+
     expect(getByText('+')).toBeTruthy();
   });
 
   it('renders with different positions', () => {
-    const { rerender, getByText } = render(
-      <FloatingActionButton icon="+" position="bottomRight" onPress={() => {}} />
-    );
-    
+    const { rerender, getByText } = render(<FloatingActionButton icon="+" position="bottomRight" onPress={() => {}} />);
+
     // We can't directly test the styles in this test environment,
     // but we can at least verify the component renders with different positions
     expect(getByText('+')).toBeTruthy();
-    
-    rerender(
-      <FloatingActionButton icon="+" position="bottomLeft" onPress={() => {}} />
-    );
-    
+
+    rerender(<FloatingActionButton icon="+" position="bottomLeft" onPress={() => {}} />);
+
     expect(getByText('+')).toBeTruthy();
-    
-    rerender(
-      <FloatingActionButton icon="+" position="topRight" onPress={() => {}} />
-    );
-    
+
+    rerender(<FloatingActionButton icon="+" position="topRight" onPress={() => {}} />);
+
     expect(getByText('+')).toBeTruthy();
-    
-    rerender(
-      <FloatingActionButton icon="+" position="topLeft" onPress={() => {}} />
-    );
-    
+
+    rerender(<FloatingActionButton icon="+" position="topLeft" onPress={() => {}} />);
+
     expect(getByText('+')).toBeTruthy();
   });
 });

@@ -33,7 +33,7 @@ const InteractiveDropdown = (props: any) => {
     <Dropdown
       {...props}
       selectedValue={selectedValue}
-      onValueChange={(value) => {
+      onValueChange={value => {
         setSelectedValue(value);
         props.onValueChange?.(value);
       }}
@@ -50,7 +50,7 @@ const defaultItems = [
 ];
 
 export const Default: Story = {
-  render: (args) => <InteractiveDropdown {...args} />,
+  render: args => <InteractiveDropdown {...args} />,
   args: {
     items: defaultItems,
     placeholder: 'Select an item',
@@ -58,7 +58,7 @@ export const Default: Story = {
 };
 
 export const WithLabel: Story = {
-  render: (args) => <InteractiveDropdown {...args} />,
+  render: args => <InteractiveDropdown {...args} />,
   args: {
     items: defaultItems,
     label: 'Select an option',
@@ -67,7 +67,7 @@ export const WithLabel: Story = {
 };
 
 export const WithSelectedValue: Story = {
-  render: (args) => <InteractiveDropdown {...args} />,
+  render: args => <InteractiveDropdown {...args} />,
   args: {
     items: defaultItems,
     selectedValue: 'item2',
@@ -75,7 +75,7 @@ export const WithSelectedValue: Story = {
 };
 
 export const WithHelperText: Story = {
-  render: (args) => <InteractiveDropdown {...args} />,
+  render: args => <InteractiveDropdown {...args} />,
   args: {
     items: defaultItems,
     label: 'Select an option',
@@ -84,7 +84,7 @@ export const WithHelperText: Story = {
 };
 
 export const WithError: Story = {
-  render: (args) => <InteractiveDropdown {...args} />,
+  render: args => <InteractiveDropdown {...args} />,
   args: {
     items: defaultItems,
     label: 'Select an option',
@@ -93,7 +93,7 @@ export const WithError: Story = {
 };
 
 export const Disabled: Story = {
-  render: (args) => <InteractiveDropdown {...args} />,
+  render: args => <InteractiveDropdown {...args} />,
   args: {
     items: defaultItems,
     label: 'Select an option',
@@ -102,7 +102,7 @@ export const Disabled: Story = {
 };
 
 export const WithDisabledItems: Story = {
-  render: (args) => <InteractiveDropdown {...args} />,
+  render: args => <InteractiveDropdown {...args} />,
   args: {
     items: [
       { value: 'item1', label: 'Item 1' },
@@ -116,7 +116,7 @@ export const WithDisabledItems: Story = {
 };
 
 export const WithCustomStyles: Story = {
-  render: (args) => <InteractiveDropdown {...args} />,
+  render: args => <InteractiveDropdown {...args} />,
   args: {
     items: defaultItems,
     label: 'Custom styled dropdown',
@@ -129,7 +129,7 @@ export const WithCustomStyles: Story = {
 };
 
 export const CountrySelector: Story = {
-  render: (args) => <InteractiveDropdown {...args} />,
+  render: args => <InteractiveDropdown {...args} />,
   args: {
     items: [
       { value: 'us', label: '🇺🇸 United States' },
@@ -147,7 +147,7 @@ export const CountrySelector: Story = {
 };
 
 export const LanguageSelector: Story = {
-  render: (args) => <InteractiveDropdown {...args} />,
+  render: args => <InteractiveDropdown {...args} />,
   args: {
     items: [
       { value: 'en', label: 'English' },
@@ -167,7 +167,7 @@ export const LanguageSelector: Story = {
 };
 
 export const AudioQualitySelector: Story = {
-  render: (args) => <InteractiveDropdown {...args} />,
+  render: args => <InteractiveDropdown {...args} />,
   args: {
     items: [
       { value: 'low', label: 'Low (96 kbps)' },
@@ -183,7 +183,7 @@ export const AudioQualitySelector: Story = {
 };
 
 export const GenreSelector: Story = {
-  render: (args) => <InteractiveDropdown {...args} />,
+  render: args => <InteractiveDropdown {...args} />,
   args: {
     items: [
       { value: 'pop', label: 'Pop' },

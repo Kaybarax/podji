@@ -33,7 +33,7 @@ const InteractiveCheckbox = (props: any) => {
     <Checkbox
       {...props}
       checked={checked}
-      onValueChange={(newValue) => {
+      onValueChange={newValue => {
         setChecked(newValue);
         props.onValueChange?.(newValue);
       }}
@@ -42,14 +42,14 @@ const InteractiveCheckbox = (props: any) => {
 };
 
 export const Default: Story = {
-  render: (args) => <InteractiveCheckbox {...args} />,
+  render: args => <InteractiveCheckbox {...args} />,
   args: {
     label: 'Default checkbox',
   },
 };
 
 export const Checked: Story = {
-  render: (args) => <InteractiveCheckbox {...args} />,
+  render: args => <InteractiveCheckbox {...args} />,
   args: {
     label: 'Checked checkbox',
     checked: true,
@@ -57,7 +57,7 @@ export const Checked: Story = {
 };
 
 export const Unchecked: Story = {
-  render: (args) => <InteractiveCheckbox {...args} />,
+  render: args => <InteractiveCheckbox {...args} />,
   args: {
     label: 'Unchecked checkbox',
     checked: false,
@@ -65,7 +65,7 @@ export const Unchecked: Story = {
 };
 
 export const WithLabelOnRight: Story = {
-  render: (args) => <InteractiveCheckbox {...args} />,
+  render: args => <InteractiveCheckbox {...args} />,
   args: {
     label: 'Label on right',
     labelPosition: 'right',
@@ -73,7 +73,7 @@ export const WithLabelOnRight: Story = {
 };
 
 export const WithLabelOnLeft: Story = {
-  render: (args) => <InteractiveCheckbox {...args} />,
+  render: args => <InteractiveCheckbox {...args} />,
   args: {
     label: 'Label on left',
     labelPosition: 'left',
@@ -81,7 +81,7 @@ export const WithLabelOnLeft: Story = {
 };
 
 export const Disabled: Story = {
-  render: (args) => <InteractiveCheckbox {...args} />,
+  render: args => <InteractiveCheckbox {...args} />,
   args: {
     label: 'Disabled checkbox',
     disabled: true,
@@ -89,7 +89,7 @@ export const Disabled: Story = {
 };
 
 export const DisabledChecked: Story = {
-  render: (args) => <InteractiveCheckbox {...args} />,
+  render: args => <InteractiveCheckbox {...args} />,
   args: {
     label: 'Disabled checked checkbox',
     disabled: true,
@@ -98,7 +98,7 @@ export const DisabledChecked: Story = {
 };
 
 export const WithCustomStyles: Story = {
-  render: (args) => <InteractiveCheckbox {...args} />,
+  render: args => <InteractiveCheckbox {...args} />,
   args: {
     label: 'Custom styled checkbox',
     containerStyle: { backgroundColor: '#f0f0f0', padding: 10, borderRadius: 8 },
