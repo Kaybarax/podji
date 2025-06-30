@@ -14,6 +14,9 @@
     "**/expo-router/**"
   ],
   "packageManager": "yarn@4.9.2",
+  "engines": {
+    "node": ">=20.0.0"
+  },
   "scripts": {
     "prepare": "husky",
     "format": "prettier . --write --ignore-path .prettierignore",
@@ -85,6 +88,7 @@
     "jest-environment-jsdom": "30.0.0-beta.3",
     "lint-staged": "^13.2.2",
     "prettier": "^2.8.8",
+    "sass-embedded": "^1.89.2",
     "ts-jest": "^29.0.0",
     "turbo": "^2.5.4",
     "typescript": "~5.8.3"
@@ -101,6 +105,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "rimraf": "^6.0.1"
+    "rimraf": "^6.0.1",
+    "sass": "^1.89.2"
   }
 }

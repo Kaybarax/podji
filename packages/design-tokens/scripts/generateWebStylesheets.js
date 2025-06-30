@@ -368,6 +368,20 @@ function generateSassStylesheet(webDistDir, themeData) {
   Object.entries(boxShadow || {}).forEach(([key, value]) => {
     lightThemeVars += `$shadow-${key.replace(/\./g, '-')}: ${value};\n`;
   });
+
+  // Add additional variables needed for mixins
+  lightThemeVars += '$font-weight-semibold: 600;\n';
+  lightThemeVars += '$line-height-default: 1.5;\n';
+  lightThemeVars += '$font-size-body: 16px;\n';
+  lightThemeVars += '$font-size-section-title: 20px;\n';
+  lightThemeVars += '$color-text-primary-light: #000000;\n';
+  lightThemeVars += '$color-text-secondary-light: #00000099;\n';
+  lightThemeVars += '$color-text-section-title-light: #000000;\n';
+  lightThemeVars += '$color-background-page-light: #ffffff;\n';
+  lightThemeVars += '$color-background-card-light: #ffe9e4;\n';
+  lightThemeVars += '$color-background-button-primary-light-base: #aceef3;\n';
+  lightThemeVars += '$radius-medium: 8px;\n';
+
   lightThemeVars += '\n';
 
   // Create SASS variables for dark theme
@@ -378,6 +392,15 @@ function generateSassStylesheet(webDistDir, themeData) {
       darkThemeVars += `$color-${key.replace(/\./g, '-')}: ${value};\n`;
     }
   });
+
+  // Add additional dark theme variables needed for mixins
+  darkThemeVars += '$color-text-primary-dark: #ffffff;\n';
+  darkThemeVars += '$color-text-secondary-dark: #ffffffb3;\n';
+  darkThemeVars += '$color-text-section-title-dark: #ffffff;\n';
+  darkThemeVars += '$color-background-page-dark: #121212;\n';
+  darkThemeVars += '$color-background-card-dark: #1e1e1e;\n';
+  darkThemeVars += '$color-background-button-primary-dark-base: #289baa;\n';
+
   darkThemeVars += '\n';
 
   // Create component styles using SASS mixins
