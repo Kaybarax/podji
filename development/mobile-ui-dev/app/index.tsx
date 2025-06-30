@@ -125,7 +125,7 @@ const COMPONENTS: ComponentItem[] = [
     sizes: ['default'],
     props: {
       default: {
-        options: [
+        items: [
           { label: 'Option 1', value: '1' },
           { label: 'Option 2', value: '2' },
         ],
@@ -133,7 +133,7 @@ const COMPONENTS: ComponentItem[] = [
         onValueChange: () => {},
       },
       disabled: {
-        options: [
+        items: [
           { label: 'Option 1', value: '1' },
           { label: 'Option 2', value: '2' },
         ],
