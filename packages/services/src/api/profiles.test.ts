@@ -74,9 +74,19 @@ describe('profiles api', () => {
 
       const profiles = await fetchProfiles();
 
-      // Expect axios.get to be called twice and return the raw data without validation
+      // Expect axios.get to be called twice
       expect(axios.get).toHaveBeenCalledTimes(2);
-      expect(profiles).toEqual(mockData);
+
+      // Expect the profiles to include the mockData with the validated property added
+      expect(profiles).toEqual(
+        expect.arrayContaining([
+          expect.objectContaining({
+            id: 1,
+            name: 'Test User',
+            validated: true,
+          }),
+        ]),
+      );
     });
   });
 });
