@@ -125,12 +125,7 @@ export const RadioButton: React.FC<RadioButtonProps> = ({
 
   return (
     <View style={[themeStyles.container, containerStyle]}>
-      <TouchableOpacity
-        activeOpacity={0.8}
-        onPress={handleToggle}
-        disabled={disabled}
-        testID={testID}
-      >
+      <TouchableOpacity activeOpacity={0.8} onPress={handleToggle} disabled={disabled} testID={testID}>
         <View
           style={[
             themeStyles.radio,
@@ -143,7 +138,7 @@ export const RadioButton: React.FC<RadioButtonProps> = ({
         </View>
       </TouchableOpacity>
       {label && (
-        <Text 
+        <Text
           style={[themeStyles.label, disabled && themeStyles.labelDisabled, labelStyle]}
           onPress={!disabled ? handleToggle : undefined}
         >

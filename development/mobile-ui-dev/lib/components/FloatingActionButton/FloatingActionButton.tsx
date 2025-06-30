@@ -115,20 +115,11 @@ export const FloatingActionButton: React.FC<FloatingActionButtonProps> = ({
 
   return (
     <TouchableOpacity
-      style={[
-        themeStyles.button,
-        themeStyles.sizes[size],
-        themeStyles.positions[position],
-        style,
-      ]}
+      style={[themeStyles.button, themeStyles.sizes[size], themeStyles.positions[position], style]}
       onPress={onPress}
       activeOpacity={0.8}
     >
-      {typeof icon === 'string' ? (
-        <Text style={themeStyles.icon}>{icon}</Text>
-      ) : (
-        icon
-      )}
+      {typeof icon === 'string' ? <Text style={themeStyles.icon}>{icon}</Text> : icon}
     </TouchableOpacity>
   );
 };

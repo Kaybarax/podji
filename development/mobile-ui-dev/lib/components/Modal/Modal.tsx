@@ -169,28 +169,29 @@ export const Modal: React.FC<ModalProps> = ({
     opacity: animation,
   };
 
-  const contentAnimatedStyle = position === 'bottom'
-    ? {
-        transform: [
-          {
-            translateY: animation.interpolate({
-              inputRange: [0, 1],
-              outputRange: [windowHeight, 0],
-            }),
-          },
-        ],
-      }
-    : {
-        opacity: animation,
-        transform: [
-          {
-            scale: animation.interpolate({
-              inputRange: [0, 1],
-              outputRange: [0.9, 1],
-            }),
-          },
-        ],
-      };
+  const contentAnimatedStyle =
+    position === 'bottom'
+      ? {
+          transform: [
+            {
+              translateY: animation.interpolate({
+                inputRange: [0, 1],
+                outputRange: [windowHeight, 0],
+              }),
+            },
+          ],
+        }
+      : {
+          opacity: animation,
+          transform: [
+            {
+              scale: animation.interpolate({
+                inputRange: [0, 1],
+                outputRange: [0.9, 1],
+              }),
+            },
+          ],
+        };
 
   const handleBackdropPress = () => {
     if (closeOnBackdropPress) {
@@ -199,31 +200,17 @@ export const Modal: React.FC<ModalProps> = ({
   };
 
   const renderContent = () => {
-    const contentPositionStyle = position === 'bottom'
-      ? themeStyles.contentBottom
-      : themeStyles.contentCenter;
+    const contentPositionStyle = position === 'bottom' ? themeStyles.contentBottom : themeStyles.contentCenter;
 
     const content = (
-      <Animated.View
-        style={[contentPositionStyle, contentAnimatedStyle, contentStyle]}
-        testID={testID}
-      >
-        {scrollable ? (
-          <ScrollView>
-            {children}
-          </ScrollView>
-        ) : (
-          children
-        )}
+      <Animated.View style={[contentPositionStyle, contentAnimatedStyle, contentStyle]} testID={testID}>
+        {scrollable ? <ScrollView>{children}</ScrollView> : children}
       </Animated.View>
     );
 
     if (avoidKeyboard) {
       return (
-        <KeyboardAvoidingView
-          behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-          style={{ flex: 1 }}
-        >
+        <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : 'height'} style={{ flex: 1 }}>
           {content}
         </KeyboardAvoidingView>
       );
@@ -233,12 +220,7 @@ export const Modal: React.FC<ModalProps> = ({
   };
 
   return (
-    <RNModal
-      transparent
-      visible={visible}
-      onRequestClose={onClose}
-      animationType="none"
-    >
+    <RNModal transparent visible={visible} onRequestClose={onClose} animationType="none">
       <View style={[themeStyles.container, containerStyle]}>
         {hasBackdrop && (
           <TouchableWithoutFeedback onPress={handleBackdropPress}>

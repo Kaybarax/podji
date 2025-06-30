@@ -1,17 +1,17 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { 
-  View, 
-  Text, 
-  TouchableOpacity, 
-  Modal, 
-  FlatList, 
-  StyleSheet, 
-  StyleProp, 
-  ViewStyle, 
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  Modal,
+  FlatList,
+  StyleSheet,
+  StyleProp,
+  ViewStyle,
   TextStyle,
   Animated,
   Dimensions,
-  TouchableWithoutFeedback
+  TouchableWithoutFeedback,
 } from 'react-native';
 import { getMobileTheme } from '@podji/design-tokens';
 
@@ -247,7 +247,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
 
   const openDropdown = () => {
     if (disabled) return;
-    
+
     setIsOpen(true);
     Animated.parallel([
       Animated.timing(modalHeight, {
@@ -282,7 +282,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
 
   const handleSelectItem = (item: DropdownItem) => {
     if (item.disabled) return;
-    
+
     onValueChange(item.value);
     closeDropdown();
   };
@@ -291,7 +291,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
 
   const renderItem = ({ item }: { item: DropdownItem }) => {
     const isSelected = item.value === selectedValue;
-    
+
     return (
       <TouchableOpacity
         style={[
@@ -321,7 +321,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
   return (
     <View style={[themeStyles.container, containerStyle]} testID={testID}>
       {label && <Text style={[themeStyles.label, labelStyle]}>{label}</Text>}
-      
+
       <TouchableOpacity
         style={[
           themeStyles.dropdown,
@@ -343,28 +343,14 @@ export const Dropdown: React.FC<DropdownProps> = ({
         </Text>
         <Text style={themeStyles.icon}>▼</Text>
       </TouchableOpacity>
-      
-      {helperText && !error && (
-        <Text style={themeStyles.helperText}>{helperText}</Text>
-      )}
-      
-      {error && (
-        <Text style={themeStyles.errorText}>{error}</Text>
-      )}
-      
-      <Modal
-        visible={isOpen}
-        transparent
-        animationType="none"
-        onRequestClose={closeDropdown}
-      >
+
+      {helperText && !error && <Text style={themeStyles.helperText}>{helperText}</Text>}
+
+      {error && <Text style={themeStyles.errorText}>{error}</Text>}
+
+      <Modal visible={isOpen} transparent animationType="none" onRequestClose={closeDropdown}>
         <TouchableWithoutFeedback onPress={closeDropdown}>
-          <Animated.View
-            style={[
-              themeStyles.modalContainer,
-              { opacity: modalOpacity },
-            ]}
-          >
+          <Animated.View style={[themeStyles.modalContainer, { opacity: modalOpacity }]}>
             <Animated.View
               style={[
                 themeStyles.modalContent,
@@ -380,11 +366,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
                 },
               ]}
             >
-              <FlatList
-                data={items}
-                renderItem={renderItem}
-                keyExtractor={(item) => item.value.toString()}
-              />
+              <FlatList data={items} renderItem={renderItem} keyExtractor={item => item.value.toString()} />
             </Animated.View>
           </Animated.View>
         </TouchableWithoutFeedback>

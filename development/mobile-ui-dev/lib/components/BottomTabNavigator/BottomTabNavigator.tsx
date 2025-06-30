@@ -39,12 +39,7 @@ export interface BottomTabNavigatorProps {
 /**
  * Bottom tab navigation component for mobile app
  */
-export const BottomTabNavigator: React.FC<BottomTabNavigatorProps> = ({
-  tabs,
-  activeTab,
-  onTabPress,
-  style,
-}) => {
+export const BottomTabNavigator: React.FC<BottomTabNavigatorProps> = ({ tabs, activeTab, onTabPress, style }) => {
   const [themeStyles, setThemeStyles] = useState({
     container: {},
     tabBar: {},
@@ -111,7 +106,7 @@ export const BottomTabNavigator: React.FC<BottomTabNavigatorProps> = ({
   return (
     <View style={[themeStyles.container, style]}>
       <View style={themeStyles.tabBar}>
-        {tabs.map((tab) => {
+        {tabs.map(tab => {
           const isActive = tab.key === activeTab;
           return (
             <TouchableOpacity
@@ -121,14 +116,8 @@ export const BottomTabNavigator: React.FC<BottomTabNavigatorProps> = ({
               activeOpacity={0.7}
             >
               <View style={themeStyles.tabContent}>
-                {typeof tab.icon === 'string' ? (
-                  <Text style={themeStyles.tabIcon}>{tab.icon}</Text>
-                ) : (
-                  tab.icon
-                )}
-                <Text style={[themeStyles.tabLabel, isActive && themeStyles.activeTabLabel]}>
-                  {tab.label}
-                </Text>
+                {typeof tab.icon === 'string' ? <Text style={themeStyles.tabIcon}>{tab.icon}</Text> : tab.icon}
+                <Text style={[themeStyles.tabLabel, isActive && themeStyles.activeTabLabel]}>{tab.label}</Text>
               </View>
             </TouchableOpacity>
           );

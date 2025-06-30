@@ -216,14 +216,14 @@ export const Slider: React.FC<SliderProps> = ({
       onMoveShouldSetPanResponder: () => true,
       onPanResponderGrant: (_, gestureState) => {
         if (disabled) return;
-        
+
         setIsSliding(true);
         const newValue = valueFromPosition(gestureState.x0);
         onSlidingStart?.(newValue);
       },
       onPanResponderMove: (_, gestureState) => {
         if (disabled) return;
-        
+
         const newValue = valueFromPosition(gestureState.moveX);
         setCurrentValue(newValue);
         thumbPosition.setValue((newValue - minimumValue) / (maximumValue - minimumValue));
@@ -231,7 +231,7 @@ export const Slider: React.FC<SliderProps> = ({
       },
       onPanResponderRelease: (_, gestureState) => {
         if (disabled) return;
-        
+
         setIsSliding(false);
         const newValue = valueFromPosition(gestureState.moveX);
         onSlidingComplete?.(newValue);
@@ -242,28 +242,28 @@ export const Slider: React.FC<SliderProps> = ({
   // Calculate the value from the position on the track
   const valueFromPosition = (position: number) => {
     if (trackWidth === 0) return minimumValue;
-    
+
     // Get the element position
     const trackRef = (panResponder.panHandlers as any).ref?.current;
     if (!trackRef) return minimumValue;
-    
+
     // Calculate the position relative to the track
-    trackRef.measure((_: number, __: number, ___: number, ____: number, pageX: number, _____ : number) => {
+    trackRef.measure((_: number, __: number, ___: number, ____: number, pageX: number, _____: number) => {
       position = position - pageX;
     });
-    
+
     // Ensure the position is within the track bounds
     position = Math.max(0, Math.min(position, trackWidth));
-    
+
     // Calculate the percentage and value
     const percentage = position / trackWidth;
     let newValue = minimumValue + percentage * (maximumValue - minimumValue);
-    
+
     // Apply step if provided
     if (step > 0) {
       newValue = Math.round(newValue / step) * step;
     }
-    
+
     // Ensure the value is within the bounds
     return Math.max(minimumValue, Math.min(newValue, maximumValue));
   };
@@ -284,15 +284,11 @@ export const Slider: React.FC<SliderProps> = ({
 
   return (
     <View style={[themeStyles.container, containerStyle]} testID={testID}>
-      {showValue && (
-        <Text style={[themeStyles.valueLabel, labelStyle]}>
-          {valueFormatter(currentValue)}
-        </Text>
-      )}
-      
+      {showValue && <Text style={[themeStyles.valueLabel, labelStyle]}>{valueFormatter(currentValue)}</Text>}
+
       <View
         style={[themeStyles.track, trackStyle]}
-        onLayout={(event) => {
+        onLayout={event => {
           setTrackWidth(event.nativeEvent.layout.width);
         }}
         {...panResponder.panHandlers}
@@ -314,15 +310,11 @@ export const Slider: React.FC<SliderProps> = ({
           ]}
         />
       </View>
-      
+
       {showLabels && (
         <View style={themeStyles.labelsContainer}>
-          <Text style={[themeStyles.label, labelStyle]}>
-            {minimumLabel || minimumValue.toString()}
-          </Text>
-          <Text style={[themeStyles.label, labelStyle]}>
-            {maximumLabel || maximumValue.toString()}
-          </Text>
+          <Text style={[themeStyles.label, labelStyle]}>{minimumLabel || minimumValue.toString()}</Text>
+          <Text style={[themeStyles.label, labelStyle]}>{maximumLabel || maximumValue.toString()}</Text>
         </View>
       )}
     </View>

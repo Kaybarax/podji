@@ -271,12 +271,8 @@ export const ToastProvider: React.FC<{ children: React.ReactNode }> = ({ childre
 
   // Hide a specific toast
   const hide = (id: string) => {
-    setToasts(prev =>
-      prev.map(toast =>
-        toast.id === id ? { ...toast, visible: false } : toast
-      )
-    );
-    
+    setToasts(prev => prev.map(toast => (toast.id === id ? { ...toast, visible: false } : toast)));
+
     // Remove the toast after animation completes
     setTimeout(() => {
       setToasts(prev => prev.filter(toast => toast.id !== id));
@@ -286,7 +282,7 @@ export const ToastProvider: React.FC<{ children: React.ReactNode }> = ({ childre
   // Hide all toasts
   const hideAll = () => {
     setToasts(prev => prev.map(toast => ({ ...toast, visible: false })));
-    
+
     // Remove all toasts after animation completes
     setTimeout(() => {
       setToasts([]);

@@ -151,17 +151,8 @@ export const Toggle: React.FC<ToggleProps> = ({
 
   return (
     <View style={[themeStyles.container, containerStyle]}>
-      {label && (
-        <Text style={[themeStyles.label, disabled && themeStyles.labelDisabled, labelStyle]}>
-          {label}
-        </Text>
-      )}
-      <TouchableOpacity
-        activeOpacity={0.8}
-        onPress={handleToggle}
-        disabled={disabled}
-        testID={testID}
-      >
+      {label && <Text style={[themeStyles.label, disabled && themeStyles.labelDisabled, labelStyle]}>{label}</Text>}
+      <TouchableOpacity activeOpacity={0.8} onPress={handleToggle} disabled={disabled} testID={testID}>
         <View
           style={[
             themeStyles.toggle,
@@ -171,11 +162,7 @@ export const Toggle: React.FC<ToggleProps> = ({
           ]}
         >
           <Animated.View
-            style={[
-              themeStyles.thumb,
-              value ? themeStyles.thumbOn : themeStyles.thumbOff,
-              { left: thumbLeft },
-            ]}
+            style={[themeStyles.thumb, value ? themeStyles.thumbOn : themeStyles.thumbOff, { left: thumbLeft }]}
           />
         </View>
       </TouchableOpacity>

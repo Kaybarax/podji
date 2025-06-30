@@ -74,79 +74,43 @@ jest.mock('react-native', () => {
 
 describe('Slider', () => {
   it('renders correctly with default props', () => {
-    const { getByTestId } = render(
-      <Slider 
-        value={50} 
-        testID="slider"
-      />
-    );
-    
+    const { getByTestId } = render(<Slider value={50} testID="slider" />);
+
     expect(getByTestId('slider')).toBeTruthy();
   });
 
   it('renders with min and max labels when showLabels is true', () => {
-    const { getByText } = render(
-      <Slider 
-        value={50} 
-        minimumValue={0}
-        maximumValue={100}
-        showLabels={true}
-      />
-    );
-    
+    const { getByText } = render(<Slider value={50} minimumValue={0} maximumValue={100} showLabels={true} />);
+
     expect(getByText('0')).toBeTruthy();
     expect(getByText('100')).toBeTruthy();
   });
 
   it('renders with custom min and max labels', () => {
     const { getByText } = render(
-      <Slider 
-        value={50} 
-        minimumValue={0}
-        maximumValue={100}
-        showLabels={true}
-        minimumLabel="Min"
-        maximumLabel="Max"
-      />
+      <Slider value={50} minimumValue={0} maximumValue={100} showLabels={true} minimumLabel="Min" maximumLabel="Max" />,
     );
-    
+
     expect(getByText('Min')).toBeTruthy();
     expect(getByText('Max')).toBeTruthy();
   });
 
   it('renders the current value when showValue is true', () => {
-    const { getByText } = render(
-      <Slider 
-        value={50} 
-        showValue={true}
-      />
-    );
-    
+    const { getByText } = render(<Slider value={50} showValue={true} />);
+
     expect(getByText('50')).toBeTruthy();
   });
 
   it('formats the value using valueFormatter', () => {
-    const { getByText } = render(
-      <Slider 
-        value={50} 
-        showValue={true}
-        valueFormatter={(value) => `${value}%`}
-      />
-    );
-    
+    const { getByText } = render(<Slider value={50} showValue={true} valueFormatter={value => `${value}%`} />);
+
     expect(getByText('50%')).toBeTruthy();
   });
 
   it('calls onValueChange when value changes', () => {
     const onValueChange = jest.fn();
-    const { getByTestId } = render(
-      <Slider 
-        value={50} 
-        onValueChange={onValueChange}
-        testID="slider"
-      />
-    );
-    
+    const { getByTestId } = render(<Slider value={50} onValueChange={onValueChange} testID="slider" />);
+
     // Since we can't easily simulate the pan gesture in tests,
     // we'll just verify the component renders correctly
     expect(getByTestId('slider')).toBeTruthy();
@@ -156,18 +120,18 @@ describe('Slider', () => {
     const onValueChange = jest.fn();
     const onSlidingStart = jest.fn();
     const onSlidingComplete = jest.fn();
-    
+
     const { getByTestId } = render(
-      <Slider 
-        value={50} 
+      <Slider
+        value={50}
         onValueChange={onValueChange}
         onSlidingStart={onSlidingStart}
         onSlidingComplete={onSlidingComplete}
         disabled={true}
         testID="slider"
-      />
+      />,
     );
-    
+
     // Since we can't easily simulate the pan gesture in tests,
     // we'll just verify the component renders correctly
     expect(getByTestId('slider')).toBeTruthy();

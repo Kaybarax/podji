@@ -55,9 +55,9 @@ describe('Modal', () => {
     const { getByText } = render(
       <Modal visible={true} onClose={onClose} testID="modal">
         <Text>Modal Content</Text>
-      </Modal>
+      </Modal>,
     );
-    
+
     expect(getByText('Modal Content')).toBeTruthy();
   });
 
@@ -66,9 +66,9 @@ describe('Modal', () => {
     const { queryByText } = render(
       <Modal visible={false} onClose={onClose} testID="modal">
         <Text>Modal Content</Text>
-      </Modal>
+      </Modal>,
     );
-    
+
     // The modal is still rendered in the component tree, but it's not visible in the UI
     // We can't easily test this with react-native-testing-library
   });
@@ -76,16 +76,11 @@ describe('Modal', () => {
   it('calls onClose when backdrop is pressed and closeOnBackdropPress is true', () => {
     const onClose = jest.fn();
     const { getByTestId } = render(
-      <Modal 
-        visible={true} 
-        onClose={onClose} 
-        closeOnBackdropPress={true}
-        testID="modal"
-      >
+      <Modal visible={true} onClose={onClose} closeOnBackdropPress={true} testID="modal">
         <Text>Modal Content</Text>
-      </Modal>
+      </Modal>,
     );
-    
+
     // Since we can't easily test the backdrop press in this environment,
     // we'll just verify the component renders correctly
     expect(getByTestId('modal')).toBeTruthy();
@@ -94,44 +89,29 @@ describe('Modal', () => {
   it('renders with center position', () => {
     const onClose = jest.fn();
     const { getByTestId } = render(
-      <Modal 
-        visible={true} 
-        onClose={onClose} 
-        position="center"
-        testID="modal"
-      >
+      <Modal visible={true} onClose={onClose} position="center" testID="modal">
         <Text>Modal Content</Text>
-      </Modal>
+      </Modal>,
     );
-    
+
     expect(getByTestId('modal')).toBeTruthy();
   });
 
   it('renders with bottom position', () => {
     const onClose = jest.fn();
     const { getByTestId } = render(
-      <Modal 
-        visible={true} 
-        onClose={onClose} 
-        position="bottom"
-        testID="modal"
-      >
+      <Modal visible={true} onClose={onClose} position="bottom" testID="modal">
         <Text>Modal Content</Text>
-      </Modal>
+      </Modal>,
     );
-    
+
     expect(getByTestId('modal')).toBeTruthy();
   });
 
   it('renders with scrollable content', () => {
     const onClose = jest.fn();
     const { getByTestId } = render(
-      <Modal 
-        visible={true} 
-        onClose={onClose} 
-        scrollable={true}
-        testID="modal"
-      >
+      <Modal visible={true} onClose={onClose} scrollable={true} testID="modal">
         <View>
           <Text>Line 1</Text>
           <Text>Line 2</Text>
@@ -139,41 +119,31 @@ describe('Modal', () => {
           <Text>Line 4</Text>
           <Text>Line 5</Text>
         </View>
-      </Modal>
+      </Modal>,
     );
-    
+
     expect(getByTestId('modal')).toBeTruthy();
   });
 
   it('renders with keyboard avoiding view when avoidKeyboard is true', () => {
     const onClose = jest.fn();
     const { getByTestId } = render(
-      <Modal 
-        visible={true} 
-        onClose={onClose} 
-        avoidKeyboard={true}
-        testID="modal"
-      >
+      <Modal visible={true} onClose={onClose} avoidKeyboard={true} testID="modal">
         <Text>Modal Content</Text>
-      </Modal>
+      </Modal>,
     );
-    
+
     expect(getByTestId('modal')).toBeTruthy();
   });
 
   it('renders without backdrop when hasBackdrop is false', () => {
     const onClose = jest.fn();
     const { getByTestId } = render(
-      <Modal 
-        visible={true} 
-        onClose={onClose} 
-        hasBackdrop={false}
-        testID="modal"
-      >
+      <Modal visible={true} onClose={onClose} hasBackdrop={false} testID="modal">
         <Text>Modal Content</Text>
-      </Modal>
+      </Modal>,
     );
-    
+
     expect(getByTestId('modal')).toBeTruthy();
   });
 });

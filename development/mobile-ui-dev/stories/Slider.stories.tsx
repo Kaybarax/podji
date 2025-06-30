@@ -35,7 +35,7 @@ const InteractiveSlider = (props: any) => {
     <Slider
       {...props}
       value={value}
-      onValueChange={(newValue) => {
+      onValueChange={newValue => {
         setValue(newValue);
         props.onValueChange?.(newValue);
       }}
@@ -44,7 +44,7 @@ const InteractiveSlider = (props: any) => {
 };
 
 export const Default: Story = {
-  render: (args) => <InteractiveSlider {...args} />,
+  render: args => <InteractiveSlider {...args} />,
   args: {
     value: 50,
     minimumValue: 0,
@@ -53,7 +53,7 @@ export const Default: Story = {
 };
 
 export const WithLabels: Story = {
-  render: (args) => <InteractiveSlider {...args} />,
+  render: args => <InteractiveSlider {...args} />,
   args: {
     value: 50,
     minimumValue: 0,
@@ -63,7 +63,7 @@ export const WithLabels: Story = {
 };
 
 export const WithCustomLabels: Story = {
-  render: (args) => <InteractiveSlider {...args} />,
+  render: args => <InteractiveSlider {...args} />,
   args: {
     value: 50,
     minimumValue: 0,
@@ -75,7 +75,7 @@ export const WithCustomLabels: Story = {
 };
 
 export const WithValue: Story = {
-  render: (args) => <InteractiveSlider {...args} />,
+  render: args => <InteractiveSlider {...args} />,
   args: {
     value: 50,
     minimumValue: 0,
@@ -85,18 +85,18 @@ export const WithValue: Story = {
 };
 
 export const WithValueFormatter: Story = {
-  render: (args) => <InteractiveSlider {...args} />,
+  render: args => <InteractiveSlider {...args} />,
   args: {
     value: 50,
     minimumValue: 0,
     maximumValue: 100,
     showValue: true,
-    valueFormatter: (value) => `${value}%`,
+    valueFormatter: value => `${value}%`,
   },
 };
 
 export const WithStep: Story = {
-  render: (args) => <InteractiveSlider {...args} />,
+  render: args => <InteractiveSlider {...args} />,
   args: {
     value: 50,
     minimumValue: 0,
@@ -108,7 +108,7 @@ export const WithStep: Story = {
 };
 
 export const Disabled: Story = {
-  render: (args) => <InteractiveSlider {...args} />,
+  render: args => <InteractiveSlider {...args} />,
   args: {
     value: 50,
     minimumValue: 0,
@@ -120,7 +120,7 @@ export const Disabled: Story = {
 };
 
 export const CustomColors: Story = {
-  render: (args) => <InteractiveSlider {...args} />,
+  render: args => <InteractiveSlider {...args} />,
   args: {
     value: 50,
     minimumValue: 0,
@@ -134,7 +134,7 @@ export const CustomColors: Story = {
 };
 
 export const CustomStyles: Story = {
-  render: (args) => <InteractiveSlider {...args} />,
+  render: args => <InteractiveSlider {...args} />,
   args: {
     value: 50,
     minimumValue: 0,
@@ -149,7 +149,7 @@ export const CustomStyles: Story = {
 };
 
 export const VolumeSlider: Story = {
-  render: (args) => (
+  render: args => (
     <View>
       <Text style={{ marginBottom: 8, fontWeight: 'bold' }}>Volume</Text>
       <InteractiveSlider {...args} />
@@ -160,14 +160,14 @@ export const VolumeSlider: Story = {
     minimumValue: 0,
     maximumValue: 100,
     showValue: true,
-    valueFormatter: (value) => `${value}%`,
+    valueFormatter: value => `${value}%`,
     minimumTrackTintColor: '#4CAF50',
     thumbTintColor: '#4CAF50',
   },
 };
 
 export const TempoSlider: Story = {
-  render: (args) => (
+  render: args => (
     <View>
       <Text style={{ marginBottom: 8, fontWeight: 'bold' }}>Tempo (BPM)</Text>
       <InteractiveSlider {...args} />
@@ -188,7 +188,7 @@ export const TempoSlider: Story = {
 };
 
 export const CrossfadeSlider: Story = {
-  render: (args) => (
+  render: args => (
     <View>
       <Text style={{ marginBottom: 8, fontWeight: 'bold' }}>Crossfade</Text>
       <InteractiveSlider {...args} />
@@ -204,8 +204,8 @@ export const CrossfadeSlider: Story = {
     minimumTrackTintColor: '#FF5722',
     maximumTrackTintColor: '#9C27B0',
     thumbTintColor: '#FFFFFF',
-    thumbStyle: { 
-      borderWidth: 2, 
+    thumbStyle: {
+      borderWidth: 2,
       borderColor: '#000000',
       shadowColor: '#000000',
       shadowOffset: { width: 0, height: 2 },

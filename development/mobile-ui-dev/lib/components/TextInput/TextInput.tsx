@@ -1,5 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { View, TextInput as RNTextInput, Text, StyleSheet, StyleProp, ViewStyle, TextStyle, TextInputProps as RNTextInputProps } from 'react-native';
+import {
+  View,
+  TextInput as RNTextInput,
+  Text,
+  StyleSheet,
+  StyleProp,
+  ViewStyle,
+  TextStyle,
+  TextInputProps as RNTextInputProps,
+} from 'react-native';
 import { getMobileTheme } from '@podji/design-tokens';
 
 export interface TextInputProps extends Omit<RNTextInputProps, 'style'> {
@@ -166,12 +175,8 @@ export const TextInput: React.FC<TextInputProps> = ({
         placeholderTextColor={disabled ? themeStyles.disabledInput.color : undefined}
         {...rest}
       />
-      {helperText && !error && (
-        <Text style={themeStyles.helperText}>{helperText}</Text>
-      )}
-      {error && (
-        <Text style={themeStyles.errorText}>{error}</Text>
-      )}
+      {helperText && !error && <Text style={themeStyles.helperText}>{helperText}</Text>}
+      {error && <Text style={themeStyles.errorText}>{error}</Text>}
     </View>
   );
 };

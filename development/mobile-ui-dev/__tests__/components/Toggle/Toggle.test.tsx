@@ -53,40 +53,22 @@ jest.mock('react-native/Libraries/Animated/Animated', () => {
 describe('Toggle', () => {
   it('renders correctly with default props', () => {
     const onValueChange = jest.fn();
-    const { getByTestId } = render(
-      <Toggle 
-        value={false} 
-        onValueChange={onValueChange} 
-        testID="toggle"
-      />
-    );
-    
+    const { getByTestId } = render(<Toggle value={false} onValueChange={onValueChange} testID="toggle" />);
+
     expect(getByTestId('toggle')).toBeTruthy();
   });
 
   it('renders with label', () => {
     const onValueChange = jest.fn();
-    const { getByText } = render(
-      <Toggle 
-        value={false} 
-        onValueChange={onValueChange} 
-        label="Dark Mode"
-      />
-    );
-    
+    const { getByText } = render(<Toggle value={false} onValueChange={onValueChange} label="Dark Mode" />);
+
     expect(getByText('Dark Mode')).toBeTruthy();
   });
 
   it('calls onValueChange when pressed', () => {
     const onValueChange = jest.fn();
-    const { getByTestId } = render(
-      <Toggle 
-        value={false} 
-        onValueChange={onValueChange} 
-        testID="toggle"
-      />
-    );
-    
+    const { getByTestId } = render(<Toggle value={false} onValueChange={onValueChange} testID="toggle" />);
+
     fireEvent.press(getByTestId('toggle'));
     expect(onValueChange).toHaveBeenCalledWith(true);
   });
@@ -94,14 +76,9 @@ describe('Toggle', () => {
   it('does not call onValueChange when disabled', () => {
     const onValueChange = jest.fn();
     const { getByTestId } = render(
-      <Toggle 
-        value={false} 
-        onValueChange={onValueChange} 
-        disabled={true}
-        testID="toggle"
-      />
+      <Toggle value={false} onValueChange={onValueChange} disabled={true} testID="toggle" />,
     );
-    
+
     fireEvent.press(getByTestId('toggle'));
     expect(onValueChange).not.toHaveBeenCalled();
   });
@@ -109,28 +86,18 @@ describe('Toggle', () => {
   it('renders with label on the left when labelPosition is left', () => {
     const onValueChange = jest.fn();
     const { getByText } = render(
-      <Toggle 
-        value={false} 
-        onValueChange={onValueChange} 
-        label="Dark Mode"
-        labelPosition="left"
-      />
+      <Toggle value={false} onValueChange={onValueChange} label="Dark Mode" labelPosition="left" />,
     );
-    
+
     expect(getByText('Dark Mode')).toBeTruthy();
   });
 
   it('renders with label on the right when labelPosition is right', () => {
     const onValueChange = jest.fn();
     const { getByText } = render(
-      <Toggle 
-        value={false} 
-        onValueChange={onValueChange} 
-        label="Dark Mode"
-        labelPosition="right"
-      />
+      <Toggle value={false} onValueChange={onValueChange} label="Dark Mode" labelPosition="right" />,
     );
-    
+
     expect(getByText('Dark Mode')).toBeTruthy();
   });
 });
