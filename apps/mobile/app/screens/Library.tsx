@@ -29,6 +29,50 @@ interface Track {
   bpm: number;
 }
 
+interface TrackItemProps {
+  track: Track;
+  onTrackSelect: (track: Track) => void;
+}
+
+// Extracted TrackItem component
+const TrackItem: React.FC<TrackItemProps> = ({ track, onTrackSelect }) => {
+  const handleTrackPress = () => onTrackSelect(track);
+
+  return (
+    <TouchableOpacity onPress={handleTrackPress}>
+      <View style={styles.trackCard}>
+        <View style={styles.trackInfo}>
+          <View style={styles.coverArt}>
+            <View
+              style={[
+                styles.coverArtPlaceholder,
+                { backgroundColor: '#' + Math.floor(Math.random() * 16777215).toString(16) },
+              ]}
+            />
+          </View>
+          <View style={styles.trackDetails}>
+            <Text style={styles.trackTitle}>{track.title}</Text>
+            <Text style={styles.trackArtist}>{track.artist}</Text>
+            <View style={styles.trackMetadata}>
+              <Text style={styles.trackDuration}>{track.duration}</Text>
+              <Text style={styles.trackBpm}>{track.bpm} BPM</Text>
+            </View>
+          </View>
+          <TouchableOpacity style={styles.quickAddButton} onPress={handleTrackPress}>
+            <Text style={styles.quickAddButtonText}>+</Text>
+          </TouchableOpacity>
+        </View>
+        <View style={styles.waveformContainer}>
+          <Slider value={0.5} minimumValue={0} maximumValue={1} onValueChange={() => {}} disabled={true} />
+          <TouchableOpacity style={styles.previewButton}>
+            <Text style={styles.previewButtonText}>▶</Text>
+          </TouchableOpacity>
+        </View>
+      </View>
+    </TouchableOpacity>
+  );
+};
+
 // Sample data for track listings
 const trackData = [
   {
@@ -99,6 +143,10 @@ const Library: React.FC<LibraryProps> = ({ activeTab, onTabPress }) => {
   const [showActionSheet, setShowActionSheet] = useState(false);
   const [selectedTrack, setSelectedTrack] = useState<Track | null>(null);
 
+  const handleSetFilterBy = (value: string | number) => {
+    setFilterBy(value as string);
+  };
+
   // Handle track selection
   const handleTrackSelect = (track: Track) => {
     setSelectedTrack(track);
@@ -124,44 +172,6 @@ const Library: React.FC<LibraryProps> = ({ activeTab, onTabPress }) => {
     }
   };
 
-  // Render track item
-  const renderTrackItem = (track: Track) => {
-    return (
-      <TouchableOpacity key={track.id} onPress={() => handleTrackSelect(track)}>
-        <View style={styles.trackCard}>
-          <View style={styles.trackInfo}>
-            <View style={styles.coverArt}>
-              {/* This would be an Image component in a real implementation */}
-              <View
-                style={[
-                  styles.coverArtPlaceholder,
-                  { backgroundColor: '#' + Math.floor(Math.random() * 16777215).toString(16) },
-                ]}
-              />
-            </View>
-            <View style={styles.trackDetails}>
-              <Text style={styles.trackTitle}>{track.title}</Text>
-              <Text style={styles.trackArtist}>{track.artist}</Text>
-              <View style={styles.trackMetadata}>
-                <Text style={styles.trackDuration}>{track.duration}</Text>
-                <Text style={styles.trackBpm}>{track.bpm} BPM</Text>
-              </View>
-            </View>
-            <TouchableOpacity style={styles.quickAddButton} onPress={() => handleTrackSelect(track)}>
-              <Text style={styles.quickAddButtonText}>+</Text>
-            </TouchableOpacity>
-          </View>
-          <View style={styles.waveformContainer}>
-            <Slider value={0.5} minimumValue={0} maximumValue={1} onValueChange={() => {}} disabled={true} />
-            <TouchableOpacity style={styles.previewButton}>
-              <Text style={styles.previewButtonText}>▶</Text>
-            </TouchableOpacity>
-          </View>
-        </View>
-      </TouchableOpacity>
-    );
-  };
-
   return (
     <View style={styles.container}>
       {/* Top Navigation Bar */}
@@ -184,14 +194,18 @@ const Library: React.FC<LibraryProps> = ({ activeTab, onTabPress }) => {
         <Dropdown
           options={filterOptions}
           selectedValue={filterBy}
-          onValueChange={setFilterBy}
+          onValueChange={handleSetFilterBy}
           placeholder="Filter by"
-          style={styles.filterDropdown}
+          width={156}
         />
       </View>
 
       {/* Track Listing */}
-      <ScrollView style={styles.trackList}>{trackData.map(track => renderTrackItem(track))}</ScrollView>
+      <ScrollView style={styles.trackList}>
+        {trackData.map(track => (
+          <TrackItem key={track.id} track={track} onTrackSelect={handleTrackSelect} />
+        ))}
+      </ScrollView>
 
       {/* Action Sheet Modal */}
       <Modal visible={showActionSheet} onClose={() => setShowActionSheet(false)} title="Track Options">
@@ -214,19 +228,18 @@ const Library: React.FC<LibraryProps> = ({ activeTab, onTabPress }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#f5f5f5',
   },
   searchContainer: {
     flexDirection: 'row',
-    padding: 16,
+    paddingTop: 16,
+    paddingBottom: 16,
+    paddingLeft: 16,
+    paddingRight: 24,
     alignItems: 'center',
   },
   searchInput: {
     flex: 1,
     marginRight: 8,
-  },
-  filterDropdown: {
-    width: 120,
   },
   trackList: {
     flex: 1,
@@ -292,6 +305,8 @@ const styles = StyleSheet.create({
     marginTop: 12,
     flexDirection: 'row',
     alignItems: 'center',
+    paddingLeft: 4,
+    paddingRight: 24,
   },
   previewButton: {
     width: 24,
