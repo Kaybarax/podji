@@ -112,9 +112,9 @@ __pycache__/
 .sentryclirc
 /.eslintcache
 .output.txt
-/packages/@schemas/src/generated/
-/packages/@stores/src/generated/
-/packages/@configs/src/generated/
+/packages/schemas/src/generated/
+/packages/stores/src/generated/
+/packages/design-tokens/src/generated/
 /packages/@shared-components/src/generated/
 /backup/*
 /backup/
@@ -123,15 +123,15 @@ backup/
 backup/*
 
 # Dynamic generated files
-/packages/@mobile-ui/lib
-/packages/@web-ui/lib
-/packages/@mobile-ui/lib/
-/packages/@web-ui/lib/
-packages/@mobile-ui/lib
-packages/@web-ui/lib
-packages/@mobile-ui/lib/
-packages/@web-ui/lib/
-/packages/@mobile-ui/lib/*
-/packages/@web-ui/lib/*
-packages/@mobile-ui/lib/*
-packages/@web-ui/lib/*
+/packages/mobile-ui/lib
+/packages/web-ui/lib
+/packages/mobile-ui/lib/
+/packages/web-ui/lib/
+packages/mobile-ui/lib
+packages/web-ui/lib
+packages/mobile-ui/lib/
+packages/web-ui/lib/
+/packages/mobile-ui/lib/*
+/packages/web-ui/lib/*
+packages/mobile-ui/lib/*
+packages/web-ui/lib/*

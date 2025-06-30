@@ -2,7 +2,7 @@ import type { ReactNode } from 'react';
 import React, { useState } from 'react';
 import { Text, TouchableOpacity } from 'react-native';
 
-// import { getTheme } from '@shared/configs';
+// import { getTheme } from '@podji/configs';
 
 export interface TestMobileButtonComponentProps {
   /**
