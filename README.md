@@ -2,7 +2,7 @@
 
 ## Overview
 
-Pocket DJ (PodJi) is a cross-platform application that makes digital DJing accessible to a wider audience by facilitating real-time mixing of music sourced from SoundCloud, and potentially other platforms in future iterations. This repository contains a structured monorepo setup for managing two applications:
+Pocket DJ (PodJi) is both a web application and cross-platform mobile application, that makes digital DJing accessible to a wider audience by facilitating real-time mixing of music sourced from SoundCloud, and potentially other platforms in future iterations. This repository contains a structured monorepo setup for managing two applications:
 
 - **Web Platform**: A Next.js web application with TypeScript, Tailwind CSS, and Web Audio API for low-latency audio processing.
 - **Mobile App**: A React Native mobile application managed through Expo, with native audio capabilities via Superpowered SDK.
