@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { View, StyleSheet, ScrollView, RefreshControl } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { NavigationBar, BottomTabNavigator, FeedCard, FloatingActionButton } from '@podji/mobile-ui';
 
 // Sample data for feed cards
@@ -56,6 +57,7 @@ const tabItems = [
 ];
 
 const Home = () => {
+  const insets = useSafeAreaInsets();
   const [activeTab, setActiveTab] = useState('home');
   const [refreshing, setRefreshing] = useState(false);
 
@@ -82,13 +84,16 @@ const Home = () => {
   return (
     <View style={styles.container}>
       {/* Top Navigation Bar */}
-      <NavigationBar
-        title="PodJi"
-        showNotification={true}
-        showSearch={true}
-        onNotificationPress={() => console.log('Notification pressed')}
-        onSearchPress={() => console.log('Search pressed')}
-      />
+
+      <View style={[{ paddingTop: insets.top }]}>
+        <NavigationBar
+          title="PodJi"
+          showNotification={true}
+          showSearch={true}
+          onNotificationPress={() => console.log('Notification pressed')}
+          onSearchPress={() => console.log('Search pressed')}
+        />
+      </View>
 
       {/* Scrollable Feed */}
       <ScrollView
@@ -120,7 +125,9 @@ const Home = () => {
       <FloatingActionButton icon="🎵" onPress={handleFabPress} position="bottomRight" size="large" />
 
       {/* Bottom Tab Navigation */}
-      <BottomTabNavigator tabs={tabItems} activeTab={activeTab} onTabPress={handleTabPress} />
+      <View style={[{ paddingBottom: insets.bottom }]}>
+        <BottomTabNavigator tabs={tabItems} activeTab={activeTab} onTabPress={handleTabPress} />
+      </View>
     </View>
   );
 };
