@@ -1,15 +1,15 @@
-# @shared/web-ui
+# @podji/web-ui
 
 A React component library for the web application.
 
 ## Installation
 
 ```bash
-npm install @shared/web-ui
+npm install @podji/web-ui
 # or
-yarn add @shared/web-ui
+yarn add @podji/web-ui
 # or
-pnpm add @shared/web-ui
+pnpm add @podji/web-ui
 ```
 
 ## Usage
@@ -17,7 +17,7 @@ pnpm add @shared/web-ui
 Import components from the library:
 
 ```jsx
-import { App } from '@shared/web-ui';
+import { App } from '@podji/web-ui';
 
 function MyComponent() {
   return (

@@ -8,11 +8,11 @@
     "skipLibCheck": true
   },
   "references": [
-    { "path": "./packages/@configs" },
-    { "path": "./packages/@mobile-ui" },
-    { "path": "./packages/@schemas" },
-    { "path": "./packages/@services" },
-    { "path": "./packages/@stores" },
-    { "path": "./packages/@web-ui" }
+    { "path": "./packages/design-tokens"},
+    { "path": "./packages/mobile-ui"},
+    { "path": "./packages/schemas"},
+    { "path": "./packages/services"},
+    { "path": "./packages/stores"},
+    { "path": "./packages/web-ui"}
   ]
 }

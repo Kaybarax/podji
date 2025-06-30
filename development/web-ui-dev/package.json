@@ -1,5 +1,5 @@
 {
-  "name": "@shared/web-ui-dev",
+  "name": "@podji/web-ui-dev",
   "version": "1.0.0",
   "type": "module",
   "scripts": {
@@ -13,10 +13,10 @@
     "clean": "rm -rf dist"
   },
   "dependencies": {
-    "@shared/configs": "*",
-    "@shared/schemas": "*",
-    "@shared/services": "*",
-    "@shared/stores": "*",
+    "@podji/configs": "*",
+    "@podji/schemas": "*",
+    "@podji/services": "*",
+    "@podji/stores": "*",
     "react": "^19.1.0",
     "react-dom": "^19.1.0"
   },

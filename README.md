@@ -14,8 +14,8 @@ The repository also includes shared packages for configurations, schemas, stores
 ```plaintext
 monorepo/
 ├── apps/
-│   ├── nextjs-web-app    # Next.js web application
-│   └── expo-mobile-app   # Expo mobile application
+│   ├── podji-web    # Next.js web application
+│   └── podji-mobile   # Expo mobile application
 ├── packages/
 │   ├── @configs          # Shared configuration constants
 │   ├── @mobile-ui        # Mobile UI components library

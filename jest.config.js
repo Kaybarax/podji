@@ -4,7 +4,7 @@ module.exports = {
   testEnvironment: 'node',
   projects: [
     {
-      displayName: '@shared/configs',
+      displayName: '@podji/configs',
       testMatch: ['<rootDir>/packages/@configs/src/**/*.test.ts'],
       transform: {
         '^.+\\.tsx?$': [
@@ -16,7 +16,7 @@ module.exports = {
       },
     },
     {
-      displayName: '@shared/schemas',
+      displayName: '@podji/schemas',
       testMatch: ['<rootDir>/packages/@schemas/src/**/*.test.ts'],
       transform: {
         '^.+\\.tsx?$': [
@@ -28,7 +28,7 @@ module.exports = {
       },
     },
     {
-      displayName: '@shared/stores',
+      displayName: '@podji/stores',
       testMatch: ['<rootDir>/packages/@stores/src/**/*.test.ts'],
       testEnvironment: 'jsdom',
       setupFilesAfterEnv: ['<rootDir>/packages/@stores/src/test/jest-setup.ts'],
@@ -54,33 +54,33 @@ module.exports = {
       },
     },
     {
-      displayName: 'nextjs-web-app',
-      testMatch: ['<rootDir>/apps/nextjs-web-app/src/**/*.test.{ts,tsx}'],
+      displayName: 'podji-web',
+      testMatch: ['<rootDir>/apps/podji-web/src/**/*.test.{ts,tsx}'],
       testEnvironment: 'jsdom',
       transform: {
         '^.+\\.(ts|tsx)$': 'babel-jest',
       },
-      setupFilesAfterEnv: ['<rootDir>/apps/nextjs-web-app/src/test/jest-setup.ts'],
+      setupFilesAfterEnv: ['<rootDir>/apps/podji-web/src/test/jest-setup.ts'],
       rootDir: '<rootDir>',
       moduleNameMapper: {
-        '^@/(.*)$': '<rootDir>/apps/nextjs-web-app/src/$1',
-        '^@shared/schemas$': '<rootDir>/packages/@schemas/src',
-        '^@shared/schemas/(.*)$': '<rootDir>/packages/@schemas/$1',
-        '^@shared/configs$': '<rootDir>/packages/@configs/src',
-        '^@shared/configs/(.*)$': '<rootDir>/packages/@configs/$1',
-        '^@shared/services$': '<rootDir>/packages/@services/src',
-        '^@shared/services/(.*)$': '<rootDir>/packages/@services/$1',
-        '^@shared/stores$': '<rootDir>/apps/nextjs-web-app/src/__mocks__/@shared/stores',
-        '^@shared/stores/(.*)$': '<rootDir>/apps/nextjs-web-app/src/__mocks__/@shared/stores/$1',
-        '^@shared/web-ui$': '<rootDir>/packages/@web-ui/src',
-        '^@shared/web-ui/(.*)$': '<rootDir>/packages/@web-ui/$1',
-        '^@shared/mobile-ui$': '<rootDir>/packages/@mobile-ui/src',
-        '^@shared/mobile-ui/(.*)$': '<rootDir>/packages/@mobile-ui/$1',
+        '^@/(.*)$': '<rootDir>/apps/podji-web/src/$1',
+        '^@podji/schemas$': '<rootDir>/packages/@schemas/src',
+        '^@podji/schemas/(.*)$': '<rootDir>/packages/@schemas/$1',
+        '^@podji/configs$': '<rootDir>/packages/@configs/src',
+        '^@podji/configs/(.*)$': '<rootDir>/packages/@configs/$1',
+        '^@podji/services$': '<rootDir>/packages/@services/src',
+        '^@podji/services/(.*)$': '<rootDir>/packages/@services/$1',
+        '^@podji/stores$': '<rootDir>/apps/podji-web/src/__mocks__/@podji/stores',
+        '^@podji/stores/(.*)$': '<rootDir>/apps/podji-web/src/__mocks__/@podji/stores/$1',
+        '^@podji/web-ui$': '<rootDir>/packages/@web-ui/src',
+        '^@podji/web-ui/(.*)$': '<rootDir>/packages/@web-ui/$1',
+        '^@podji/mobile-ui$': '<rootDir>/packages/@mobile-ui/src',
+        '^@podji/mobile-ui/(.*)$': '<rootDir>/packages/@mobile-ui/$1',
       },
     },
     {
-      displayName: 'expo-mobile-app',
-      rootDir: '<rootDir>/apps/expo-mobile-app',
+      displayName: 'podji-mobile',
+      rootDir: '<rootDir>/apps/podji-mobile',
       // We're not using the react-native preset directly to avoid window property conflicts
       // Instead, we're configuring the necessary parts manually
       testEnvironment: 'jsdom',
