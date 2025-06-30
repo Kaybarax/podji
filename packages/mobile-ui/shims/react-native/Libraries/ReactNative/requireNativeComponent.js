@@ -8,6 +8,6 @@ export default function requireNativeComponent(viewName, componentInterface, opt
   return {
     __TYPE: 'NativeComponent',
     name: viewName,
-    options: options || {}
+    options: options || {},
   };
 }
