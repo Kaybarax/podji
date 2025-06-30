@@ -202,7 +202,13 @@ export const Modal: React.FC<ModalProps> = ({
 
     const content = (
       <Animated.View style={[contentPositionStyle, contentAnimatedStyle, contentStyle]} testID={testID}>
-        {scrollable ? <ScrollView><>{children}</></ScrollView> : <>{children}</>}
+        {scrollable ? (
+          <ScrollView>
+            <>{children}</>
+          </ScrollView>
+        ) : (
+          <>{children}</>
+        )}
       </Animated.View>
     );
 

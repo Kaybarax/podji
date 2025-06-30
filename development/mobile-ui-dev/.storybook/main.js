@@ -4,8 +4,6 @@ const config = {
   addons: [
     '@storybook/addon-onboarding',
     '@storybook/addon-docs',
-    '@storybook/addon-links',
-    '@storybook/addon-essentials',
   ],
   framework: {
     name: '@storybook/react-native-web-vite',
