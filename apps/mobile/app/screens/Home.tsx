@@ -5,9 +5,6 @@ import { FeedCard, FloatingActionButton } from '@podji/mobile-ui';
 import NavigationBar from '../components/NavigationBar';
 import BottomNavigation from '../components/BottomNavigation';
 
-// import { FeedCard, FloatingActionButton } from '@podji/mobile-ui';
-// import NavigationBar from '../components/NavigationBar';
-// import BottomNavigation from '../components/BottomNavigation';
 
 // Sample data for feed cards
 const feedData = [
@@ -87,7 +84,7 @@ const Home: React.FC<HomeProps> = ({ activeTab, onTabPress }) => {
     <View style={styles.container}>
       {/* Top Navigation Bar */}
 
-      <View style={[{ paddingTop: Math.max(insets.top - 8, 0) }]}>
+      <View style={[{ paddingTop: Math.max(insets.top - 56, 0) }]}>
         <NavigationBar
           title="PodJi"
           showNotification={true}
