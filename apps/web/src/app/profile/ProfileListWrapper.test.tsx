@@ -23,7 +23,7 @@ jest.mock('./ProfileListWrapper', () => {
           <div data-testid="mocked-profile-list">Mocked Profile List</div>
         </div>
       );
-    }
+    },
   };
 });
 
@@ -58,6 +58,14 @@ describe('ProfileListWrapper', () => {
 
     // The spinner animation should be present
     const spinnerElement = fallbackElement.querySelector('div');
-    expect(spinnerElement).toHaveClass('animate-spin', 'rounded-full', 'h-12', 'w-12', 'border-t-2', 'border-b-2', 'border-blue-500');
+    expect(spinnerElement).toHaveClass(
+      'animate-spin',
+      'rounded-full',
+      'h-12',
+      'w-12',
+      'border-t-2',
+      'border-b-2',
+      'border-blue-500',
+    );
   });
 });

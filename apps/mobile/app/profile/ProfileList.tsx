@@ -12,14 +12,7 @@ interface ProfileListProps {
 }
 
 export default function ProfileList({ HeaderComponent }: ProfileListProps) {
-  const {
-    data,
-    error,
-    fetchNextPage,
-    hasNextPage,
-    isFetchingNextPage,
-    status,
-  } = useInfiniteQuery({
+  const { data, error, fetchNextPage, hasNextPage, isFetchingNextPage, status } = useInfiniteQuery({
     queryKey: ['profiles'],
     queryFn: async ({ pageParam = 0 }) => {
       const skip = pageParam * PROFILES_PER_PAGE;
@@ -47,7 +40,7 @@ export default function ProfileList({ HeaderComponent }: ProfileListProps) {
       };
     },
     initialPageParam: 0,
-    getNextPageParam: (lastPage) => lastPage.nextPage,
+    getNextPageParam: lastPage => lastPage.nextPage,
   });
 
   if (status === 'pending') {
@@ -67,7 +60,7 @@ export default function ProfileList({ HeaderComponent }: ProfileListProps) {
     );
   }
 
-  const profiles = data?.pages.flatMap((page) => page.profiles) || [];
+  const profiles = data?.pages.flatMap(page => page.profiles) || [];
 
   if (profiles.length === 0) {
     return (
@@ -80,7 +73,7 @@ export default function ProfileList({ HeaderComponent }: ProfileListProps) {
   return (
     <FlatList
       data={profiles}
-      keyExtractor={(item) => item?.id?.toString() || ""}
+      keyExtractor={item => item?.id?.toString() || ''}
       ListHeaderComponent={HeaderComponent}
       renderItem={({ item: profile }) => {
         if (!profile) {
@@ -89,7 +82,9 @@ export default function ProfileList({ HeaderComponent }: ProfileListProps) {
 
         return (
           <View style={styles.profileCard}>
-            <Text style={styles.profileName}>{profile.firstName} {profile.lastName}</Text>
+            <Text style={styles.profileName}>
+              {profile.firstName} {profile.lastName}
+            </Text>
 
             <View style={styles.profileDetail}>
               <Text style={styles.profileLabel}>Age:</Text>
@@ -114,24 +109,22 @@ export default function ProfileList({ HeaderComponent }: ProfileListProps) {
             {profile.address && (
               <View style={styles.profileDetail}>
                 <Text style={styles.profileLabel}>Address:</Text>
-                <Text>{profile.address.address}, {profile.address.city}, {profile.address.state}, {profile.address.country}</Text>
+                <Text>
+                  {profile.address.address}, {profile.address.city}, {profile.address.state}, {profile.address.country}
+                </Text>
               </View>
             )}
 
             {profile.company && (
               <View style={styles.profileDetail}>
                 <Text style={styles.profileLabel}>Company:</Text>
-                <Text>{profile.company.name} - {profile.company.title}</Text>
+                <Text>
+                  {profile.company.name} - {profile.company.title}
+                </Text>
               </View>
             )}
 
-            {profile.image && (
-              <Image 
-                source={{ uri: profile.image }} 
-                style={styles.profileImage} 
-                resizeMode="cover"
-              />
-            )}
+            {profile.image && <Image source={{ uri: profile.image }} style={styles.profileImage} resizeMode="cover" />}
           </View>
         );
       }}
@@ -150,10 +143,7 @@ export default function ProfileList({ HeaderComponent }: ProfileListProps) {
               <Text style={styles.loadingMoreText}>Loading more profiles...</Text>
             </View>
           ) : hasNextPage ? (
-            <TouchableOpacity 
-              style={styles.loadMoreButton}
-              onPress={() => fetchNextPage()}
-            >
+            <TouchableOpacity style={styles.loadMoreButton} onPress={() => fetchNextPage()}>
               <Text style={styles.loadMoreButtonText}>Load More</Text>
             </TouchableOpacity>
           ) : (
