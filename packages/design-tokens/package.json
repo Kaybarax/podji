@@ -7,7 +7,7 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "clean": "rimraf dist && rimraf tsconfig.tsbuildinfo",
-    "build": "yarn clean && tsc --project tsconfig.build.json && yarn build:tokens",
+    "build": "yarn clean && tsc --project tsconfig.build.json && yarn build:tokens && tsc --project tsconfig.dist.json",
     "build:tokens": "node scripts/buildTokens.js",
     "build:tokens:legacy": "style-dictionary build",
     "build:tokens:web": "style-dictionary build --config sd.config.web.js",
