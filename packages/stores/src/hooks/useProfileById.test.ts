@@ -60,12 +60,24 @@ describe('useProfileById', () => {
     mockedValidateProfile.mockImplementation(() => ({
       success: true,
       data: {
-        ...mockProfile,
-        bio: 'Test bio',
-        location: 'Test location',
-        imageUrl: 'https://example.com/image.jpg',
-        interests: ['coding', 'reading'],
-        lastActive: new Date().toISOString(),
+        id: 1,
+        firstName: 'John',
+        lastName: 'Doe',
+        age: 30,
+        email: 'john.doe@example.com',
+        phone: '123-456-7890',
+        username: 'johndoe',
+        image: 'https://example.com/image.jpg',
+        address: {
+          address: '123 Main St',
+          city: 'Anytown',
+          state: 'CA',
+          country: 'USA',
+        },
+        company: {
+          name: 'Acme Inc',
+          title: 'Software Developer',
+        },
       },
     }));
 
@@ -80,9 +92,9 @@ describe('useProfileById', () => {
     // Assert that the hook returns the validated data
     expect(result.current.isLoading).toBe(false);
     expect(result.current.error).toBeNull();
-    expect(result.current.data).toHaveProperty('id', '1');
-    expect(result.current.data).toHaveProperty('name', 'John Doe');
-    expect(result.current.data).toHaveProperty('bio', 'Test bio');
+    expect(result.current.data).toHaveProperty('id', 1);
+    expect(result.current.data).toHaveProperty('firstName', 'John');
+    expect(result.current.data).toHaveProperty('lastName', 'Doe');
     expect(mockedValidateProfile).toHaveBeenCalledTimes(1);
   });
 
@@ -145,12 +157,24 @@ describe('useProfileById', () => {
     mockedValidateProfile.mockImplementation(() => ({
       success: true,
       data: {
-        ...mockProfile,
-        bio: 'Test bio',
-        location: 'Test location',
-        imageUrl: 'https://example.com/image.jpg',
-        interests: ['coding', 'reading'],
-        lastActive: new Date().toISOString(),
+        id: 2,
+        firstName: 'Jane',
+        lastName: 'Smith',
+        age: 25,
+        email: 'jane.smith@example.com',
+        phone: '987-654-3210',
+        username: 'janesmith',
+        image: 'https://example.com/image.jpg',
+        address: {
+          address: '456 Oak St',
+          city: 'Othertown',
+          state: 'NY',
+          country: 'USA',
+        },
+        company: {
+          name: 'XYZ Corp',
+          title: 'Product Manager',
+        },
       },
     }));
 
