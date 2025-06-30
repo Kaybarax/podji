@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { TouchableOpacity, Text, StyleSheet, StyleProp, ViewStyle } from 'react-native';
+import { TouchableOpacity, Text, StyleProp, ViewStyle } from 'react-native';
 import { getMobileTheme } from '@podji/design-tokens';
 
 export interface FloatingActionButtonProps {
@@ -119,7 +119,7 @@ export const FloatingActionButton: React.FC<FloatingActionButtonProps> = ({
       onPress={onPress}
       activeOpacity={0.8}
     >
-      {typeof icon === 'string' ? <Text style={themeStyles.icon}>{icon}</Text> : icon}
+      {typeof icon === 'string' ? <Text style={themeStyles.icon}>{icon}</Text> : <>{icon}</>}
     </TouchableOpacity>
   );
 };

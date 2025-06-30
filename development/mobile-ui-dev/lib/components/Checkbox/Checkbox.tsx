@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, TouchableOpacity, Text, StyleSheet, StyleProp, ViewStyle, TextStyle } from 'react-native';
+import { View, TouchableOpacity, Text, StyleProp, ViewStyle, TextStyle } from 'react-native';
 import { getMobileTheme } from '@podji/design-tokens';
 
 export interface CheckboxProps {

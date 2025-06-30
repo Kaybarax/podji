@@ -3,7 +3,6 @@ import {
   View,
   TextInput as RNTextInput,
   Text,
-  StyleSheet,
   StyleProp,
   ViewStyle,
   TextStyle,
@@ -172,7 +171,7 @@ export const TextInput: React.FC<TextInputProps> = ({
           inputStyle,
         ]}
         editable={!disabled}
-        placeholderTextColor={disabled ? themeStyles.disabledInput.color : undefined}
+        placeholderTextColor={disabled ? '#A0A0A0' : undefined}
         {...rest}
       />
       {helperText && !error && <Text style={themeStyles.helperText}>{helperText}</Text>}

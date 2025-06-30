@@ -1,11 +1,10 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   View,
   Text,
   TouchableOpacity,
   Modal,
   FlatList,
-  StyleSheet,
   StyleProp,
   ViewStyle,
   TextStyle,
@@ -303,7 +302,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
         onPress={() => handleSelectItem(item)}
         disabled={item.disabled}
       >
-        {item.icon}
+        {item.icon && <>{item.icon}</>}
         <Text
           style={[
             themeStyles.itemText,

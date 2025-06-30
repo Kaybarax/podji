@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, StyleProp, ViewStyle } from 'react-native';
+import { View, Text, TouchableOpacity, StyleProp, ViewStyle } from 'react-native';
 import { getMobileTheme } from '@podji/design-tokens';
 
 export interface TabItem {
@@ -116,7 +116,7 @@ export const BottomTabNavigator: React.FC<BottomTabNavigatorProps> = ({ tabs, ac
               activeOpacity={0.7}
             >
               <View style={themeStyles.tabContent}>
-                {typeof tab.icon === 'string' ? <Text style={themeStyles.tabIcon}>{tab.icon}</Text> : tab.icon}
+                {typeof tab.icon === 'string' ? <Text style={themeStyles.tabIcon}>{tab.icon}</Text> : <>{tab.icon}</>}
                 <Text style={[themeStyles.tabLabel, isActive && themeStyles.activeTabLabel]}>{tab.label}</Text>
               </View>
             </TouchableOpacity>

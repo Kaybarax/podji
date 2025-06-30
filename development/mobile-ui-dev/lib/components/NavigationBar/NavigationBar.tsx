@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Image, StyleProp, ViewStyle } from 'react-native';
+import { View, Text, TouchableOpacity, Image, StyleProp, ViewStyle } from 'react-native';
 import { getMobileTheme } from '@podji/design-tokens';
 
 export interface NavigationBarProps {
