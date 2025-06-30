@@ -1,7 +1,13 @@
 import React, { useState } from 'react';
 import { View, StyleSheet, ScrollView, RefreshControl } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { NavigationBar, BottomTabNavigator, FeedCard, FloatingActionButton } from '@podji/mobile-ui';
+import { FeedCard, FloatingActionButton } from '@podji/mobile-ui';
+import NavigationBar from '../components/NavigationBar';
+import BottomNavigation from '../components/BottomNavigation';
+
+// import { FeedCard, FloatingActionButton } from '@podji/mobile-ui';
+// import NavigationBar from '../components/NavigationBar';
+// import BottomNavigation from '../components/BottomNavigation';
 
 // Sample data for feed cards
 const feedData = [
@@ -47,24 +53,14 @@ const feedData = [
   },
 ];
 
-// Tab items for bottom navigation
-const tabItems = [
-  { key: 'home', label: 'Home', icon: '🏠' },
-  { key: 'library', label: 'Library', icon: '🎧' },
-  { key: 'mix', label: 'Mix', icon: '🎚️' },
-  { key: 'profile', label: 'Profile', icon: '👤' },
-  { key: 'chat', label: 'Chat', icon: '💬' },
-];
+interface HomeProps {
+  activeTab: string;
+  onTabPress: (tabKey: string) => void;
+}
 
-const Home = () => {
+const Home: React.FC<HomeProps> = ({ activeTab, onTabPress }) => {
   const insets = useSafeAreaInsets();
-  const [activeTab, setActiveTab] = useState('home');
   const [refreshing, setRefreshing] = useState(false);
-
-  // Handle tab press
-  const handleTabPress = (tabKey: string) => {
-    setActiveTab(tabKey);
-  };
 
   // Handle refresh
   const onRefresh = () => {
@@ -79,6 +75,12 @@ const Home = () => {
   const handleFabPress = () => {
     // This would navigate to the mixing console or create playlist screen
     console.log('FAB pressed');
+  };
+
+  const handleTabPress = (tabKey?: string) => {
+    if (tabKey) {
+      onTabPress(tabKey);
+    }
   };
 
   return (
@@ -122,18 +124,16 @@ const Home = () => {
       </ScrollView>
 
       {/* Floating Action Button */}
-      <FloatingActionButton 
-        icon="🎵" 
-        onPress={handleFabPress} 
-        position="bottomRight" 
+      <FloatingActionButton
+        icon="🎵"
+        onPress={handleFabPress}
+        position="bottomRight"
         size="medium"
         style={{ bottom: 84 }} // Raised higher to be above the BottomNavigation footer
       />
 
       {/* Bottom Tab Navigation */}
-      <View style={[{ paddingBottom: Math.max(insets.bottom - 16, 0) }]}>
-        <BottomTabNavigator tabs={tabItems} activeTab={activeTab} onTabPress={handleTabPress} />
-      </View>
+      <BottomNavigation activeTab={activeTab} onTabPress={handleTabPress} />
     </View>
   );
 };
