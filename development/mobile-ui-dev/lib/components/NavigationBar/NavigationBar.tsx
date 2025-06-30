@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import * as React from 'react';
 import { View, Text, TouchableOpacity, Image, StyleProp, ViewStyle } from 'react-native';
 import { getMobileTheme } from '@podji/design-tokens';
 
@@ -34,9 +34,9 @@ export interface NavigationBarProps {
 }
 
 /**
- * Top navigation bar component for mobile app
+ * Top navigation bar component for a mobile app
  */
-export const NavigationBar: React.FC<NavigationBarProps> = ({
+export const NavigationBar = ({
   title,
   logo,
   showNotification = false,
@@ -44,15 +44,15 @@ export const NavigationBar: React.FC<NavigationBarProps> = ({
   onNotificationPress,
   onSearchPress,
   style,
-}) => {
-  const [themeStyles, setThemeStyles] = useState({
+}: NavigationBarProps) => {
+  const [themeStyles, setThemeStyles] = React.useState({
     container: {},
     title: {},
     iconContainer: {},
     logo: {},
   });
 
-  useEffect(() => {
+  React.useEffect(() => {
     const loadTheme = async () => {
       try {
         const theme = await getMobileTheme();

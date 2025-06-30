@@ -39,7 +39,7 @@ export interface BottomTabNavigatorProps {
 /**
  * Bottom tab navigation component for mobile app
  */
-export const BottomTabNavigator: React.FC<BottomTabNavigatorProps> = ({ tabs, activeTab, onTabPress, style }) => {
+export const BottomTabNavigator = ({ tabs, activeTab, onTabPress, style }: BottomTabNavigatorProps) => {
   const [themeStyles, setThemeStyles] = useState({
     container: {},
     tabBar: {},
