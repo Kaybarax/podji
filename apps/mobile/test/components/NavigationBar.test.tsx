@@ -9,31 +9,21 @@ jest.mock('react-native-safe-area-context', () => ({
 
 // Mock the UINavigationBar component
 jest.mock('@podji/mobile-ui', () => ({
-  NavigationBar: jest.fn(({ 
-    title, 
-    showNotification, 
-    showSearch, 
-    onNotificationPress, 
-    onSearchPress 
-  }) => (
-    <div 
-      data-testid="ui-navigation-bar" 
+  NavigationBar: jest.fn(({ title, showNotification, showSearch, onNotificationPress, onSearchPress }) => (
+    <div
+      data-testid="ui-navigation-bar"
       data-title={title}
       data-show-notification={showNotification}
       data-show-search={showSearch}
     >
-      <button 
+      <button
         data-testid="notification-button"
         onClick={onNotificationPress}
         style={{ display: showNotification ? 'block' : 'none' }}
       >
         Notification
       </button>
-      <button 
-        data-testid="search-button"
-        onClick={onSearchPress}
-        style={{ display: showSearch ? 'block' : 'none' }}
-      >
+      <button data-testid="search-button" onClick={onSearchPress} style={{ display: showSearch ? 'block' : 'none' }}>
         Search
       </button>
     </div>
@@ -43,16 +33,14 @@ jest.mock('@podji/mobile-ui', () => ({
 describe('NavigationBar', () => {
   const mockOnNotificationPress = jest.fn();
   const mockOnSearchPress = jest.fn();
-  
+
   beforeEach(() => {
     jest.clearAllMocks();
   });
 
   it('renders correctly with default props', () => {
-    const { getByTestId } = render(
-      <NavigationBar title="Test Title" />
-    );
-    
+    const { getByTestId } = render(<NavigationBar title="Test Title" />);
+
     const navigationBar = getByTestId('ui-navigation-bar');
     expect(navigationBar).toBeTruthy();
     expect(navigationBar.props['data-title']).toBe('Test Title');
@@ -62,15 +50,15 @@ describe('NavigationBar', () => {
 
   it('renders correctly with custom props', () => {
     const { getByTestId } = render(
-      <NavigationBar 
-        title="Custom Title" 
+      <NavigationBar
+        title="Custom Title"
         showNotification={false}
         showSearch={false}
         onNotificationPress={mockOnNotificationPress}
         onSearchPress={mockOnSearchPress}
-      />
+      />,
     );
-    
+
     const navigationBar = getByTestId('ui-navigation-bar');
     expect(navigationBar.props['data-title']).toBe('Custom Title');
     expect(navigationBar.props['data-show-notification']).toBe(false);
@@ -78,34 +66,22 @@ describe('NavigationBar', () => {
   });
 
   it('calls onNotificationPress when notification button is pressed', () => {
-    const { getByTestId } = render(
-      <NavigationBar 
-        title="Test Title" 
-        onNotificationPress={mockOnNotificationPress}
-      />
-    );
-    
+    const { getByTestId } = render(<NavigationBar title="Test Title" onNotificationPress={mockOnNotificationPress} />);
+
     fireEvent.press(getByTestId('notification-button'));
     expect(mockOnNotificationPress).toHaveBeenCalledTimes(1);
   });
 
   it('calls onSearchPress when search button is pressed', () => {
-    const { getByTestId } = render(
-      <NavigationBar 
-        title="Test Title" 
-        onSearchPress={mockOnSearchPress}
-      />
-    );
-    
+    const { getByTestId } = render(<NavigationBar title="Test Title" onSearchPress={mockOnSearchPress} />);
+
     fireEvent.press(getByTestId('search-button'));
     expect(mockOnSearchPress).toHaveBeenCalledTimes(1);
   });
 
   it('applies safe area insets to padding', () => {
-    const { UNSAFE_getByType } = render(
-      <NavigationBar title="Test Title" />
-    );
-    
+    const { UNSAFE_getByType } = render(<NavigationBar title="Test Title" />);
+
     // The View should have paddingTop based on insets.top
     const view = UNSAFE_getByType('View');
     expect(view.props.style[0].paddingTop).toBe(40); // Math.max(insets.top - 8, 0) = Math.max(48 - 8, 0) = 40

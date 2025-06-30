@@ -9,7 +9,20 @@ jest.mock('react-native-safe-area-context', () => ({
 
 // Mock the BottomTabNavigator component
 jest.mock('@podji/mobile-ui', () => ({
-  BottomTabNavigator: 'BottomTabNavigator',
+  BottomTabNavigator: jest.fn(({ tabs, activeTab, onTabPress }) => (
+    <div data-testid="bottom-tab-navigator">
+      {tabs.map(tab => (
+        <button
+          key={tab.key}
+          data-testid={`tab-${tab.key}`}
+          data-active={tab.key === activeTab}
+          onClick={() => onTabPress(tab.key)}
+        >
+          {tab.icon} {tab.label}
+        </button>
+      ))}
+    </div>
+  )),
 }));
 
 describe('BottomNavigation', () => {

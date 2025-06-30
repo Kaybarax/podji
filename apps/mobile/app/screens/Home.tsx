@@ -5,7 +5,6 @@ import { FeedCard, FloatingActionButton } from '@podji/mobile-ui';
 import NavigationBar from '../components/NavigationBar';
 import BottomNavigation from '../components/BottomNavigation';
 
-
 // Sample data for feed cards
 const feedData = [
   {
@@ -83,13 +82,13 @@ const Home: React.FC<HomeProps> = ({ activeTab, onTabPress }) => {
   return (
     <View style={styles.container}>
       {/* Top Navigation Bar */}
-        <NavigationBar
-          title="PodJi"
-          showNotification={true}
-          showSearch={true}
-          onNotificationPress={() => console.log('Notification pressed')}
-          onSearchPress={() => console.log('Search pressed')}
-        />
+      <NavigationBar
+        title="PodJi"
+        showNotification={true}
+        showSearch={true}
+        onNotificationPress={() => console.log('Notification pressed')}
+        onSearchPress={() => console.log('Search pressed')}
+      />
 
       {/* Scrollable Feed */}
       <ScrollView
