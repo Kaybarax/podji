@@ -54,7 +54,7 @@ jest.mock('./ProfileList', () => {
           <div>Loading more profiles...</div>
         </div>
       );
-    }
+    },
   };
 });
 

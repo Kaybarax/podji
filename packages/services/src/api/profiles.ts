@@ -147,12 +147,7 @@ export const fetchProfileById = async (
  * @param {number} maxRetries - Maximum number of retry attempts
  * @param {number} retryDelay - Delay between retry attempts in milliseconds
  */
-export const fetchProfiles = async (
-  limit = 10,
-  skip = 0,
-  maxRetries = 3,
-  retryDelay = 1000
-): Promise<ApiResponse> => {
+export const fetchProfiles = async (limit = 10, skip = 0, maxRetries = 3, retryDelay = 1000): Promise<ApiResponse> => {
   let retryCount = 0;
 
   const apiCall = async (): Promise<ValidatedProfile[]> => {

@@ -8,14 +8,7 @@ import { validateProfile } from '@podji/schemas';
 const PROFILES_PER_PAGE = 10;
 
 export default function ProfileList() {
-  const {
-    data,
-    error,
-    fetchNextPage,
-    hasNextPage,
-    isFetchingNextPage,
-    status,
-  } = useInfiniteQuery({
+  const { data, error, fetchNextPage, hasNextPage, isFetchingNextPage, status } = useInfiniteQuery({
     queryKey: ['profiles'],
     queryFn: async ({ pageParam = 0 }) => {
       const skip = pageParam * PROFILES_PER_PAGE;
@@ -43,18 +36,18 @@ export default function ProfileList() {
       };
     },
     initialPageParam: 0,
-    getNextPageParam: (lastPage) => lastPage.nextPage,
+    getNextPageParam: lastPage => lastPage.nextPage,
   });
 
   // Intersection Observer for infinite scrolling
   useEffect(() => {
     const observer = new IntersectionObserver(
-      (entries) => {
+      entries => {
         if (entries[0].isIntersecting && hasNextPage && !isFetchingNextPage) {
           fetchNextPage();
         }
       },
-      { threshold: 0.5 }
+      { threshold: 0.5 },
     );
 
     const loadMoreElement = document.getElementById('load-more');
@@ -86,7 +79,7 @@ export default function ProfileList() {
     );
   }
 
-  const profiles = data?.pages.flatMap((page) => page.profiles) || [];
+  const profiles = data?.pages.flatMap(page => page.profiles) || [];
 
   if (profiles.length === 0) {
     return (
@@ -101,7 +94,9 @@ export default function ProfileList() {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {profiles.map(profile => (
           <div key={profile?.id} className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
-            <h2 className="text-xl font-semibold mb-2">{profile?.firstName} {profile?.lastName}</h2>
+            <h2 className="text-xl font-semibold mb-2">
+              {profile?.firstName} {profile?.lastName}
+            </h2>
             <div className="flex items-center mb-4">
               <span className="text-gray-600 mr-2">Age:</span>
               <span>{profile?.age}</span>
@@ -120,15 +115,24 @@ export default function ProfileList() {
             </div>
             <div className="mb-4">
               <p className="text-gray-600 mb-1">Address:</p>
-              <p>{profile?.address?.address}, {profile?.address?.city}, {profile?.address?.state}, {profile?.address?.country}</p>
+              <p>
+                {profile?.address?.address}, {profile?.address?.city}, {profile?.address?.state},{' '}
+                {profile?.address?.country}
+              </p>
             </div>
             <div className="mb-4">
               <p className="text-gray-600 mb-1">Company:</p>
-              <p>{profile?.company?.name} - {profile?.company?.title}</p>
+              <p>
+                {profile?.company?.name} - {profile?.company?.title}
+              </p>
             </div>
             {profile?.image && (
               <div className="mb-4">
-                <img src={profile.image} alt={`${profile.firstName} ${profile.lastName}`} className="w-[120px] h-[120px] object-cover rounded-lg" />
+                <img
+                  src={profile.image}
+                  alt={`${profile.firstName} ${profile.lastName}`}
+                  className="w-[120px] h-[120px] object-cover rounded-lg"
+                />
               </div>
             )}
           </div>
@@ -136,18 +140,15 @@ export default function ProfileList() {
       </div>
 
       {/* Load more trigger element */}
-      <div 
-        id="load-more" 
-        className="flex justify-center items-center p-4 mt-8"
-      >
+      <div id="load-more" className="flex justify-center items-center p-4 mt-8">
         {isFetchingNextPage ? (
           <div className="flex items-center">
             <div className="animate-spin rounded-full h-6 w-6 border-t-2 border-b-2 border-blue-500 mr-2"></div>
             <span>Loading more profiles...</span>
           </div>
         ) : hasNextPage ? (
-          <button 
-            onClick={() => fetchNextPage()} 
+          <button
+            onClick={() => fetchNextPage()}
             className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md"
           >
             Load More

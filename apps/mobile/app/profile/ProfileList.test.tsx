@@ -4,7 +4,7 @@ jest.mock('expo-router', () => {
   const mockReact = require('react');
   const mockRN = require('react-native');
   return {
-    Link: ({ href }:{href:string}) => {
+    Link: ({ href }: { href: string }) => {
       return mockReact.createElement(mockRN.Text, { testID: `link-${href}` }, 'Link');
     },
   };
