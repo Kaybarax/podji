@@ -71,6 +71,10 @@ export interface DropdownProps {
    */
   containerStyle?: StyleProp<ViewStyle>;
   /**
+   * Width of the dropdown
+   */
+  width?: number;
+  /**
    * Additional dropdown style
    */
   dropdownStyle?: StyleProp<ViewStyle>;
@@ -105,6 +109,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
   error,
   helperText,
   containerStyle,
+  width,
   dropdownStyle,
   labelStyle,
   itemStyle,
@@ -326,6 +331,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
           themeStyles.dropdown,
           disabled && themeStyles.dropdownDisabled,
           error && themeStyles.dropdownError,
+          width && { width },
           dropdownStyle,
         ]}
         onPress={openDropdown}
