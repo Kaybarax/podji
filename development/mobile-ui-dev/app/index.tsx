@@ -1,6 +1,5 @@
 import { useState, useRef, JSX } from 'react';
 import { Text, View, StyleSheet, TouchableOpacity, ScrollView, Animated } from 'react-native';
-import { TestMobileButtonComponent } from '../lib/components/Button/TestMobileButtonComponent';
 import { Checkbox } from '../lib/components/Checkbox/Checkbox';
 import { RadioButton } from '../lib/components/RadioButton/RadioButton';
 import { TextInput } from '../lib/components/TextInput/TextInput';
@@ -37,30 +36,6 @@ interface ComponentItem {
 
 // List of available components
 const COMPONENTS: ComponentItem[] = [
-  {
-    id: 'button',
-    name: 'TestMobileButtonComponent',
-    component: TestMobileButtonComponent,
-    variants: ['primary', 'secondary', 'tertiary'],
-    sizes: ['small', 'medium', 'large'],
-    props: {
-      primary: {
-        small: { variant: 'primary', size: 'small', children: 'Primary Small' },
-        medium: { variant: 'primary', size: 'medium', children: 'Primary Medium' },
-        large: { variant: 'primary', size: 'large', children: 'Primary Large' },
-      },
-      secondary: {
-        small: { variant: 'secondary', size: 'small', children: 'Secondary Small' },
-        medium: { variant: 'secondary', size: 'medium', children: 'Secondary Medium' },
-        large: { variant: 'secondary', size: 'large', children: 'Secondary Large' },
-      },
-      tertiary: {
-        small: { variant: 'tertiary', size: 'small', children: 'Tertiary Small' },
-        medium: { variant: 'tertiary', size: 'medium', children: 'Tertiary Medium' },
-        large: { variant: 'tertiary', size: 'large', children: 'Tertiary Large' },
-      },
-    },
-  },
   {
     id: 'checkbox',
     name: 'Checkbox',
