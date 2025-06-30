@@ -1,14 +1,14 @@
-import React, { useState, ReactNode } from 'react';
-import { View, StyleSheet, ScrollView, Text, TouchableOpacity } from 'react-native';
-import { 
-  TextInput as MobileTextInput, 
-  Slider as MobileSlider, 
-  Dropdown as MobileDropdown, 
-  Modal as MobileModal,
-  SliderProps,
-  TextInputProps,
+import React, { useState } from 'react';
+import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import {
+  Dropdown as MobileDropdown,
   DropdownProps,
-  ModalProps
+  Modal as MobileModal,
+  ModalProps,
+  Slider as MobileSlider,
+  SliderProps,
+  TextInput as MobileTextInput,
+  TextInputProps,
 } from '@podji/mobile-ui';
 import NavigationBar from '../components/NavigationBar';
 import BottomNavigation from '../components/BottomNavigation';
