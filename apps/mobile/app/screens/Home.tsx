@@ -83,8 +83,6 @@ const Home: React.FC<HomeProps> = ({ activeTab, onTabPress }) => {
   return (
     <View style={styles.container}>
       {/* Top Navigation Bar */}
-
-      <View style={[{ paddingTop: Math.max(insets.top - 56, 0) }]}>
         <NavigationBar
           title="PodJi"
           showNotification={true}
@@ -92,7 +90,6 @@ const Home: React.FC<HomeProps> = ({ activeTab, onTabPress }) => {
           onNotificationPress={() => console.log('Notification pressed')}
           onSearchPress={() => console.log('Search pressed')}
         />
-      </View>
 
       {/* Scrollable Feed */}
       <ScrollView
