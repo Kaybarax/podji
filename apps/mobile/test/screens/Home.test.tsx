@@ -25,27 +25,23 @@ jest.mock('../../app/components/NavigationBar', () => {
 jest.mock('../../app/components/BottomNavigation', () => {
   return jest.fn(({ activeTab, onTabPress }) => (
     <div data-testid="bottom-navigation" data-active-tab={activeTab}>
-      <button data-testid="tab-home" onClick={() => onTabPress('home')}>Home</button>
-      <button data-testid="tab-library" onClick={() => onTabPress('library')}>Library</button>
-      <button data-testid="tab-mix" onClick={() => onTabPress('mix')}>Mix</button>
+      <button data-testid="tab-home" onClick={() => onTabPress('home')}>
+        Home
+      </button>
+      <button data-testid="tab-library" onClick={() => onTabPress('library')}>
+        Library
+      </button>
+      <button data-testid="tab-mix" onClick={() => onTabPress('mix')}>
+        Mix
+      </button>
     </div>
   ));
 });
 
 // Mock the FeedCard component
 jest.mock('@podji/mobile-ui', () => ({
-  FeedCard: jest.fn(({ 
-    title, 
-    creator, 
-    onPress, 
-    onLikePress, 
-    onCommentPress, 
-    onSharePress 
-  }) => (
-    <div 
-      data-testid={`feed-card-${title}`} 
-      data-creator={creator}
-    >
+  FeedCard: jest.fn(({ title, creator, onPress, onLikePress, onCommentPress, onSharePress }) => (
+    <div data-testid={`feed-card-${title}`} data-creator={creator}>
       <button data-testid={`card-press-${title}`} onClick={onPress}>
         {title}
       </button>
@@ -103,9 +99,7 @@ describe('Home', () => {
   });
 
   it('renders correctly with the active tab', () => {
-    const { getByTestId } = render(
-      <Home activeTab="home" onTabPress={mockOnTabPress} />
-    );
+    const { getByTestId } = render(<Home activeTab="home" onTabPress={mockOnTabPress} />);
 
     expect(getByTestId('navigation-bar')).toBeTruthy();
     expect(getByTestId('bottom-navigation')).toBeTruthy();
@@ -114,9 +108,7 @@ describe('Home', () => {
   });
 
   it('renders all feed cards', () => {
-    const { getByTestId } = render(
-      <Home activeTab="home" onTabPress={mockOnTabPress} />
-    );
+    const { getByTestId } = render(<Home activeTab="home" onTabPress={mockOnTabPress} />);
 
     // Check if all 4 feed cards are rendered
     expect(getByTestId('feed-card-Summer Vibes Mix')).toBeTruthy();
@@ -126,9 +118,7 @@ describe('Home', () => {
   });
 
   it('handles refresh correctly', () => {
-    const { getByTestId } = render(
-      <Home activeTab="home" onTabPress={mockOnTabPress} />
-    );
+    const { getByTestId } = render(<Home activeTab="home" onTabPress={mockOnTabPress} />);
 
     const scrollView = getByTestId('scroll-view');
 
@@ -148,27 +138,21 @@ describe('Home', () => {
   });
 
   it('calls onTabPress when a tab is pressed', () => {
-    const { getByTestId } = render(
-      <Home activeTab="home" onTabPress={mockOnTabPress} />
-    );
+    const { getByTestId } = render(<Home activeTab="home" onTabPress={mockOnTabPress} />);
 
     fireEvent.press(getByTestId('tab-library'));
     expect(mockOnTabPress).toHaveBeenCalledWith('library');
   });
 
   it('handles FAB press correctly', () => {
-    const { getByTestId } = render(
-      <Home activeTab="home" onTabPress={mockOnTabPress} />
-    );
+    const { getByTestId } = render(<Home activeTab="home" onTabPress={mockOnTabPress} />);
 
     fireEvent.press(getByTestId('floating-action-button'));
     expect(console.log).toHaveBeenCalledWith('FAB pressed');
   });
 
   it('handles card interactions correctly', () => {
-    const { getByTestId } = render(
-      <Home activeTab="home" onTabPress={mockOnTabPress} />
-    );
+    const { getByTestId } = render(<Home activeTab="home" onTabPress={mockOnTabPress} />);
 
     // Test card press
     fireEvent.press(getByTestId('card-press-Summer Vibes Mix'));
