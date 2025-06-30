@@ -82,13 +82,13 @@ monorepo/
 ## Core Technologies
 
 - **Monorepo Management**: Yarn Workspaces and Turborepo
-- **Web Platform**: 
+- **Web Platform**:
   - Next.js with TypeScript and Tailwind CSS
   - Web Audio API and AudioWorklet for low-latency audio processing
   - Wavesurfer.js for waveform visualization
   - Framer Motion for animations
   - dnd-kit for drag-and-drop functionality
-- **Mobile Application**: 
+- **Mobile Application**:
   - Expo with React Native
   - React Native Audio API for basic controls
   - Superpowered SDK for low-latency mixing, tempo/pitch shifting, and effects
@@ -126,6 +126,7 @@ The Pocket DJ application uses a comprehensive set of UI components across both 
 #### Web Platform UI
 
 The web platform includes 13 main screens:
+
 - Landing Page / Home Feed
 - Mixing Console Screen
 - Track Search & Library Screen
@@ -145,6 +146,7 @@ Common UI controls include navigation components, modals, toast notifications, i
 #### Mobile Application UI
 
 The mobile application includes the same 13 main screens, adapted for mobile:
+
 - Home Screen (Social Feed & Discovery)
 - Mixing Console Screen
 - Library & Track Search Screen
@@ -259,10 +261,12 @@ The Pocket DJ application uses a unified monorepo architecture managed by Turbor
 The monorepo is organized into distinct workspaces:
 
 - **apps/**: Contains the final, user-facing applications
+
   - **podji-web**: The primary Next.js web application
   - **podji-mobile**: The primary Expo (React Native) mobile application
 
 - **development/**: A dedicated workspace for isolated UI component development
+
   - **web-ui-dev**: An environment using React Vite + Storybook for web UI components
   - **mobile-ui-dev**: An environment using Expo + Storybook for mobile UI components
 
@@ -279,6 +283,7 @@ The monorepo is organized into distinct workspaces:
 The backend is designed as a distributed system of microservices running on Google Cloud Platform (GCP), primarily using Firebase Functions for event-driven services and Google Cloud Run for containerized, long-running workloads.
 
 - **API Gateway & Service Communication**:
+
   - **GraphQL API Gateway**: A unified GraphQL endpoint built with Apollo Server on Google Cloud Run
   - **Inter-Service Communication**: Google Pub/Sub for asynchronous, event-driven communication
 
