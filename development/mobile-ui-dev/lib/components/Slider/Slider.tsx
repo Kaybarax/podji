@@ -249,7 +249,17 @@ export const Slider: React.FC<SliderProps> = ({
         setIsSliding(false);
       },
     });
-  }, [disabled, minimumValue, maximumValue, step, trackWidth, trackPageX, onValueChange, onSlidingStart, onSlidingComplete]);
+  }, [
+    disabled,
+    minimumValue,
+    maximumValue,
+    step,
+    trackWidth,
+    trackPageX,
+    onValueChange,
+    onSlidingStart,
+    onSlidingComplete,
+  ]);
 
   // Calculate the value from the position on the track
   const valueFromPosition = (position: number) => {
