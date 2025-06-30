@@ -286,7 +286,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
     closeDropdown();
   };
 
-  const selectedItem = items.find(item => item.value === selectedValue);
+  const selectedItem = items?.find(item => item.value === selectedValue);
 
   const renderItem = ({ item }: { item: DropdownItem }) => {
     const isSelected = item.value === selectedValue;
@@ -365,7 +365,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
                 },
               ]}
             >
-              <FlatList data={items} renderItem={renderItem} keyExtractor={item => item.value.toString()} />
+              <FlatList data={items || []} renderItem={renderItem} keyExtractor={item => item.value.toString()} />
             </Animated.View>
           </Animated.View>
         </TouchableWithoutFeedback>
