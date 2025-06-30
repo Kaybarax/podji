@@ -130,6 +130,7 @@ export const Slider: React.FC<SliderProps> = ({
   const [thumbPosition] = useState(new Animated.Value(0));
   const [currentValue, setCurrentValue] = useState(value);
   const [trackWidth, setTrackWidth] = useState(0);
+  const [trackPageX, setTrackPageX] = useState(0);
   const [isSliding, setIsSliding] = useState(false);
 
   useEffect(() => {
@@ -171,6 +172,7 @@ export const Slider: React.FC<SliderProps> = ({
             shadowOpacity: 0.2,
             shadowRadius: 2,
             elevation: 2,
+            top: -8, // Position the thumb to center it vertically on the track
           },
           disabledThumb: {
             backgroundColor: theme.light.color.primitive.grey[400],
@@ -199,8 +201,9 @@ export const Slider: React.FC<SliderProps> = ({
     loadTheme();
   }, [disabled]);
 
-  // Update the thumb position when the value changes
+  // Update the thumb position when the value prop changes from outside
   useEffect(() => {
+    // Only update if the component is not being interacted with
     if (!isSliding) {
       setCurrentValue(value);
       const percentage = (value - minimumValue) / (maximumValue - minimumValue);
@@ -217,12 +220,16 @@ export const Slider: React.FC<SliderProps> = ({
         if (disabled) return;
 
         setIsSliding(true);
+        // Calculate the initial value based on where the user touched
         const newValue = valueFromPosition(gestureState.x0);
+        setCurrentValue(newValue);
+        thumbPosition.setValue((newValue - minimumValue) / (maximumValue - minimumValue));
         onSlidingStart?.(newValue);
       },
       onPanResponderMove: (_, gestureState) => {
         if (disabled) return;
 
+        // Calculate the new value based on the current touch position
         const newValue = valueFromPosition(gestureState.moveX);
         setCurrentValue(newValue);
         thumbPosition.setValue((newValue - minimumValue) / (maximumValue - minimumValue));
@@ -231,31 +238,32 @@ export const Slider: React.FC<SliderProps> = ({
       onPanResponderRelease: (_, gestureState) => {
         if (disabled) return;
 
-        setIsSliding(false);
+        // Calculate the final value based on where the user released
         const newValue = valueFromPosition(gestureState.moveX);
+        // Update the current value and maintain it
+        setCurrentValue(newValue);
+        thumbPosition.setValue((newValue - minimumValue) / (maximumValue - minimumValue));
+        // Notify that sliding is complete but keep the current position
         onSlidingComplete?.(newValue);
+        // Set isSliding to false after updating the position
+        setIsSliding(false);
       },
     });
-  }, [disabled, minimumValue, maximumValue, step, trackWidth, onValueChange, onSlidingStart, onSlidingComplete]);
+  }, [disabled, minimumValue, maximumValue, step, trackWidth, trackPageX, onValueChange, onSlidingStart, onSlidingComplete]);
 
   // Calculate the value from the position on the track
   const valueFromPosition = (position: number) => {
     if (trackWidth === 0) return minimumValue;
 
-    // Get the element position
-    const trackRef = (panResponder.panHandlers as any).ref?.current;
-    if (!trackRef) return minimumValue;
-
     // Calculate the position relative to the track
-    trackRef.measure((_: number, __: number, ___: number, ____: number, pageX: number, _____: number) => {
-      position = position - pageX;
-    });
+    const relativePosition = position - trackPageX;
 
-    // Ensure the position is within the track bounds
-    position = Math.max(0, Math.min(position, trackWidth));
+    // Clamp the position to the track width
+    // This ensures the value stays within the track boundaries
+    const clampedPosition = Math.max(0, Math.min(relativePosition, trackWidth));
 
     // Calculate the percentage and value
-    const percentage = position / trackWidth;
+    const percentage = clampedPosition / trackWidth;
     let newValue = minimumValue + percentage * (maximumValue - minimumValue);
 
     // Apply step if provided
@@ -289,6 +297,10 @@ export const Slider: React.FC<SliderProps> = ({
         style={[themeStyles.track, trackStyle]}
         onLayout={event => {
           setTrackWidth(event.nativeEvent.layout.width);
+          // Get the track's position on the screen
+          event.target.measure((_x, _y, _width, _height, pageX, _pageY) => {
+            setTrackPageX(pageX);
+          });
         }}
         {...panResponder.panHandlers}
       >
