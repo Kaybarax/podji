@@ -9,6 +9,69 @@ Pocket DJ (PodJi) is both a web application and cross-platform mobile applicatio
 
 The repository also includes shared packages for configurations, schemas, stores, and services, enabling a consistent experience across platforms.
 
+## Quick Start Guide
+
+### Mobile Application
+
+Get up and running with the mobile application development and testing:
+
+```bash
+# Install dependencies
+yarn install
+
+# Build all packages
+yarn build
+# or
+yarn turbo:build
+
+# Run tests
+yarn test
+
+# Run and develop the mobile UI components
+yarn dev:mobile-ui
+
+# View, inspect and debug the mobile UI components
+yarn storybook:mobile
+
+# Run and develop the mobile application
+yarn dev:mobile
+
+# Rebuild shared packages after making changes during development
+yarn turbo:build:packages
+```
+
+### Web Application
+
+Get up and running with the web application development and testing:
+
+```bash
+# Install dependencies
+yarn install
+
+# Build all packages
+yarn build
+# or
+yarn turbo:build
+
+# Run tests
+yarn test
+
+# Run and develop the web UI components
+yarn dev:web-ui
+
+# View, inspect and debug the web UI components
+yarn storybook:web
+
+# Run and develop the web application
+yarn dev:web
+
+# Rebuild shared packages after making changes during development
+yarn turbo:build:packages
+
+# Build production ready web app
+yarn build:web
+```
+
 ## Feature Overview
 
 ### Continuous Mix Builder & Playback Engine
