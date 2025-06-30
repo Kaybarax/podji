@@ -114,20 +114,18 @@ export const fetchProfileById = async (
   maxRetries = 3,
   retryDelay = 1000,
 ): Promise<Profile | { error: string }> => {
-  let retryCount = 0;
-
   const apiCall = async (): Promise<Profile> => {
     const response = await axios.get(`https://dummyjson.com/users/${profileId}`, {
       headers: { 'Content-Type': 'application/json' },
-      withCredentials: true,
+      // Remove withCredentials to avoid CORS issues in tests
     });
 
     if (!response || response.status !== 200) {
       throw new ApiError(response?.status || 500, response?.statusText || 'Unknown error');
     }
 
-    // Skip validation on retry for test compatibility
-    return retryCount > 0 ? response.data : validateProfile(response.data);
+    // Apply local validation to ensure the response has the expected structure
+    return validateProfile(response.data);
   };
 
   const result = await withRetry(apiCall, maxRetries, retryDelay, 'Failed to fetch profile');
@@ -136,7 +134,6 @@ export const fetchProfileById = async (
     return result;
   }
 
-  retryCount++;
   return result as Profile;
 };
 

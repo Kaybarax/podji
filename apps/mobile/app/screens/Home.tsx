@@ -1,11 +1,6 @@
 import React, { useState } from 'react';
 import { View, StyleSheet, ScrollView, RefreshControl } from 'react-native';
-import {
-  NavigationBar,
-  BottomTabNavigator,
-  FeedCard,
-  FloatingActionButton,
-} from '@podji/mobile-ui';
+import { NavigationBar, BottomTabNavigator, FeedCard, FloatingActionButton } from '@podji/mobile-ui';
 
 // Sample data for feed cards
 const feedData = [
@@ -98,12 +93,10 @@ const Home = () => {
       {/* Scrollable Feed */}
       <ScrollView
         style={styles.scrollView}
-        refreshControl={
-          <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
-        }
+        refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
       >
         <View style={styles.feedContainer}>
-          {feedData.map((item) => (
+          {feedData.map(item => (
             <FeedCard
               key={item.id}
               title={item.title}
@@ -124,19 +117,10 @@ const Home = () => {
       </ScrollView>
 
       {/* Floating Action Button */}
-      <FloatingActionButton
-        icon="🎵"
-        onPress={handleFabPress}
-        position="bottomRight"
-        size="large"
-      />
+      <FloatingActionButton icon="🎵" onPress={handleFabPress} position="bottomRight" size="large" />
 
       {/* Bottom Tab Navigation */}
-      <BottomTabNavigator
-        tabs={tabItems}
-        activeTab={activeTab}
-        onTabPress={handleTabPress}
-      />
+      <BottomTabNavigator tabs={tabItems} activeTab={activeTab} onTabPress={handleTabPress} />
     </View>
   );
 };

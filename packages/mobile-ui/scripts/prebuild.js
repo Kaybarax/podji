@@ -111,8 +111,32 @@ async function main() {
         .map(item => `${item}.ts`)
         .concat(Array.from(exportedItems).map(item => `${item}.tsx`)),
     );
+
+    // Always keep main.ts/tsx
+    exportedFiles.add('main.ts');
+    exportedFiles.add('main.tsx');
+
     const libFiles = fs.readdirSync(mobileUiLibDir);
-    console.log('All unexported files deleted successfully.');
+
+    // Delete files that are not in the exportedFiles set and are not directories
+    let deletedCount = 0;
+    for (const file of libFiles) {
+      const filePath = path.join(mobileUiLibDir, file);
+
+      // Skip directories
+      if (fs.statSync(filePath).isDirectory()) {
+        continue;
+      }
+
+      // If the file is not in the exportedFiles set, delete it
+      if (!exportedFiles.has(file)) {
+        fs.unlinkSync(filePath);
+        console.log(`Deleted unexported file: ${file}`);
+        deletedCount++;
+      }
+    }
+
+    console.log(`Deleted ${deletedCount} unexported files successfully.`);
 
     // Final message
     console.log('Pre-build preparation completed successfully!');
