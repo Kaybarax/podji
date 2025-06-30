@@ -6,8 +6,8 @@ import { BottomTabNavigator } from '@podji/mobile-ui';
 // Tab items for bottom navigation
 const tabItems = [
   { key: 'home', label: 'Home', icon: '🏠' },
-  { key: 'library', label: 'Library', icon: '🎧' },
   { key: 'mix', label: 'Mix', icon: '🎚️' },
+  { key: 'library', label: 'Library', icon: '🎧' },
   { key: 'profile', label: 'Profile', icon: '👤' },
   { key: 'chat', label: 'Chat', icon: '💬' },
 ];
