@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, TouchableOpacity, Animated, StyleSheet, Text, StyleProp, ViewStyle, TextStyle } from 'react-native';
+import { View, TouchableOpacity, Animated, Text, StyleProp, ViewStyle, TextStyle } from 'react-native';
 import { getMobileTheme } from '@podji/design-tokens';
 
 export interface ToggleProps {

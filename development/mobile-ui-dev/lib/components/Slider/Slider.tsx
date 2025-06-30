@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, StyleSheet, StyleProp, ViewStyle, TextStyle, PanResponder, Animated } from 'react-native';
+import { View, Text, StyleProp, ViewStyle, TextStyle, PanResponder, Animated } from 'react-native';
 import { getMobileTheme } from '@podji/design-tokens';
 
 export interface SliderProps {
@@ -107,7 +107,6 @@ export const Slider: React.FC<SliderProps> = ({
   valueFormatter = (value: number) => value.toString(),
   disabled = false,
   minimumTrackTintColor,
-  maximumTrackTintColor,
   thumbTintColor,
   containerStyle,
   trackStyle,

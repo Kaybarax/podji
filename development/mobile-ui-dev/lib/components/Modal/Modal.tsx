@@ -3,7 +3,6 @@ import {
   View,
   Modal as RNModal,
   TouchableWithoutFeedback,
-  StyleSheet,
   StyleProp,
   ViewStyle,
   Animated,
@@ -77,7 +76,6 @@ export const Modal: React.FC<ModalProps> = ({
   onClose,
   children,
   closeOnBackdropPress = true,
-  animationType = 'fade',
   position = 'center',
   hasBackdrop = true,
   backdropOpacity = 0.5,
@@ -204,7 +202,7 @@ export const Modal: React.FC<ModalProps> = ({
 
     const content = (
       <Animated.View style={[contentPositionStyle, contentAnimatedStyle, contentStyle]} testID={testID}>
-        {scrollable ? <ScrollView>{children}</ScrollView> : children}
+        {scrollable ? <ScrollView>{children}</ScrollView> : <>{children}</>}
       </Animated.View>
     );
 

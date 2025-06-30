@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useEffect, useRef, useState } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, Animated, StyleProp, ViewStyle, TextStyle } from 'react-native';
+import { Text, TouchableOpacity, Animated, StyleProp, ViewStyle, TextStyle } from 'react-native';
 import { getMobileTheme } from '@podji/design-tokens';
 
 export interface ToastProps {
