@@ -31,10 +31,10 @@ function createIndexFile(distDir) {
  * This file re-exports the necessary functions from the web and mobile folders
  */
 
-// Direct CSS exports
-export { default as styledTailwindTheme } from './web/styled-tailwind-theme.css';
-export { default as styledSassTheme } from './web/styled-sass-theme.scss';
-export { default as styledTheme } from './web/styled-theme.css';
+// CSS file paths (do not try to import CSS files directly as they don't have exports)
+export const styledTailwindThemePath = './web/styled-tailwind-theme.css';
+export const styledSassThemePath = './web/styled-sass-theme.scss';
+export const styledThemePath = './web/styled-theme.css';
 
 // Web theme exports
 export const getWebTheme = async () => {
@@ -60,30 +60,15 @@ export const getWebTailwindTokens = async () => {
 
 // Web styled theme exports
 export const getWebStyledTailwindTheme = () => {
-  try {
-    return './web/styled-tailwind-theme.css';
-  } catch (error) {
-    console.error('Failed to load web styled tailwind theme:', error);
-    return '';
-  }
+  return styledTailwindThemePath;
 };
 
 export const getWebStyledSassTheme = () => {
-  try {
-    return './web/styled-sass-theme.scss';
-  } catch (error) {
-    console.error('Failed to load web styled sass theme:', error);
-    return '';
-  }
+  return styledSassThemePath;
 };
 
 export const getWebStyledTheme = () => {
-  try {
-    return './web/styled-theme.css';
-  } catch (error) {
-    console.error('Failed to load web styled theme:', error);
-    return '';
-  }
+  return styledThemePath;
 };
 
 // Mobile theme exports

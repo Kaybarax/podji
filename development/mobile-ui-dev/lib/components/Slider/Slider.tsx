@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { View, Text, StyleProp, ViewStyle, TextStyle, PanResponder, Animated } from 'react-native';
 import { getMobileTheme } from '@podji/design-tokens';
 
@@ -133,6 +133,9 @@ export const Slider: React.FC<SliderProps> = ({
   const [trackPageX, setTrackPageX] = useState(0);
   const [isSliding, setIsSliding] = useState(false);
 
+  // Ref for the track component
+  const trackRef = useRef<View>(null);
+
   useEffect(() => {
     const loadTheme = async () => {
       try {
@@ -249,7 +252,17 @@ export const Slider: React.FC<SliderProps> = ({
         setIsSliding(false);
       },
     });
-  }, [disabled, minimumValue, maximumValue, step, trackWidth, trackPageX, onValueChange, onSlidingStart, onSlidingComplete]);
+  }, [
+    disabled,
+    minimumValue,
+    maximumValue,
+    step,
+    trackWidth,
+    trackPageX,
+    onValueChange,
+    onSlidingStart,
+    onSlidingComplete,
+  ]);
 
   // Calculate the value from the position on the track
   const valueFromPosition = (position: number) => {
@@ -294,11 +307,12 @@ export const Slider: React.FC<SliderProps> = ({
       {showValue && <Text style={[themeStyles.valueLabel, labelStyle]}>{valueFormatter(currentValue)}</Text>}
 
       <View
+        ref={trackRef}
         style={[themeStyles.track, trackStyle]}
         onLayout={event => {
           setTrackWidth(event.nativeEvent.layout.width);
           // Get the track's position on the screen
-          event.target.measure((_x, _y, _width, _height, pageX, _pageY) => {
+          trackRef.current?.measure((_x, _y, _width, _height, pageX, _pageY) => {
             setTrackPageX(pageX);
           });
         }}

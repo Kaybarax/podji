@@ -7,6 +7,12 @@ import tailwindcss from 'tailwindcss';
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react(), dts({ include: ['lib'] })],
+  resolve: {
+    alias: {
+      // Use our shim directory for React Native imports
+      'react-native': resolve(__dirname, 'shims/react-native'),
+    },
+  },
   build: {
     lib: {
       entry: resolve(__dirname, 'lib/main.ts'),
