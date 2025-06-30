@@ -85,7 +85,7 @@ const Home = () => {
     <View style={styles.container}>
       {/* Top Navigation Bar */}
 
-      <View style={[{ paddingTop: insets.top }]}>
+      <View style={[{ paddingTop: Math.max(insets.top - 8, 0) }]}>
         <NavigationBar
           title="PodJi"
           showNotification={true}
@@ -122,10 +122,16 @@ const Home = () => {
       </ScrollView>
 
       {/* Floating Action Button */}
-      <FloatingActionButton icon="🎵" onPress={handleFabPress} position="bottomRight" size="large" />
+      <FloatingActionButton 
+        icon="🎵" 
+        onPress={handleFabPress} 
+        position="bottomRight" 
+        size="medium"
+        style={{ bottom: 84 }} // Raised higher to be above the BottomNavigation footer
+      />
 
       {/* Bottom Tab Navigation */}
-      <View style={[{ paddingBottom: insets.bottom }]}>
+      <View style={[{ paddingBottom: Math.max(insets.bottom - 16, 0) }]}>
         <BottomTabNavigator tabs={tabItems} activeTab={activeTab} onTabPress={handleTabPress} />
       </View>
     </View>
