@@ -1,3 +1,4 @@
+// @ts-ignore
 import React, { useEffect, useState } from 'react';
 import { View, Text, Image, TouchableOpacity, StyleProp, ViewStyle, ImageSourcePropType } from 'react-native';
 import { getMobileTheme } from '@podji/design-tokens';
@@ -56,7 +57,7 @@ export interface FeedCardProps {
 /**
  * Feed card component for displaying mixes in the home screen
  */
-export const FeedCard: React.FC<FeedCardProps> = ({
+export const FeedCard = ({
   title,
   creator,
   coverImage,
@@ -69,7 +70,7 @@ export const FeedCard: React.FC<FeedCardProps> = ({
   onCommentPress,
   onSharePress,
   style,
-}) => {
+}: FeedCardProps) => {
   const [themeStyles, setThemeStyles] = useState({
     container: {},
     coverImage: {},

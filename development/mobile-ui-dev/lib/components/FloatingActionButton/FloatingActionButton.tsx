@@ -28,13 +28,13 @@ export interface FloatingActionButtonProps {
 /**
  * Floating action button component for quick actions
  */
-export const FloatingActionButton: React.FC<FloatingActionButtonProps> = ({
+export const FloatingActionButton = ({
   icon,
   onPress,
   position = 'bottomRight',
   size = 'medium',
   style,
-}) => {
+}: FloatingActionButtonProps) => {
   const [themeStyles, setThemeStyles] = useState({
     button: {},
     sizes: {
