@@ -1,0 +1,26 @@
+{
+  "animation": {
+    "duration": {
+      "short": { "value": "150ms", "comment": "For button presses." },
+      "medium": { "value": "200ms", "comment": "For button/navigation hovers." },
+      "long": { "value": "300ms", "comment": "For card hovers, mobile menu transition, gallery scroll." },
+      "extraLong": { "value": "500ms", "comment": "For content entry fade in." }
+    },
+    "easing": {
+      "easeOut": { "value": "ease-out" },
+      "easeInOut": { "value": "ease-in-out" }
+    },
+    "scale": {
+      "hover": { "value": "1.05", "comment": "Scale effect on image/card hover." },
+      "press": { "value": "0.98", "comment": "Scale effect on button press." }
+    },
+    "opacity": {
+      "active": { "value": "0.8", "comment": "Opacity reduction for active button state." }
+    },
+    "transform": {
+      "y": {
+        "cardHover": { "value": "-4px", "comment": "Y-axis transform for card elevation on hover." }
+      }
+    }
+  }
+}

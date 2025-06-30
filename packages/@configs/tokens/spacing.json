@@ -1,0 +1,24 @@
+{
+  "spacing": {
+    "base": { "value": "16px", "comment": "Base padding (16px)." },
+    "small": { "value": "8px", "comment": "Horizontal gaps (8px)." },
+    "medium": { "value": "12px", "comment": "Horizontal gaps (12px)." },
+    "large": { "value": "20px", "comment": "Vertical rhythm/section margins (20px)." },
+    "section": { "value": "16px", "comment": "Section margins (16px)." },
+    "verticalRhythm": {
+      "default": { "value": "{spacing.base}" },
+      "large": { "value": "{spacing.large}" }
+    },
+    "horizontalGap": {
+      "default": { "value": "{spacing.small}" },
+      "large": { "value": "{spacing.medium}" }
+    },
+    "padding": {
+      "default": { "value": "{spacing.base}" }
+    },
+    "margin": {
+      "default": { "value": "{spacing.base}" },
+      "section": { "value": "{spacing.section}" }
+    }
+  }
+}

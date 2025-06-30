@@ -1,0 +1,5 @@
+// Mock for react-native/index.js.flow
+// This file is used to mock the problematic import in React Native
+
+// Export an empty object as a placeholder
+export default {};

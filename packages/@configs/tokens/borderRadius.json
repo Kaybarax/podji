@@ -1,0 +1,6 @@
+{
+  "borderRadius": {
+    "default": { "value": "12px", "comment": "Standard border radius for cards, etc." },
+    "pill": { "value": "9999px", "comment": "Full round for pill-shaped tags." }
+  }
+}
