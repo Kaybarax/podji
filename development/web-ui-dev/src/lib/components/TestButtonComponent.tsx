@@ -1,5 +1,5 @@
 import React from 'react';
-// import { styledTheme } from '@podji/configs';
+// import { styledTheme } from '@podji/design-tokens';
 
 export interface TestButtonComponentProps {
   /**

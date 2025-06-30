@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "@expo/vector-icons": "^14.1.0",
-    "@podji/configs": "*",
+    "@podji/design-tokens": "*",
     "@podji/schemas": "*",
     "@podji/services": "*",
     "@podji/stores": "*",

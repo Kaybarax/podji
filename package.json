@@ -17,8 +17,8 @@
   "scripts": {
     "prepare": "husky",
     "format": "prettier . --write --ignore-path .prettierignore",
-    "build:configs:tokens": "yarn workspace @podji/configs build:tokens",
-    "turbo:configs:tokens": "turbo run build --filter=@podji/configs",
+    "build:configs:tokens": "yarn workspace @podji/design-tokens build:tokens",
+    "turbo:configs:tokens": "turbo run build --filter=@podji/design-tokens",
     "build:schemas": "yarn workspace @podji/schemas build",
     "turbo:schemas": "turbo run build --filter=@podji/schemas",
     "build:services": "yarn workspace @podji/services build",

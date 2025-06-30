@@ -4,7 +4,7 @@ module.exports = {
   testEnvironment: 'node',
   projects: [
     {
-      displayName: '@podji/configs',
+      displayName: '@podji/design-tokens',
       testMatch: ['<rootDir>/packages/@configs/src/**/*.test.ts'],
       transform: {
         '^.+\\.tsx?$': [
@@ -66,8 +66,8 @@ module.exports = {
         '^@/(.*)$': '<rootDir>/apps/podji-web/src/$1',
         '^@podji/schemas$': '<rootDir>/packages/@schemas/src',
         '^@podji/schemas/(.*)$': '<rootDir>/packages/@schemas/$1',
-        '^@podji/configs$': '<rootDir>/packages/@configs/src',
-        '^@podji/configs/(.*)$': '<rootDir>/packages/@configs/$1',
+        '^@podji/design-tokens$': '<rootDir>/packages/@configs/src',
+        '^@podji/design-tokens/(.*)$': '<rootDir>/packages/@configs/$1',
         '^@podji/services$': '<rootDir>/packages/@services/src',
         '^@podji/services/(.*)$': '<rootDir>/packages/@services/$1',
         '^@podji/stores$': '<rootDir>/apps/podji-web/src/__mocks__/@podji/stores',

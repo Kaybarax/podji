@@ -1,24 +1,88 @@
 {
   "typography": {
     "fontFamily": {
-      "system": {
-        "value": "system-ui, apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'"
+      "base": {
+        "value": "'Inter, sans-serif'",
+        "type": "fontFamily"
+      },
+      "mono": {
+        "value": "'Source Code Pro, monospace'",
+        "type": "fontFamily"
+      }
+    },
+    "fontWeight": {
+      "regular": {
+        "value": "400",
+        "type": "fontWeight"
+      },
+      "medium": {
+        "value": "500",
+        "type": "fontWeight"
+      },
+      "bold": {
+        "value": "700",
+        "type": "fontWeight"
+      }
+    },
+    "lineHeight": {
+      "base": {
+        "value": "1.5",
+        "type": "lineHeight"
       }
     },
     "fontSize": {
-      "name": { "value": "24pt" },
-      "sectionTitle": { "value": "18pt" },
-      "body": { "value": "16pt" },
-      "tag": { "value": "12pt" }
+      "12": {
+        "value": "12px",
+        "type": "fontSizes"
+      },
+      "14": {
+        "value": "14px",
+        "type": "fontSizes"
+      },
+      "16": {
+        "value": "16px",
+        "type": "fontSizes"
+      },
+      "20": {
+        "value": "20px",
+        "type": "fontSizes"
+      },
+      "24": {
+        "value": "24px",
+        "type": "fontSizes"
+      }
     },
-    "fontWeight": {
-      "bold": { "value": "700" },
-      "semibold": { "value": "600" },
-      "medium": { "value": "500" },
-      "regular": { "value": "400" }
+    "letterSpacing": {
+      "tight": {
+        "value": "-0.05em",
+        "type": "letterSpacing"
+      },
+      "normal": {
+        "value": "0em",
+        "type": "letterSpacing"
+      },
+      "wide": {
+        "value": "0.05em",
+        "type": "letterSpacing"
+      }
     },
-    "lineHeight": {
-      "default": { "value": "1.5" }
+    "paragraphSpacing": {
+      "xs": {
+        "value": "4px",
+        "type": "paragraphSpacing"
+      },
+      "sm": {
+        "value": "8px",
+        "type": "paragraphSpacing"
+      },
+      "md": {
+        "value": "16px",
+        "type": "paragraphSpacing"
+      },
+      "lg": {
+        "value": "24px",
+        "type": "paragraphSpacing"
+      }
     }
   }
 }

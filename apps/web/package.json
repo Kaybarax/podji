@@ -10,7 +10,7 @@
     "link-components": "echo 'Using workspace dependencies...'"
   },
   "dependencies": {
-    "@podji/configs": "*",
+    "@podji/design-tokens": "*",
     "@podji/mobile-ui": "*",
     "@podji/schemas": "*",
     "@podji/services": "*",

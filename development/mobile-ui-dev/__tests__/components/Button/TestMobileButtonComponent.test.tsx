@@ -1,8 +1,8 @@
 import { render, fireEvent } from '@testing-library/react-native';
 import { TestMobileButtonComponent } from '@/lib/components/Button/TestMobileButtonComponent';
 
-// Mock the getTheme function from @podji/configs
-jest.mock('@podji/configs', () => ({
+// Mock the getTheme function from @podji/design-tokens
+jest.mock('@podji/design-tokens', () => ({
   getTheme: jest.fn().mockResolvedValue({
     color: {
       ref: {

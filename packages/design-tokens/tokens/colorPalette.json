@@ -1,150 +1,163 @@
 {
   "color": {
-    "ref": {
+    "primitive": {
+      "white": { "value": "#FFFFFF", "type": "color" },
+      "black": { "value": "#000000", "type": "color" },
+      "grey": {
+        "100": { "value": "#F5F5F5", "type": "color" },
+        "200": { "value": "#EEEEEE", "type": "color" },
+        "300": { "value": "#E0E0E0", "type": "color" },
+        "400": { "value": "#BDBDBD", "type": "color" },
+        "500": { "value": "#9E9E9E", "type": "color" },
+        "600": { "value": "#757575", "type": "color" },
+        "700": { "value": "#616161", "type": "color" },
+        "800": { "value": "#424242", "type": "color" },
+        "900": { "value": "#212121", "type": "color" }
+      },
+      "cyan": { "value": "#ACEEF3", "type": "color" },
+      "coral": { "value": "#FF7077", "type": "color" },
+      "rose-quartz": { "value": "#FFE9E4", "type": "color" },
+      "orange": { "value": "#FFB067", "type": "color" }
+    },
+    "theme": {
       "light": {
-        "cyan": { "value": "#ACEEF3", "comment": "Used for primary actions, online status indicator." },
-        "coral": {
-          "value": "#FF7077",
-          "comment": "Used for secondary actions, wink button, active navigation states, accent colors."
+        "primary": { "value": "{color.primitive.cyan}", "type": "color" },
+        "secondary": {
+          "value": "{color.primitive.coral}",
+          "type": "color"
         },
-        "roseQuartz": { "value": "#FFE9E4", "comment": "Used as background for card containers." },
-        "orange": { "value": "#FFB067", "comment": "Used as accent color for interests tags." }
+        "neutral": {
+          "value": "{color.primitive.rose-quartz}",
+          "type": "color"
+        },
+        "accent": { "value": "{color.primitive.orange}", "type": "color" }
       },
       "dark": {
-        "cyan": { "value": "#0A4C52", "comment": "Suggested darker variant of Cyan for dark theme." },
-        "coral": { "value": "#8C3A40", "comment": "Suggested darker variant of Coral for dark theme." },
-        "roseQuartz": { "value": "#5A3E39", "comment": "Suggested darker variant of Rose Quartz for dark theme." },
-        "orange": { "value": "#7A4B1F", "comment": "Suggested darker variant of Orange for dark theme." }
+        "primary": { "value": "#289BAA", "type": "color" },
+        "secondary": { "value": "#C94D50", "type": "color" },
+        "neutral": { "value": "#1E1E1E", "type": "color" },
+        "accent": { "value": "#CC7A55", "type": "color" }
+      }
+    },
+    "semantic": {
+      "light": {
+        "background": {
+          "neutral": {
+            "value": "{color.theme.light.neutral}",
+            "type": "color"
+          },
+          "surface": {
+            "value": "{color.primitive.white}",
+            "type": "color"
+          }
+        },
+        "text": {
+          "primary": {
+            "value": "{color.primitive.black}",
+            "type": "color"
+          },
+          "secondary": { "value": "rgba(0,0,0,0.6)", "type": "color" },
+          "disabled": { "value": "rgba(0,0,0,0.38)", "type": "color" }
+        },
+        "border": {
+          "base": { "value": "rgba(0,0,0,0.12)", "type": "color" }
+        },
+        "role": {
+          "error": {
+            "value": "{color.theme.light.secondary}",
+            "type": "color"
+          },
+          "info": {
+            "value": "{color.theme.light.primary}",
+            "type": "color"
+          },
+          "warning": {
+            "value": "{color.theme.light.accent}",
+            "type": "color"
+          },
+          "success": {
+            "value": "{color.theme.light.primary}",
+            "type": "color"
+          }
+        }
       },
-      "neutral": {
-        "white": { "value": "#FFFFFF" },
-        "black": { "value": "#000000" },
-        "gray": {
-          "50": { "value": "#F9FAFB", "comment": "Used for light text in dark theme." },
-          "100": { "value": "#F3F4F6", "comment": "Used for section titles in dark theme." },
-          "200": { "value": "#E5E7EB" },
-          "300": { "value": "#D1D5DB", "comment": "Used for secondary text in dark theme, light theme borders." },
-          "400": { "value": "#9CA3AF", "comment": "Used for dashed borders in light theme." },
-          "500": { "value": "#6B7280" },
-          "600": { "value": "#4B5563", "comment": "Used for tag text in light theme, dashed borders in dark theme." },
-          "700": { "value": "#374151", "comment": "Used for body text in light theme, default borders in dark theme." },
-          "800": { "value": "#1F2937", "comment": "Used for section titles in light theme." },
-          "900": { "value": "#111827", "comment": "Used for primary text in light theme, background in dark theme." }
+      "dark": {
+        "background": {
+          "neutral": { "value": "#121212", "type": "color" },
+          "surface": {
+            "value": "{color.theme.dark.neutral}",
+            "type": "color"
+          }
+        },
+        "text": {
+          "primary": {
+            "value": "{color.primitive.white}",
+            "type": "color"
+          },
+          "secondary": { "value": "rgba(255,255,255,0.7)", "type": "color" },
+          "disabled": { "value": "rgba(255,255,255,0.5)", "type": "color" }
+        },
+        "border": {
+          "base": { "value": "rgba(255,255,255,0.12)", "type": "color" }
+        },
+        "role": {
+          "error": {
+            "value": "{color.theme.dark.secondary}",
+            "type": "color"
+          },
+          "info": {
+            "value": "{color.theme.dark.primary}",
+            "type": "color"
+          },
+          "warning": {
+            "value": "{color.theme.dark.accent}",
+            "type": "color"
+          },
+          "success": {
+            "value": "{color.theme.dark.primary}",
+            "type": "color"
+          }
         }
       }
     },
-    "background": {
-      "page": {
-        "light": { "value": "{color.ref.neutral.white}" },
-        "dark": { "value": "{color.ref.neutral.gray.900}" }
-      },
-      "card": {
-        "light": { "value": "{color.ref.light.roseQuartz}" },
-        "dark": { "value": "{color.ref.dark.roseQuartz}" }
-      },
+    "component": {
       "button": {
         "primary": {
           "light": {
-            "base": { "value": "{color.ref.light.cyan}" },
-            "hover": { "value": "#8DE1EC", "comment": "Darker shade of light.cyan for hover/active." },
-            "active": { "value": "#8DE1EC" },
-            "disabled": { "value": "#D4F1F4", "comment": "Lighter shade of light.cyan for disabled." }
+            "background": { "value": "{color.theme.light.primary}", "type": "color" },
+            "text": { "value": "{color.primitive.black}", "type": "color" },
+            "border": { "value": "transparent", "type": "color" }
           },
           "dark": {
-            "base": { "value": "{color.ref.dark.cyan}" },
-            "hover": { "value": "#07383D", "comment": "Darker shade of dark.cyan for hover/active." },
-            "active": { "value": "#07383D" },
-            "disabled": { "value": "#1A5C63", "comment": "Lighter shade of dark.cyan for disabled." }
+            "background": { "value": "{color.theme.dark.primary}", "type": "color" },
+            "text": { "value": "{color.primitive.white}", "type": "color" },
+            "border": { "value": "transparent", "type": "color" }
           }
         },
         "secondary": {
           "light": {
-            "base": { "value": "{color.ref.light.coral}" },
-            "hover": { "value": "#FF4A50", "comment": "Darker shade of light.coral for hover/active." },
-            "active": { "value": "#FF4A50" },
-            "disabled": { "value": "#FFC0C3", "comment": "Lighter shade of light.coral for disabled." }
+            "background": { "value": "{color.theme.light.secondary}", "type": "color" },
+            "text": { "value": "{color.primitive.white}", "type": "color" },
+            "border": { "value": "transparent", "type": "color" }
           },
           "dark": {
-            "base": { "value": "{color.ref.dark.coral}" },
-            "hover": { "value": "#6B2A2F", "comment": "Darker shade of dark.coral for hover/active." },
-            "active": { "value": "#6B2A2F" },
-            "disabled": { "value": "#B45B61", "comment": "Lighter shade of dark.coral for disabled." }
+            "background": { "value": "{color.theme.dark.secondary}", "type": "color" },
+            "text": { "value": "{color.primitive.white}", "type": "color" },
+            "border": { "value": "transparent", "type": "color" }
           }
-        },
-        "wink": {
-          "light": { "value": "{color.background.button.secondary.light.base}" },
-          "dark": { "value": "{color.background.button.secondary.dark.base}" }
         }
       },
-      "onlineStatus": {
-        "light": { "value": "{color.ref.light.cyan}" },
-        "dark": { "value": "{color.ref.dark.cyan}" }
-      },
-      "tag": {
-        "light": { "value": "{color.ref.light.orange}" },
-        "dark": { "value": "{color.ref.dark.orange}" }
-      }
-    },
-    "text": {
-      "primary": {
-        "light": { "value": "{color.ref.neutral.gray.900}" },
-        "dark": { "value": "{color.ref.neutral.gray.50}" }
-      },
-      "secondary": {
-        "light": { "value": "{color.ref.neutral.gray.700}" },
-        "dark": { "value": "{color.ref.neutral.gray.300}" }
-      },
-      "link": {
+      "card": {
         "light": {
-          "base": { "value": "{color.ref.light.cyan}" },
-          "hover": { "value": "{color.ref.light.coral}" }
+          "background": { "value": "{color.theme.light.neutral}", "type": "color" },
+          "text": { "value": "{color.primitive.black}", "type": "color" },
+          "border": { "value": "rgba(0,0,0,0.12)", "type": "color" }
         },
         "dark": {
-          "base": { "value": "{color.ref.dark.cyan}" },
-          "hover": { "value": "{color.ref.dark.coral}" }
+          "background": { "value": "{color.theme.dark.neutral}", "type": "color" },
+          "text": { "value": "{color.primitive.white}", "type": "color" },
+          "border": { "value": "rgba(255,255,255,0.12)", "type": "color" }
         }
-      },
-      "name": {
-        "light": { "value": "{color.ref.neutral.gray.900}" },
-        "dark": { "value": "{color.ref.neutral.white}" }
-      },
-      "sectionTitle": {
-        "light": { "value": "{color.ref.neutral.gray.800}" },
-        "dark": { "value": "{color.ref.neutral.gray.100}" }
-      },
-      "body": {
-        "light": { "value": "{color.ref.neutral.gray.700}" },
-        "dark": { "value": "{color.ref.neutral.gray.300}" }
-      },
-      "tag": {
-        "light": { "value": "{color.ref.neutral.gray.600}" },
-        "dark": { "value": "{color.ref.neutral.gray.400}" }
-      },
-      "logo": {
-        "light": { "value": "{color.ref.neutral.gray.900}" },
-        "dark": { "value": "{color.ref.neutral.white}" }
-      },
-      "navigation": {
-        "light": { "value": "{color.ref.neutral.gray.600}" },
-        "dark": { "value": "{color.ref.neutral.gray.300}" }
-      },
-      "activeNavigation": {
-        "light": { "value": "{color.ref.neutral.gray.900}" },
-        "dark": { "value": "{color.ref.neutral.white}" }
-      }
-    },
-    "border": {
-      "default": {
-        "light": { "value": "{color.ref.neutral.gray.300}" },
-        "dark": { "value": "{color.ref.neutral.gray.700}" }
-      },
-      "active": {
-        "light": { "value": "{color.ref.light.coral}" },
-        "dark": { "value": "{color.ref.dark.coral}" }
-      },
-      "dashed": {
-        "light": { "value": "{color.ref.neutral.gray.400}" },
-        "dark": { "value": "{color.ref.neutral.gray.600}" }
       }
     }
   }
