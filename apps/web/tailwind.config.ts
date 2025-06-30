@@ -1,7 +1,7 @@
 import type { Config } from 'tailwindcss';
 
 // Import the generated design tokens
-const tailwindTokens = require('@podji/configs/dist/web/tailwind-tokens.js');
+const tailwindTokens = require('@podji/design-tokens/dist/web/tailwind-tokens.js');
 
 const config: Config = {
   content: [

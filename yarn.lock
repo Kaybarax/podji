@@ -3364,9 +3364,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@podji/configs@npm:*, @podji/configs@npm:1.0.0, @podji/configs@workspace:packages/design-tokens":
+"@podji/design-tokens@npm:*, @podji/design-tokens@npm:1.0.0, @podji/design-tokens@workspace:packages/design-tokens":
   version: 0.0.0-use.local
-  resolution: "@podji/configs@workspace:packages/design-tokens"
+  resolution: "@podji/design-tokens@workspace:packages/design-tokens"
   dependencies:
     "@types/jest": "npm:^29.0.0"
     jest: "npm:^29.0.0"
@@ -3384,7 +3384,7 @@ __metadata:
     "@babel/core": "npm:^7.25.2"
     "@chromatic-com/storybook": "npm:^4"
     "@expo/vector-icons": "npm:^14.1.0"
-    "@podji/configs": "npm:*"
+    "@podji/design-tokens": "npm:*"
     "@podji/schemas": "npm:*"
     "@podji/services": "npm:*"
     "@podji/stores": "npm:*"
@@ -3434,7 +3434,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@podji/mobile-ui@workspace:packages/mobile-ui"
   dependencies:
-    "@podji/configs": "npm:1.0.0"
+    "@podji/design-tokens": "npm:1.0.0"
     "@types/identity-obj-proxy": "npm:^3"
     "@types/react": "npm:^19.0.0"
     "@types/react-dom": "npm:^19.0.0"
@@ -3512,7 +3512,7 @@ __metadata:
   resolution: "@podji/web-ui-dev@workspace:development/web-ui-dev"
   dependencies:
     "@chromatic-com/storybook": "npm:^4"
-    "@podji/configs": "npm:*"
+    "@podji/design-tokens": "npm:*"
     "@podji/schemas": "npm:*"
     "@podji/services": "npm:*"
     "@podji/stores": "npm:*"
@@ -3553,7 +3553,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@podji/web-ui@workspace:packages/web-ui"
   dependencies:
-    "@podji/configs": "npm:1.0.0"
+    "@podji/design-tokens": "npm:1.0.0"
     "@types/identity-obj-proxy": "npm:^3"
     "@types/react": "npm:^19.0.0"
     "@types/react-dom": "npm:^19.0.0"
@@ -14167,7 +14167,7 @@ __metadata:
   dependencies:
     "@babel/core": "npm:^7.25.2"
     "@expo/vector-icons": "npm:^14.1.0"
-    "@podji/configs": "npm:*"
+    "@podji/design-tokens": "npm:*"
     "@podji/mobile-ui": "npm:*"
     "@podji/schemas": "npm:*"
     "@podji/services": "npm:*"
@@ -14256,7 +14256,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "podji-web@workspace:apps/web"
   dependencies:
-    "@podji/configs": "npm:*"
+    "@podji/design-tokens": "npm:*"
     "@podji/mobile-ui": "npm:*"
     "@podji/schemas": "npm:*"
     "@podji/services": "npm:*"

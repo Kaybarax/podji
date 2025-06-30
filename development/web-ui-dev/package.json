@@ -13,7 +13,7 @@
     "clean": "rm -rf dist"
   },
   "dependencies": {
-    "@podji/configs": "*",
+    "@podji/design-tokens": "*",
     "@podji/schemas": "*",
     "@podji/services": "*",
     "@podji/stores": "*",

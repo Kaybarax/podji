@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "@expo/vector-icons": "^14.1.0",
-    "@podji/configs": "*",
+    "@podji/design-tokens": "*",
     "@podji/mobile-ui": "*",
     "@podji/schemas": "*",
     "@podji/services": "*",
