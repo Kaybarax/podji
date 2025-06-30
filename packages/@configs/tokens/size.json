@@ -1,0 +1,31 @@
+{
+  "size": {
+    "width": {
+      "container": {
+        "mobile": { "value": "100%", "comment": "Full width on mobile devices." },
+        "tablet": { "value": "768px", "comment": "Max width for tablet portrait." },
+        "desktop": { "value": "1280px", "comment": "Max width for desktop." }
+      },
+      "photoCard": { "value": "150px", "comment": "Fixed width for photo gallery cards." },
+      "profileCard": { "value": "w-60", "comment": "Fixed width for suggested profile cards (web)." }
+    },
+    "height": {
+      "photoCard": { "value": "200px", "comment": "Fixed height for photo gallery cards." }
+    },
+    "aspectRatio": {
+      "mainProfilePhoto": {
+        "web": { "value": "4/5", "comment": "Vertical rectangle format (Web App)." },
+        "mobile": {
+          "value": "auto",
+          "comment": "Full-width hero image, aspect ratio optimized for portrait (Mobile App)."
+        }
+      }
+    },
+    "icon": {
+      "small": { "value": "16px" },
+      "medium": { "value": "24px" },
+      "large": { "value": "32px" }
+    },
+    "touchTarget": { "value": "44px", "comment": "Minimum size for interactive elements for accessibility." }
+  }
+}

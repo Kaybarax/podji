@@ -1,0 +1,8 @@
+##!/usr/bin/env sh
+#. "$(dirname -- "$0")/_/husky.sh"
+#
+#echo "Running tests before push..."
+#yarn test || { echo "Tests failed. Push aborted."; exit 1; }
+
+# run lint-staged to check staged files
+yarn lint-staged

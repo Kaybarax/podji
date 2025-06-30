@@ -1,0 +1,27 @@
+{
+  "name": "@shared/configs",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "clean": "rimraf dist && rimraf tsconfig.tsbuildinfo",
+    "build": "yarn clean && tsc --project tsconfig.build.json && yarn build:tokens",
+    "build:tokens": "node scripts/buildTokens.js",
+    "build:tokens:legacy": "style-dictionary build",
+    "build:tokens:web": "style-dictionary build --config sd.config.web.js",
+    "build:tokens:mobile": "style-dictionary build --config sd.config.mobile.js && node scripts/generateThemeStylesheet.js && node scripts/fixStyledTheme.js && node scripts/finalFixes.js",
+    "build:tokens:react-native": "style-dictionary build --config sd.config.react-native.js",
+    "lint": "eslint src --ext .ts,.tsx",
+    "test": "jest"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.0.0",
+    "jest": "^29.0.0",
+    "rimraf": "^5.0.0",
+    "style-dictionary": "^5.0.0",
+    "ts-jest": "^29.0.0",
+    "typescript": "~5.8.3"
+  }
+}

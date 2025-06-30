@@ -1,0 +1,11 @@
+{
+  "shadow": {
+    "card": {
+      "default": { "value": "0px 4px 6px rgba(0, 0, 0, 0.1)", "comment": "Subtle shadow for card containers." },
+      "hover": { "value": "0px 8px 12px rgba(0, 0, 0, 0.15)", "comment": "Elevated shadow on hover for cards/stories." }
+    },
+    "button": {
+      "default": { "value": "0px 2px 4px rgba(0, 0, 0, 0.1)" }
+    }
+  }
+}
