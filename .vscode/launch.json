@@ -1,0 +1,320 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "format",
+      "runtimeExecutable": "yarn",
+      "runtimeArgs": ["format"],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "build:configs:tokens",
+      "runtimeExecutable": "yarn",
+      "runtimeArgs": ["build:configs:tokens"],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "turbo:configs:tokens",
+      "runtimeExecutable": "yarn",
+      "runtimeArgs": ["turbo:configs:tokens"],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "build:schemas",
+      "runtimeExecutable": "yarn",
+      "runtimeArgs": ["build:schemas"],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "turbo:schemas",
+      "runtimeExecutable": "yarn",
+      "runtimeArgs": ["turbo:schemas"],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "build:services",
+      "runtimeExecutable": "yarn",
+      "runtimeArgs": ["build:services"],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "turbo:services",
+      "runtimeExecutable": "yarn",
+      "runtimeArgs": ["turbo:services"],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "build:stores",
+      "runtimeExecutable": "yarn",
+      "runtimeArgs": ["build:stores"],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "turbo:stores",
+      "runtimeExecutable": "yarn",
+      "runtimeArgs": ["turbo:stores"],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "dev:mobile-ui",
+      "runtimeExecutable": "yarn",
+      "runtimeArgs": ["dev:mobile-ui"],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "build:mobile-ui",
+      "runtimeExecutable": "yarn",
+      "runtimeArgs": ["build:mobile-ui"],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "turbo:mobile-ui",
+      "runtimeExecutable": "yarn",
+      "runtimeArgs": ["turbo:mobile-ui"],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "dev:web-ui",
+      "runtimeExecutable": "yarn",
+      "runtimeArgs": ["dev:web-ui"],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "turbo:dev:web-ui",
+      "runtimeExecutable": "yarn",
+      "runtimeArgs": ["turbo:dev:web-ui"],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "build:web-ui",
+      "runtimeExecutable": "yarn",
+      "runtimeArgs": ["build:web-ui"],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "turbo:web-ui",
+      "runtimeExecutable": "yarn",
+      "runtimeArgs": ["turbo:web-ui"],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "dev:web",
+      "runtimeExecutable": "yarn",
+      "runtimeArgs": ["dev:web"],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "turbo:dev:web",
+      "runtimeExecutable": "yarn",
+      "runtimeArgs": ["turbo:dev:web"],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "build:web",
+      "runtimeExecutable": "yarn",
+      "runtimeArgs": ["build:web"],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "turbo:build:web",
+      "runtimeExecutable": "yarn",
+      "runtimeArgs": ["turbo:build:web"],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "dev:mobile",
+      "runtimeExecutable": "yarn",
+      "runtimeArgs": ["dev:mobile"],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "turbo:dev:mobile",
+      "runtimeExecutable": "yarn",
+      "runtimeArgs": ["turbo:dev:mobile"],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "build",
+      "runtimeExecutable": "yarn",
+      "runtimeArgs": ["build"],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "turbo:build:packages",
+      "runtimeExecutable": "yarn",
+      "runtimeArgs": ["turbo:build:packages"],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "turbo:build",
+      "runtimeExecutable": "yarn",
+      "runtimeArgs": ["turbo:build"],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "turbo",
+      "runtimeExecutable": "yarn",
+      "runtimeArgs": ["turbo"],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "cleanup",
+      "runtimeExecutable": "yarn",
+      "runtimeArgs": ["cleanup"],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "test",
+      "runtimeExecutable": "yarn",
+      "runtimeArgs": ["test"],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "test:web",
+      "runtimeExecutable": "yarn",
+      "runtimeArgs": ["test:web"],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "test:mobile",
+      "runtimeExecutable": "yarn",
+      "runtimeArgs": ["test:mobile"],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "storybook:web",
+      "runtimeExecutable": "yarn",
+      "runtimeArgs": ["storybook:web"],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "storybook:mobile",
+      "runtimeExecutable": "yarn",
+      "runtimeArgs": ["storybook:mobile"],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "backstop:reference",
+      "runtimeExecutable": "yarn",
+      "runtimeArgs": ["backstop:reference"],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "backstop:test",
+      "runtimeExecutable": "yarn",
+      "runtimeArgs": ["backstop:test"],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "prepare",
+      "runtimeExecutable": "yarn",
+      "runtimeArgs": ["prepare"],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal"
+    }
+  ]
+}
