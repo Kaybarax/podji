@@ -8,7 +8,7 @@ describe('Home Screen', () => {
       activeTab: 'home',
       onTabPress: jest.fn(),
     },
-    
+
     // Sample feed data from the Home component
     feedData: [
       {
@@ -71,17 +71,17 @@ describe('Home Screen', () => {
       console.log('FAB pressed');
     }),
 
-    handleTabPress: jest.fn((tabKey) => {
+    handleTabPress: jest.fn(tabKey => {
       if (tabKey) {
         mockHome.props.onTabPress(tabKey);
       }
     }),
 
-    handleCardPress: jest.fn((cardId) => {
+    handleCardPress: jest.fn(cardId => {
       console.log(`Card ${cardId} pressed`);
     }),
 
-    handleLikePress: jest.fn((cardId) => {
+    handleLikePress: jest.fn(cardId => {
       console.log(`Like ${cardId} pressed`);
       // Toggle like status for the card
       const card = mockHome.feedData.find(item => item.id === cardId);
@@ -91,11 +91,11 @@ describe('Home Screen', () => {
       }
     }),
 
-    handleCommentPress: jest.fn((cardId) => {
+    handleCommentPress: jest.fn(cardId => {
       console.log(`Comment ${cardId} pressed`);
     }),
 
-    handleSharePress: jest.fn((cardId) => {
+    handleSharePress: jest.fn(cardId => {
       console.log(`Share ${cardId} pressed`);
       // Increment share count
       const card = mockHome.feedData.find(item => item.id === cardId);
@@ -171,7 +171,7 @@ describe('Home Screen', () => {
 
   it('should contain the expected feed data', () => {
     expect(mockHome.feedData).toHaveLength(4);
-    
+
     // Check first feed item
     const firstItem = mockHome.feedData[0];
     expect(firstItem.title).toBe('Summer Vibes Mix');
@@ -197,16 +197,16 @@ describe('Home Screen', () => {
 
   it('should handle refresh correctly', () => {
     expect(mockHome.state.refreshing).toBe(false);
-    
+
     mockHome.onRefresh();
-    
+
     expect(mockHome.onRefresh).toHaveBeenCalled();
     expect(mockHome.state.refreshing).toBe(true);
   });
 
   it('should handle FAB press', () => {
     mockHome.handleFabPress();
-    
+
     expect(mockHome.handleFabPress).toHaveBeenCalled();
   });
 
@@ -234,9 +234,9 @@ describe('Home Screen', () => {
     const cardId = '2'; // This card starts as not liked
     const card = mockHome.feedData.find(item => item.id === cardId);
     expect(card).toBeDefined();
-    
+
     if (!card) return;
-    
+
     const initialLikes = card.likes;
     const initialIsLiked = card.isLiked;
 
@@ -251,11 +251,11 @@ describe('Home Screen', () => {
     const cardId = '1'; // This card starts as liked
     const card = mockHome.feedData.find(item => item.id === cardId);
     expect(card).toBeDefined();
-    
+
     if (!card) return;
-    
+
     const initialLikes = card.likes;
-    
+
     expect(card.isLiked).toBe(true);
 
     mockHome.handleLikePress(cardId);
@@ -275,9 +275,9 @@ describe('Home Screen', () => {
     const cardId = '2';
     const card = mockHome.feedData.find(item => item.id === cardId);
     expect(card).toBeDefined();
-    
+
     if (!card) return;
-    
+
     const initialShares = card.shares;
 
     mockHome.handleSharePress(cardId);
@@ -299,7 +299,7 @@ describe('Home Screen', () => {
   });
 
   it('should contain feed items with all required properties', () => {
-    mockHome.feedData.forEach((item) => {
+    mockHome.feedData.forEach(item => {
       expect(item).toHaveProperty('id');
       expect(item).toHaveProperty('title');
       expect(item).toHaveProperty('creator');
@@ -308,7 +308,7 @@ describe('Home Screen', () => {
       expect(item).toHaveProperty('comments');
       expect(item).toHaveProperty('shares');
       expect(item).toHaveProperty('isLiked');
-      
+
       expect(typeof item.id).toBe('string');
       expect(typeof item.title).toBe('string');
       expect(typeof item.creator).toBe('string');
@@ -321,7 +321,7 @@ describe('Home Screen', () => {
   });
 
   it('should have positive engagement numbers', () => {
-    mockHome.feedData.forEach((item) => {
+    mockHome.feedData.forEach(item => {
       expect(item.likes).toBeGreaterThanOrEqual(0);
       expect(item.comments).toBeGreaterThanOrEqual(0);
       expect(item.shares).toBeGreaterThanOrEqual(0);
@@ -332,15 +332,15 @@ describe('Home Screen', () => {
     const likesValues = mockHome.feedData.map(item => item.likes);
     const commentsValues = mockHome.feedData.map(item => item.comments);
     const sharesValues = mockHome.feedData.map(item => item.shares);
-    
+
     // Should have varying likes
     const uniqueLikes = [...new Set(likesValues)];
     expect(uniqueLikes.length).toBeGreaterThan(1);
-    
+
     // Should have varying comments
     const uniqueComments = [...new Set(commentsValues)];
     expect(uniqueComments.length).toBeGreaterThan(1);
-    
+
     // Should have varying shares
     const uniqueShares = [...new Set(sharesValues)];
     expect(uniqueShares.length).toBeGreaterThan(1);
@@ -349,7 +349,7 @@ describe('Home Screen', () => {
   it('should have mix of liked and unliked items', () => {
     const likedItems = mockHome.feedData.filter(item => item.isLiked);
     const unlikedItems = mockHome.feedData.filter(item => !item.isLiked);
-    
+
     expect(likedItems.length).toBeGreaterThan(0);
     expect(unlikedItems.length).toBeGreaterThan(0);
   });
@@ -358,9 +358,9 @@ describe('Home Screen', () => {
     const cardId = '1';
     const card = mockHome.feedData.find(item => item.id === cardId);
     expect(card).toBeDefined();
-    
+
     if (!card) return;
-    
+
     const initialLikes = card.likes;
     const initialIsLiked = card.isLiked;
 
@@ -381,9 +381,9 @@ describe('Home Screen', () => {
     const cardId = '3';
     const card = mockHome.feedData.find(item => item.id === cardId);
     expect(card).toBeDefined();
-    
+
     if (!card) return;
-    
+
     const initialShares = card.shares;
 
     // Share multiple times
@@ -424,7 +424,7 @@ describe('Home Screen', () => {
   });
 
   it('should have proper cover image URLs', () => {
-    mockHome.feedData.forEach((item) => {
+    mockHome.feedData.forEach(item => {
       expect(item.coverImage.uri).toMatch(/^https:\/\//);
       expect(item.coverImage.uri).toContain('picsum.photos');
     });

@@ -8,7 +8,7 @@ describe('Library Screen', () => {
       activeTab: 'library',
       onTabPress: jest.fn(),
     },
-    
+
     // Sample track data from the Library component
     trackData: [
       {
@@ -77,11 +77,11 @@ describe('Library Screen', () => {
     },
 
     // Mock methods
-    handleSetFilterBy: jest.fn((value) => {
+    handleSetFilterBy: jest.fn(value => {
       mockLibrary.state.filterBy = value;
     }),
 
-    handleTrackSelect: jest.fn((track) => {
+    handleTrackSelect: jest.fn(track => {
       mockLibrary.state.selectedTrack = track;
       mockLibrary.state.showActionSheet = true;
     }),
@@ -94,7 +94,7 @@ describe('Library Screen', () => {
       mockLibrary.state.showActionSheet = false;
     }),
 
-    handleTabPress: jest.fn((tabKey) => {
+    handleTabPress: jest.fn(tabKey => {
       if (tabKey) {
         mockLibrary.props.onTabPress(tabKey);
       }
@@ -119,7 +119,7 @@ describe('Library Screen', () => {
 
   it('should contain the expected track data', () => {
     expect(mockLibrary.trackData).toHaveLength(6);
-    
+
     // Check first track
     const firstTrack = mockLibrary.trackData[0];
     expect(firstTrack.title).toBe('Summer Vibes');
@@ -151,7 +151,7 @@ describe('Library Screen', () => {
 
   it('should handle filter changes', () => {
     mockLibrary.handleSetFilterBy('genre');
-    
+
     expect(mockLibrary.handleSetFilterBy).toHaveBeenCalledWith('genre');
     expect(mockLibrary.state.filterBy).toBe('genre');
   });
@@ -169,7 +169,7 @@ describe('Library Screen', () => {
     // First select a track
     const testTrack = mockLibrary.trackData[0];
     mockLibrary.handleTrackSelect(testTrack);
-    
+
     // Then add to playlist
     mockLibrary.handleAddToPlaylist();
 
@@ -181,7 +181,7 @@ describe('Library Screen', () => {
     // First select a track
     const testTrack = mockLibrary.trackData[1];
     mockLibrary.handleTrackSelect(testTrack);
-    
+
     // Then add to queue
     mockLibrary.handleAddToQueue();
 
@@ -204,14 +204,14 @@ describe('Library Screen', () => {
   });
 
   it('should contain tracks with all required properties', () => {
-    mockLibrary.trackData.forEach((track) => {
+    mockLibrary.trackData.forEach(track => {
       expect(track).toHaveProperty('id');
       expect(track).toHaveProperty('title');
       expect(track).toHaveProperty('artist');
       expect(track).toHaveProperty('coverArt');
       expect(track).toHaveProperty('duration');
       expect(track).toHaveProperty('bpm');
-      
+
       expect(typeof track.id).toBe('string');
       expect(typeof track.title).toBe('string');
       expect(typeof track.artist).toBe('string');
@@ -224,10 +224,10 @@ describe('Library Screen', () => {
   it('should have varying BPM values across tracks', () => {
     const bpmValues = mockLibrary.trackData.map(track => track.bpm);
     const uniqueBpmValues = [...new Set(bpmValues)];
-    
+
     // Should have more than one unique BPM value
     expect(uniqueBpmValues.length).toBeGreaterThan(1);
-    
+
     // Should have BPM values in reasonable range
     bpmValues.forEach(bpm => {
       expect(bpm).toBeGreaterThan(0);
@@ -237,8 +237,8 @@ describe('Library Screen', () => {
 
   it('should have proper duration format', () => {
     const durationRegex = /^\d+:\d{2}$/;
-    
-    mockLibrary.trackData.forEach((track) => {
+
+    mockLibrary.trackData.forEach(track => {
       expect(track.duration).toMatch(durationRegex);
     });
   });
