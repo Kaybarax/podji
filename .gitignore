@@ -97,7 +97,6 @@ playwright-report/
 # =========================
 # IDE and Editor Files
 # =========================
-.vscode/
 .idea/
 *.suo
 *.ntvs*
