@@ -6,12 +6,39 @@
  */
 
 export default {
-  source: ['tokens/**/*.json'],
+  source: ['designTokens.json'],
   parsers: [
     {
       pattern: /\.json$/,
-      parse: ({ filePath, contents }) => {
-        return JSON.parse(contents);
+      parse: ({ contents }) => {
+        // Parse the JSON content
+        const tokens = JSON.parse(contents);
+
+        // Process the tokens to handle references correctly
+        const processTokens = obj => {
+          for (const key in obj) {
+            if (typeof obj[key] === 'object' && obj[key] !== null) {
+              if (
+                obj[key].value &&
+                typeof obj[key].value === 'string' &&
+                obj[key].value.includes('{') &&
+                obj[key].value.includes('}')
+              ) {
+                // Handle references in the format {color.primitive.cyan.value}
+                obj[key].value = obj[key].value.replace(/\{([^}]+)\.value\}/g, '{$1}');
+
+                // Handle references with hyphens in the path
+                obj[key].value = obj[key].value.replace(/\{([^}]+)-([^}]+)\.([^}]+)\}/g, '{$1_$2.$3}');
+                obj[key].value = obj[key].value.replace(/\{([^}]+)\.([^}]+)-([^}]+)\.([^}]+)\}/g, '{$1.$2_$3.$4}');
+                obj[key].value = obj[key].value.replace(/\{([^}]+)\.([^}]+)\.([^}]+)-([^}]+)\}/g, '{$1.$2.$3_$4}');
+              }
+              processTokens(obj[key]);
+            }
+          }
+          return obj;
+        };
+
+        return processTokens(tokens);
       },
     },
   ],
