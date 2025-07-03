@@ -97,7 +97,11 @@ playwright-report/
 # =========================
 # IDE and Editor Files
 # =========================
-.idea/
+# IDE - IntelliJ IDEA
+.idea/*
+!.idea/codeStyles/
+!.idea/runConfigurations/
+!.idea/prettier.xml
 *.suo
 *.ntvs*
 *.njsproj
