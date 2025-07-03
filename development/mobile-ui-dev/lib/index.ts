@@ -1,5 +1,5 @@
 export * from './components/Avatar/types';
-export * from './components/Badge/types';
+export * from './components/Badge';
 export * from './components/Card/types';
 export * from './components/NavigationBar';
 export * from './components/BottomTabNavigator';
@@ -13,3 +13,6 @@ export * from './components/Slider';
 export * from './components/Dropdown';
 export * from './components/Modal';
 export * from './components/Toast';
+export * from './components/Link';
+export * from './components/Pagination';
+export * from './components/DatePicker';
