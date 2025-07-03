@@ -491,7 +491,7 @@ async function buildTokens() {
   ensureDirectoryExists(tempDir);
 
   // Preprocess the design tokens
-  const originalTokensPath = path.join(packageDir, 'designTokens.json');
+  const originalTokensPath = path.join(packageDir, 'tokens.json');
   const processedTokensPath = path.join(tempDir, 'processed-tokens.json');
   preprocessTokens(originalTokensPath, processedTokensPath);
 

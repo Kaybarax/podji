@@ -6,7 +6,7 @@
  */
 
 export default {
-  source: ['designTokens.json'],
+  source: ['tokens.json'],
   parsers: [
     {
       pattern: /\.json$/,
