@@ -1,7 +1,0 @@
-{
-  "breakpoint": {
-    "mobile": { "value": "767px", "comment": "Max width for mobile devices." },
-    "tablet": { "value": "1023px", "comment": "Max width for tablet devices (up to landscape)." },
-    "desktop": { "value": "1024px", "comment": "Min width for desktop devices." }
-  }
-}
