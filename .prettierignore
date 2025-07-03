@@ -4,5 +4,11 @@ package.json
 # ignore files in the node_modules directory
 node_modules
 
+# ignore build and cache directories
+.dist
+.idea
+.next
+.turbo
+
 # ignore yarn.lock
 yarn.lock

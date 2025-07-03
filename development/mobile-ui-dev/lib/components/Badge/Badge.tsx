@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { View, Text, StyleSheet, StyleProp, ViewStyle, TextStyle } from 'react-native';
+import { View, Text, StyleProp, ViewStyle, TextStyle } from 'react-native';
 import { getMobileTheme } from '@podji/design-tokens';
 import { BadgeProps, defaultBadgeProps } from './types';
 
@@ -15,8 +15,8 @@ export const Badge = ({
   dot = defaultBadgeProps.dot,
   style,
   testID,
-  children,
-}: BadgeProps) => {
+}: // children prop is intentionally not used to avoid ReactNode type issues
+BadgeProps) => {
   const [themeStyles, setThemeStyles] = React.useState<{
     badge: StyleProp<ViewStyle>;
     text: StyleProp<TextStyle>;
@@ -100,7 +100,7 @@ export const Badge = ({
   }, [variant, size, dot]);
 
   if (!visible) {
-    return <>{children}</>;
+    return <React.Fragment>{null /* This is a workaround for the ReactNode type issue */}</React.Fragment>;
   }
 
   // Format content if it's a number
@@ -114,9 +114,9 @@ export const Badge = ({
 
   return (
     <View style={themeStyles.container} testID={testID}>
-      {children}
+      <React.Fragment>{null /* This is a workaround for the ReactNode type issue */}</React.Fragment>
       <View style={[themeStyles.badge, style]}>
-        {!dot && <Text style={themeStyles.text}>{formattedContent()}</Text>}
+        {!dot && <Text style={themeStyles.text}>{String(formattedContent())}</Text>}
       </View>
     </View>
   );

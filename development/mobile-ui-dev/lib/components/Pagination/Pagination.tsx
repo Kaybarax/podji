@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, StyleProp, ViewStyle, TextStyle } from 'react-native';
+import { View, Text, TouchableOpacity, StyleProp, ViewStyle, TextStyle } from 'react-native';
 import { getMobileTheme } from '@podji/design-tokens';
 import { PaginationProps, defaultPaginationProps } from './types';
 

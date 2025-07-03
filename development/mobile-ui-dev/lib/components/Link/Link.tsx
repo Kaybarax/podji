@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Text, TouchableOpacity, StyleSheet, StyleProp, TextStyle } from 'react-native';
+import { Text, TouchableOpacity, StyleProp, TextStyle } from 'react-native';
 import { getMobileTheme } from '@podji/design-tokens';
 import { LinkProps, defaultLinkProps } from './types';
 
@@ -65,7 +65,7 @@ export const Link = ({
       accessibilityHint={`Navigate to ${href}`}
       testID={testID}
     >
-      <Text style={[disabled ? themeStyles.linkDisabled : themeStyles.link, style]}>{children}</Text>
+      <Text style={[disabled ? themeStyles.linkDisabled : themeStyles.link, style]}>{String(children)}</Text>
     </TouchableOpacity>
   );
 };

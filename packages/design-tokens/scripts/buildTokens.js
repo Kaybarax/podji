@@ -491,7 +491,7 @@ async function buildTokens() {
   ensureDirectoryExists(tempDir);
 
   // Preprocess the design tokens
-  const originalTokensPath = path.join(packageDir, 'tokens.json');
+  const originalTokensPath = path.join(packageDir, 'tokens', 'tokens.json');
   const processedTokensPath = path.join(tempDir, 'processed-tokens.json');
   preprocessTokens(originalTokensPath, processedTokensPath);
 
@@ -499,7 +499,7 @@ async function buildTokens() {
   const updateConfigFile = configPath => {
     let configContent = fs.readFileSync(configPath, 'utf8');
     configContent = configContent.replace(
-      /source: \[['"]designTokens\.json['"]\],/,
+      /source: \[['"]tokens\.json['"]\],/,
       `source: ['temp/processed-tokens.json'],`,
     );
     fs.writeFileSync(configPath, configContent);
@@ -555,7 +555,7 @@ async function buildTokens() {
       let configContent = fs.readFileSync(configPath, 'utf8');
       configContent = configContent.replace(
         /source: \[['"]temp\/processed-tokens\.json['"]\],/,
-        `source: ['designTokens.json'],`,
+        `source: ['tokens.json'],`,
       );
       fs.writeFileSync(configPath, configContent);
     };
@@ -579,7 +579,7 @@ async function buildTokens() {
       let configContent = fs.readFileSync(configPath, 'utf8');
       configContent = configContent.replace(
         /source: \[['"]temp\/processed-tokens\.json['"]\],/,
-        `source: ['designTokens.json'],`,
+        `source: ['tokens.json'],`,
       );
       fs.writeFileSync(configPath, configContent);
     };
