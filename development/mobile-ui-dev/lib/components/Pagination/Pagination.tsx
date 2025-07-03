@@ -109,7 +109,7 @@ export const Pagination = ({
   const renderPageButton = (page: number, label?: string, isDisabled?: boolean) => {
     const isActive = page === currentPage;
     const buttonDisabled = disabled || isDisabled;
-    
+
     return (
       <TouchableOpacity
         key={`page-${page}`}
@@ -118,11 +118,7 @@ export const Pagination = ({
         accessibilityRole="button"
         accessibilityLabel={`Page ${label || page}`}
         testID={`${testID}-page-${page}`}
-        style={[
-          themeStyles.button,
-          isActive && themeStyles.buttonActive,
-          buttonDisabled && themeStyles.buttonDisabled,
-        ]}
+        style={[themeStyles.button, isActive && themeStyles.buttonActive, buttonDisabled && themeStyles.buttonDisabled]}
       >
         <Text
           style={[
@@ -141,9 +137,9 @@ export const Pagination = ({
     <View style={[themeStyles.container, style]} testID={testID}>
       {showFirstLast && renderPageButton(1, '«', currentPage === 1)}
       {showPrevNext && renderPageButton(Math.max(1, currentPage - 1), '‹', currentPage === 1)}
-      
+
       {visiblePages.map(page => renderPageButton(page))}
-      
+
       {showPrevNext && renderPageButton(Math.min(totalPages, currentPage + 1), '›', currentPage === totalPages)}
       {showFirstLast && renderPageButton(totalPages, '»', currentPage === totalPages)}
     </View>

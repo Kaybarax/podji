@@ -176,7 +176,7 @@ export const DatePicker = ({
     const month = date.getMonth() + 1;
     const day = date.getDate();
     const year = date.getFullYear();
-    
+
     if (format === 'MM/DD/YYYY') {
       return `${month.toString().padStart(2, '0')}/${day.toString().padStart(2, '0')}/${year}`;
     } else if (format === 'DD/MM/YYYY') {
@@ -184,7 +184,7 @@ export const DatePicker = ({
     } else if (format === 'YYYY-MM-DD') {
       return `${year}-${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}`;
     }
-    
+
     return `${month.toString().padStart(2, '0')}/${day.toString().padStart(2, '0')}/${year}`;
   };
 
@@ -223,10 +223,10 @@ export const DatePicker = ({
   };
 
   const isDateSelected = (date: Date): boolean => {
-    return selectedDate ? 
-      date.getDate() === selectedDate.getDate() && 
-      date.getMonth() === selectedDate.getMonth() && 
-      date.getFullYear() === selectedDate.getFullYear() 
+    return selectedDate
+      ? date.getDate() === selectedDate.getDate() &&
+          date.getMonth() === selectedDate.getMonth() &&
+          date.getFullYear() === selectedDate.getFullYear()
       : false;
   };
 
@@ -235,33 +235,33 @@ export const DatePicker = ({
     const monthEnd = new Date(currentMonth.getFullYear(), currentMonth.getMonth() + 1, 0);
     const startDate = new Date(monthStart);
     const endDate = new Date(monthEnd);
-    
+
     // Adjust to start from Sunday
     startDate.setDate(1 - monthStart.getDay());
-    
+
     // Ensure we have 6 weeks displayed (42 days)
     endDate.setDate(monthEnd.getDate() + (6 * 7 - (monthEnd.getDate() + monthStart.getDay())));
-    
+
     const days = [];
     const currentDate = new Date(startDate);
-    
+
     // Add weekday headers
     const weekdays = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];
     weekdays.forEach(day => {
       days.push(
         <View key={`header-${day}`} style={themeStyles.calendarDay}>
           <Text style={themeStyles.calendarHeaderText}>{day}</Text>
-        </View>
+        </View>,
       );
     });
-    
+
     // Add calendar days
     while (currentDate <= endDate) {
       const dateClone = new Date(currentDate);
       const isDisabled = isDateDisabled(dateClone);
       const isSelected = isDateSelected(dateClone);
       const isCurrentMonth = currentDate.getMonth() === currentMonth.getMonth();
-      
+
       days.push(
         <TouchableOpacity
           key={`day-${currentDate.toISOString()}`}
@@ -283,12 +283,12 @@ export const DatePicker = ({
           >
             {currentDate.getDate()}
           </Text>
-        </TouchableOpacity>
+        </TouchableOpacity>,
       );
-      
+
       currentDate.setDate(currentDate.getDate() + 1);
     }
-    
+
     return days;
   };
 
@@ -305,13 +305,8 @@ export const DatePicker = ({
           {selectedDate ? formatDate(selectedDate) : placeholder}
         </Text>
       </TouchableOpacity>
-      
-      <Modal
-        visible={isOpen}
-        transparent
-        animationType="fade"
-        onRequestClose={handleClosePicker}
-      >
+
+      <Modal visible={isOpen} transparent animationType="fade" onRequestClose={handleClosePicker}>
         <TouchableOpacity
           style={{
             flex: 1,
@@ -325,31 +320,23 @@ export const DatePicker = ({
           <View
             style={themeStyles.calendarContainer}
             onStartShouldSetResponder={() => true}
-            onTouchEnd={(e) => e.stopPropagation()}
+            onTouchEnd={e => e.stopPropagation()}
           >
             <View style={themeStyles.calendarControls}>
-              <TouchableOpacity
-                style={themeStyles.calendarControlButton}
-                onPress={handlePrevMonth}
-              >
+              <TouchableOpacity style={themeStyles.calendarControlButton} onPress={handlePrevMonth}>
                 <Text style={themeStyles.calendarControlButtonText}>{'<'}</Text>
               </TouchableOpacity>
-              
+
               <Text style={themeStyles.calendarHeaderText}>
                 {currentMonth.toLocaleString('default', { month: 'long', year: 'numeric' })}
               </Text>
-              
-              <TouchableOpacity
-                style={themeStyles.calendarControlButton}
-                onPress={handleNextMonth}
-              >
+
+              <TouchableOpacity style={themeStyles.calendarControlButton} onPress={handleNextMonth}>
                 <Text style={themeStyles.calendarControlButtonText}>{'>'}</Text>
               </TouchableOpacity>
             </View>
-            
-            <View style={themeStyles.calendarGrid}>
-              {renderCalendar()}
-            </View>
+
+            <View style={themeStyles.calendarGrid}>{renderCalendar()}</View>
           </View>
         </TouchableOpacity>
       </Modal>

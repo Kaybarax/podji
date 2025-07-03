@@ -8,7 +8,7 @@ describe('Badge Component', () => {
     const { getByTestId } = render(
       <Badge testID="test-badge" content={5}>
         <Text>Content</Text>
-      </Badge>
+      </Badge>,
     );
     expect(getByTestId('test-badge')).toBeTruthy();
   });
@@ -17,7 +17,7 @@ describe('Badge Component', () => {
     const { getByText } = render(
       <Badge content={5}>
         <Text>Content</Text>
-      </Badge>
+      </Badge>,
     );
     expect(getByText('5')).toBeTruthy();
   });
@@ -26,7 +26,7 @@ describe('Badge Component', () => {
     const { getByText } = render(
       <Badge content={150} max={99}>
         <Text>Content</Text>
-      </Badge>
+      </Badge>,
     );
     expect(getByText('99+')).toBeTruthy();
   });
@@ -35,7 +35,7 @@ describe('Badge Component', () => {
     const { queryByText } = render(
       <Badge content={5} dot>
         <Text>Content</Text>
-      </Badge>
+      </Badge>,
     );
     expect(queryByText('5')).toBeNull();
   });
@@ -44,7 +44,7 @@ describe('Badge Component', () => {
     const { getByText, queryByTestId } = render(
       <Badge content={5} visible={false} testID="test-badge">
         <Text>Content</Text>
-      </Badge>
+      </Badge>,
     );
     expect(getByText('Content')).toBeTruthy();
     expect(queryByTestId('test-badge')).toBeNull();
@@ -54,30 +54,21 @@ describe('Badge Component', () => {
     const { getByTestId } = render(
       <Badge content={5} style={{ backgroundColor: 'red' }} testID="test-badge">
         <Text>Content</Text>
-      </Badge>
+      </Badge>,
     );
-    
+
     const badgeElement = getByTestId('test-badge');
-    expect(badgeElement.props.style).toEqual(
-      expect.arrayContaining([
-        expect.anything(),
-        { backgroundColor: 'red' }
-      ])
-    );
+    expect(badgeElement.props.style).toEqual(expect.arrayContaining([expect.anything(), { backgroundColor: 'red' }]));
   });
 
   it('renders with different variants', () => {
     const variants = ['primary', 'secondary', 'success', 'warning', 'error', 'info'];
-    
+
     variants.forEach(variant => {
       const { getByTestId } = render(
-        <Badge 
-          content={5} 
-          variant={variant as any} 
-          testID={`test-badge-${variant}`}
-        >
+        <Badge content={5} variant={variant as any} testID={`test-badge-${variant}`}>
           <Text>Content</Text>
-        </Badge>
+        </Badge>,
       );
       expect(getByTestId(`test-badge-${variant}`)).toBeTruthy();
     });
@@ -85,16 +76,12 @@ describe('Badge Component', () => {
 
   it('renders with different sizes', () => {
     const sizes = ['small', 'medium', 'large'];
-    
+
     sizes.forEach(size => {
       const { getByTestId } = render(
-        <Badge 
-          content={5} 
-          size={size as any} 
-          testID={`test-badge-${size}`}
-        >
+        <Badge content={5} size={size as any} testID={`test-badge-${size}`}>
           <Text>Content</Text>
-        </Badge>
+        </Badge>,
       );
       expect(getByTestId(`test-badge-${size}`)).toBeTruthy();
     });

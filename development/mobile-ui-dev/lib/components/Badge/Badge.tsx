@@ -31,14 +31,14 @@ export const Badge = ({
     const loadTheme = async () => {
       try {
         const theme = await getMobileTheme();
-        
+
         // Determine badge size
         const badgeSize = {
           small: 16,
           medium: 20,
           large: 24,
         }[size || 'medium'];
-        
+
         // Determine font size
         const fontSize = {
           small: theme.light.typography.fontSize.xs,

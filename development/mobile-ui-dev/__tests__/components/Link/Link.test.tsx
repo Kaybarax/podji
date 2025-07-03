@@ -13,9 +13,9 @@ describe('Link Component', () => {
     const { getByText } = render(
       <Link href="https://example.com" onPress={onPressMock}>
         Test Link
-      </Link>
+      </Link>,
     );
-    
+
     fireEvent.press(getByText('Test Link'));
     expect(onPressMock).toHaveBeenCalledTimes(1);
   });
@@ -25,9 +25,9 @@ describe('Link Component', () => {
     const { getByText } = render(
       <Link href="https://example.com" onPress={onPressMock} disabled>
         Test Link
-      </Link>
+      </Link>,
     );
-    
+
     fireEvent.press(getByText('Test Link'));
     expect(onPressMock).not.toHaveBeenCalled();
   });
@@ -36,25 +36,20 @@ describe('Link Component', () => {
     const { getByText } = render(
       <Link href="https://example.com" style={{ color: 'red' }}>
         Test Link
-      </Link>
+      </Link>,
     );
-    
+
     const linkElement = getByText('Test Link');
-    expect(linkElement.props.style).toEqual(
-      expect.arrayContaining([
-        expect.anything(),
-        { color: 'red' }
-      ])
-    );
+    expect(linkElement.props.style).toEqual(expect.arrayContaining([expect.anything(), { color: 'red' }]));
   });
 
   it('applies testID', () => {
     const { getByTestId } = render(
       <Link href="https://example.com" testID="test-link">
         Test Link
-      </Link>
+      </Link>,
     );
-    
+
     expect(getByTestId('test-link')).toBeTruthy();
   });
 });

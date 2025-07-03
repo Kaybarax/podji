@@ -29,9 +29,10 @@ export const Link = ({
         const theme = await getMobileTheme();
         setThemeStyles({
           link: {
-            color: variant === 'primary' 
-              ? theme.light.color.component.link.text.base
-              : theme.light.color.semantic.text.secondary,
+            color:
+              variant === 'primary'
+                ? theme.light.color.component.link.text.base
+                : theme.light.color.semantic.text.secondary,
             textDecorationLine: 'underline',
             fontSize: theme.light.typography.fontSize.md,
           },
@@ -57,21 +58,14 @@ export const Link = ({
   };
 
   return (
-    <TouchableOpacity 
-      onPress={handlePress} 
+    <TouchableOpacity
+      onPress={handlePress}
       disabled={disabled}
       accessibilityRole="link"
       accessibilityHint={`Navigate to ${href}`}
       testID={testID}
     >
-      <Text 
-        style={[
-          disabled ? themeStyles.linkDisabled : themeStyles.link,
-          style
-        ]}
-      >
-        {children}
-      </Text>
+      <Text style={[disabled ? themeStyles.linkDisabled : themeStyles.link, style]}>{children}</Text>
     </TouchableOpacity>
   );
 };
