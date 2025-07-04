@@ -1,6 +1,6 @@
 // Implementation of the validateProfile utility function
 import { z } from 'zod';
-import { ProfileSchema, Profile } from './ProfileSchema.ts';
+import { ProfileSchema, Profile } from './ProfileSchema';
 
 /**
  * Validates a profile object against the ProfileSchema
