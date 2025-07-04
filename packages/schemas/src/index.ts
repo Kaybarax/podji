@@ -1,4 +1,4 @@
 // @schemas package entry point
-export * from './types';
+export * from './UserSchema';
 export * from './generated';
 export * from './validation';

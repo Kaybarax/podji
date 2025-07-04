@@ -2,7 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import { zodToTs } from 'zod-to-ts';
 import { ProfileSchema } from './profile';
-import { UserSchema } from './types';
+import { UserSchema } from './UserSchema';
 
 // Declare __dirname for TypeScript
 declare const __dirname: string;
@@ -19,7 +19,7 @@ if (!fs.existsSync(outputDir)) {
 // Using zodToTs to generate types (not using the result directly as we have predefined types)
 zodToTs(ProfileSchema, 'Profile');
 fs.writeFileSync(
-  path.join(outputDir, 'profile.types.ts'),
+  path.join(outputDir, 'profile.UserSchema.ts'),
   `// This file is auto-generated. Do not edit manually.
 export type Profile = {
   id: number;
@@ -48,7 +48,7 @@ export type Profile = {
 // Using zodToTs to generate types (not using the result directly as we have predefined types)
 zodToTs(UserSchema, 'User');
 fs.writeFileSync(
-  path.join(outputDir, 'user.types.ts'),
+  path.join(outputDir, 'user.UserSchema.ts'),
   `// This file is auto-generated. Do not edit manually.
 export type User = {
   id: string;
