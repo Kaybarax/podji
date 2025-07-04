@@ -3,11 +3,9 @@
  * Build utility for generating design tokens for web and mobile platforms
  */
 
-import { execSync } from 'child_process';
 import * as path from 'path';
 import * as fs from 'fs';
 import { fileURLToPath } from 'url';
-import { generateReactNativeStylesheet } from './generateReactNativeStylesheet.js';
 import { generateWebStylesheets } from './generateWebStylesheets.js';
 
 // ES module equivalent of __dirname
@@ -373,14 +371,16 @@ async function buildWebTokens(packageDir, webDistDir) {
           {
             destination: 'tailwind-tokens.js',
             format: 'javascript/module',
-            filter: (token) => {
-              return token.type === 'color' ||
+            filter: token => {
+              return (
+                token.type === 'color' ||
                 token.path[0] === 'color' ||
                 token.path[0] === 'spacing' ||
                 token.path[0] === 'borderRadius' ||
                 (token.path[0] === 'typography' &&
                   (token.path[1] === 'fontSize' || token.path[1] === 'fontWeight' || token.path[1] === 'lineHeight')) ||
-                token.path[0] === 'shadow';
+                token.path[0] === 'shadow'
+              );
             },
             options: {
               outputReferences: true,
@@ -523,14 +523,16 @@ async function buildMobileTokens(packageDir, mobileDistDir) {
           {
             destination: 'styled-theme.js',
             format: 'javascript/module',
-            filter: (token) => {
-              return token.type === 'color' ||
+            filter: token => {
+              return (
+                token.type === 'color' ||
                 token.path[0] === 'color' ||
                 token.path[0] === 'spacing' ||
                 token.path[0] === 'borderRadius' ||
                 (token.path[0] === 'typography' &&
                   (token.path[1] === 'fontSize' || token.path[1] === 'fontWeight' || token.path[1] === 'lineHeight')) ||
-                token.path[0] === 'shadow';
+                token.path[0] === 'shadow'
+              );
             },
             options: {
               outputReferences: true,

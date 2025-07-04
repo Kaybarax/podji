@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 // Type declarations for dynamically imported files
 
 // Web theme type
