@@ -1,7 +1,7 @@
 // noinspection ES6ConvertVarToLetConst
 
 import '@testing-library/jest-dom';
-import { queryClient } from '../lib/queryClient';
+import { queryClient } from './lib/queryClient';
 
 // Reset the QueryClient before each test
 beforeEach(() => {
