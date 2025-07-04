@@ -31,7 +31,7 @@ module.exports = {
       displayName: '@podji/stores',
       testMatch: ['<rootDir>/packages/stores/src/**/*.test.ts'],
       testEnvironment: 'jsdom',
-      setupFilesAfterEnv: ['<rootDir>/packages/stores/src/test/jest-setup.ts'],
+      setupFilesAfterEnv: ['<rootDir>/packages/stores/jest-setup.ts'],
       transform: {
         '^.+\\.tsx?$': [
           'ts-jest',
@@ -68,7 +68,7 @@ module.exports = {
         '^@podji/schemas/(.*)$': '<rootDir>/packages/schemas/$1',
         '^@podji/design-tokens$': '<rootDir>/packages/design-tokens/src',
         '^@podji/design-tokens/(.*)$': '<rootDir>/packages/design-tokens/$1',
-        '^@podji/services$': '<rootDir>/packages/services/src',
+        '^@podji/services$': '<rootDir>/packages/services/dist',
         '^@podji/services/(.*)$': '<rootDir>/packages/services/$1',
         '^@podji/stores$': '<rootDir>/apps/web/src/__mocks__/@podji/stores',
         '^@podji/stores/(.*)$': '<rootDir>/apps/web/src/__mocks__/@podji/stores/$1',

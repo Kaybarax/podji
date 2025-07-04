@@ -2,16 +2,16 @@ import { renderHook, waitFor } from '@testing-library/react';
 import { useProfileById } from '../lib/hooks';
 import { fetchProfileById } from '@podji/services';
 import { validateProfile } from '@podji/schemas';
-import { createWrapper } from './test-utils';
+import { createWrapper } from './utils';
 import { queryClient } from '../lib/queryClient';
 
 // Mock the fetchProfileById function
-jest.mock('@podji/services/src/api/profiles', () => ({
+jest.mock('@podji/services/lib/api/profiles', () => ({
   fetchProfileById: jest.fn(),
 }));
 
 // Mock the validateProfile function
-jest.mock('@podji/schemas/src/validation', () => ({
+jest.mock('@podji/schemas/lib/schemas/validation', () => ({
   validateProfile: jest.fn(),
 }));
 
