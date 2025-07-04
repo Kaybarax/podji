@@ -6,7 +6,19 @@ import tailwindcss from 'tailwindcss';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react(), dts({ include: ['lib'] })],
+  plugins: [
+    react(),
+    dts({
+      include: ['lib/**/*'],
+      outDir: 'dist',
+      insertTypesEntry: true,
+      rollupTypes: false,
+      copyDtsFiles: false,
+      staticImport: true,
+      clearPureImport: true,
+      entryRoot: 'lib',
+    }),
+  ],
   resolve: {
     alias: {
       // Use our shim directory for React Native imports
@@ -17,7 +29,9 @@ export default defineConfig({
     lib: {
       entry: resolve(__dirname, 'lib/main.ts'),
       formats: ['es'],
+      fileName: 'mobile-ui',
     },
+    outDir: 'dist',
     rollupOptions: {
       external: ['react', 'react/jsx-runtime', 'react-native'],
       onwarn(warning, warn) {
