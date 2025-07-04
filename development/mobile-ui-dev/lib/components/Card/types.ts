@@ -1,3 +1,5 @@
+import { ReactNode } from 'react';
+
 /**
  * CardProps interface for shared card component properties
  * This interface defines the common properties that can be used by both web and mobile card components
@@ -41,7 +43,7 @@ export interface CardProps {
   /**
    * The content of the card
    */
-  children?: React.ReactNode;
+  children?: ReactNode;
 }
 
 /**

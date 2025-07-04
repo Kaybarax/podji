@@ -5,7 +5,7 @@ import { resolve } from 'path';
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
-    dts({ 
+    dts({
       include: ['lib/**/*'],
       outDir: 'dist',
       insertTypesEntry: true,
@@ -13,14 +13,14 @@ export default defineConfig({
       copyDtsFiles: false,
       staticImport: true,
       clearPureImport: true,
-      entryRoot: 'lib'
-    })
+      entryRoot: 'lib',
+    }),
   ],
   build: {
     lib: {
       entry: resolve(__dirname, 'lib/main.ts'),
       formats: ['es'],
-      fileName: 'schemas'
+      fileName: 'schemas',
     },
     outDir: 'dist',
     copyPublicDir: false,
