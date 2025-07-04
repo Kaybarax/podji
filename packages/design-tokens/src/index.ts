@@ -1,8 +1,8 @@
-// Export build utility
-export * from './buildTokens.ts';
+// Build utility is not exported as it's only used during build time
+// export * from './buildTokens.ts';
 
 // Export type definitions
-export * from './types.ts';
+export * from './types';
 
 // Web platform exports
 // Export web theme

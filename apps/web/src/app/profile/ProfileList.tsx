@@ -8,39 +8,56 @@ import { validateProfile } from '@podji/schemas';
 const PROFILES_PER_PAGE = 10;
 
 export default function ProfileList() {
-  const { data, error, fetchNextPage, hasNextPage, isFetchingNextPage, status } = useInfiniteQuery({
-    queryKey: ['profiles'],
-    queryFn: async ({ pageParam = 0 }) => {
-      const skip = pageParam * PROFILES_PER_PAGE;
-      const profilesData = await fetchProfiles(PROFILES_PER_PAGE, skip);
+  // Check if we're running in a browser environment before using hooks
+  const isBrowser = typeof window !== 'undefined';
 
-      if ('error' in profilesData) {
-        throw new Error(profilesData.error);
-      }
+  // Only use React Query if we're in a browser environment
+  const queryResult = isBrowser
+    ? useInfiniteQuery({
+        queryKey: ['profiles'],
+        queryFn: async ({ pageParam = 0 }) => {
+          const skip = pageParam * PROFILES_PER_PAGE;
+          const profilesData = await fetchProfiles(PROFILES_PER_PAGE, skip);
 
-      // Validate each profile
-      const validatedProfiles = profilesData
-        .map((profile: any) => {
-          const validationResult = validateProfile(profile);
-          if (!validationResult.success) {
-            console.warn(`Invalid profile data: ${validationResult.error}`);
-            return null;
+          if ('error' in profilesData) {
+            throw new Error(profilesData.error);
           }
-          return validationResult.data;
-        })
-        .filter(Boolean); // Filter out null values
 
-      return {
-        profiles: validatedProfiles,
-        nextPage: validatedProfiles.length === PROFILES_PER_PAGE ? pageParam + 1 : undefined,
+          // Validate each profile
+          const validatedProfiles = profilesData
+            .map((profile: any) => {
+              const validationResult = validateProfile(profile);
+              if (!validationResult.success) {
+                console.warn(`Invalid profile data: ${validationResult.error}`);
+                return null;
+              }
+              return validationResult.data;
+            })
+            .filter(Boolean); // Filter out null values
+
+          return {
+            profiles: validatedProfiles,
+            nextPage: validatedProfiles.length === PROFILES_PER_PAGE ? pageParam + 1 : undefined,
+          };
+        },
+        initialPageParam: 0,
+        getNextPageParam: lastPage => lastPage.nextPage,
+      })
+    : {
+        data: undefined,
+        error: null,
+        fetchNextPage: () => {},
+        hasNextPage: false,
+        isFetchingNextPage: false,
+        status: 'loading',
       };
-    },
-    initialPageParam: 0,
-    getNextPageParam: lastPage => lastPage.nextPage,
-  });
 
-  // Intersection Observer for infinite scrolling
+  const { data, error, fetchNextPage, hasNextPage, isFetchingNextPage, status } = queryResult;
+
+  // Intersection Observer for infinite scrolling - only run in browser
   useEffect(() => {
+    if (!isBrowser) return; // Skip effect during SSR
+
     const observer = new IntersectionObserver(
       entries => {
         if (entries[0].isIntersecting && hasNextPage && !isFetchingNextPage) {
@@ -60,7 +77,7 @@ export default function ProfileList() {
         observer.unobserve(loadMoreElement);
       }
     };
-  }, [fetchNextPage, hasNextPage, isFetchingNextPage]);
+  }, [fetchNextPage, hasNextPage, isFetchingNextPage, isBrowser]);
 
   if (status === 'pending') {
     return (
@@ -71,10 +88,18 @@ export default function ProfileList() {
     );
   }
 
-  if (status === 'error') {
+  if (status === 'error' && error) {
     return (
       <div className="bg-red-100 p-6 rounded-lg shadow-md">
         <p className="text-lg text-red-600">Error loading profiles: {error.message}</p>
+      </div>
+    );
+  }
+
+  if (status === 'error') {
+    return (
+      <div className="bg-red-100 p-6 rounded-lg shadow-md">
+        <p className="text-lg text-red-600">Error loading profiles</p>
       </div>
     );
   }

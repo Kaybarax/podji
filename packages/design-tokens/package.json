@@ -3,8 +3,16 @@
   "version": "1.0.0",
   "private": true,
   "type": "module",
-  "main": "dist/index.js",
+  "main": "dist/design-tokens.js",
+  "module": "dist/design-tokens.js",
   "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/design-tokens.js",
+      "require": "./dist/design-tokens.js"
+    }
+  },
   "files": [
     "dist"
   ],
@@ -16,7 +24,7 @@
     "build:tokens:web": "style-dictionary build --config sd.config.web.js",
     "build:tokens:mobile": "style-dictionary build --config sd.config.mobile.js && node scripts/generateThemeStylesheet.js && node scripts/fixStyledTheme.js && node scripts/finalFixes.js",
     "build:tokens:react-native": "style-dictionary build --config sd.config.react-native.js",
-    "build": "yarn clean yarn build:tokens && tsc --p ./tsconfig.build.json && vite build",
+    "build": "yarn clean && yarn build:tokens && tsc --p ./tsconfig.build.json && vite build",
     "test": "jest",
     "preview": "vite preview"
   },
