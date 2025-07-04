@@ -1,7 +1,7 @@
 import { renderHook, waitFor } from '@testing-library/react';
 import { useProfileById } from './useProfileById';
 import { fetchProfileById } from '@podji/services/src/api/profiles';
-import { validateProfile } from '@podji/schemas/src/validation';
+import { validateProfile } from '@podji/schemas';
 import { createWrapper } from '../test-utils';
 import { queryClient } from '../queryClient';
 

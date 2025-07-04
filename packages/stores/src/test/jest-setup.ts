@@ -1,5 +1,6 @@
+// noinspection ES6ConvertVarToLetConst
+
 import '@testing-library/jest-dom';
-import React from 'react';
 import { queryClient } from '../queryClient';
 
 // Reset the QueryClient before each test
@@ -9,8 +10,9 @@ beforeEach(() => {
 });
 
 // Configure React 18's act environment
-// Add the property to the global object
+// Adds the property to the global object
 declare global {
+  // eslint-disable-next-line no-var
   var IS_REACT_ACT_ENVIRONMENT: boolean;
 }
 

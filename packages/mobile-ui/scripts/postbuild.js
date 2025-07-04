@@ -20,7 +20,7 @@ const __dirname = path.dirname(__filename);
 // Paths
 const distDir = path.resolve(__dirname, '../dist');
 const distLibDir = path.resolve(__dirname, '../dist/lib');
-// const libDir = path.resolve(__dirname, '../lib');
+const libDir = path.resolve(__dirname, '../lib');
 const mainDtsPath = path.resolve(distDir, 'main.d.ts');
 const mobileUiJsPath = path.resolve(distDir, 'mobile-ui.js');
 
@@ -76,10 +76,10 @@ async function main() {
     console.log('Running post-build finalization...');
 
     // Step 1: Remove the lib folder
-    // if (fs.existsSync(libDir)) {
-    //   console.log('Removing lib directory...');
-    //   fs.rmSync(libDir, { recursive: true, force: true });
-    // }
+    if (fs.existsSync(libDir)) {
+      console.log('Removing lib directory...');
+      fs.rmSync(libDir, { recursive: true, force: true });
+    }
 
     // Step 2: Check if dist/lib exists before proceeding
     if (!fs.existsSync(distLibDir)) {

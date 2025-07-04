@@ -1,10 +1,10 @@
 // Import the ProfileSchema
-import { ProfileSchema, parseProfile } from './profile';
+import { Profile, parseProfile } from '../lib/schemas/ProfileSchema';
 
 describe('ProfileSchema', () => {
   it('should successfully parse a valid profile object', () => {
     // Arrange
-    const validProfile = {
+    const validProfile: Profile = {
       id: 1,
       firstName: 'John',
       lastName: 'Doe',
@@ -27,7 +27,7 @@ describe('ProfileSchema', () => {
 
     // Act & Assert
     expect(() => {
-      const result = ProfileSchema.parse(validProfile);
+      const result = parseProfile(validProfile);
       expect(result).toEqual(validProfile);
     }).not.toThrow();
   });
@@ -57,7 +57,7 @@ describe('ProfileSchema', () => {
 
     // Act & Assert
     expect(() => {
-      ProfileSchema.parse(invalidProfile);
+      parseProfile(invalidProfile);
     }).toThrow();
   });
 
@@ -85,7 +85,7 @@ describe('ProfileSchema', () => {
 
     // Act & Assert
     expect(() => {
-      ProfileSchema.parse(invalidProfile);
+      parseProfile(invalidProfile);
     }).toThrow();
   });
 
@@ -114,7 +114,7 @@ describe('ProfileSchema', () => {
 
     // Act & Assert
     expect(() => {
-      ProfileSchema.parse(invalidProfile);
+      parseProfile(invalidProfile);
     }).toThrow();
   });
 
@@ -143,7 +143,7 @@ describe('ProfileSchema', () => {
 
     // Act & Assert
     expect(() => {
-      ProfileSchema.parse(invalidProfile);
+      parseProfile(invalidProfile);
     }).toThrow();
   });
 });

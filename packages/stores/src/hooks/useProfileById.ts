@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
-import { fetchProfileById } from '@podji/services/src/api/profiles';
-import { validateProfile } from '@podji/schemas/src/validation';
+import { fetchProfileById } from '@podji/services';
+import { validateProfile } from '@podji/schemas';
 
 /**
  * Hook for fetching and managing a single profile by ID

@@ -4,6 +4,7 @@ import { queryClient } from './queryClient';
 
 // Create a wrapper component for tests that need QueryClientProvider
 export const createWrapper = () => {
+  // eslint-disable-next-line react/display-name
   return ({ children }: { children: React.ReactNode }) => (
     <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
   );

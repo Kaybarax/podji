@@ -1,5 +1,5 @@
 // Tests for validateProfile utility function
-import { validateProfile } from './validation';
+import { validateProfile } from '../lib/schemas/validation';
 
 describe('validateProfile', () => {
   it('should return success true and validated data for a valid profile', () => {
