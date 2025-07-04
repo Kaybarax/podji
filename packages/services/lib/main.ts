@@ -1,4 +1,4 @@
 // services package entry point
-export * from './services';
+export * from './service';
 export * from './api';
 export * from './utils';

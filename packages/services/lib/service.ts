@@ -18,13 +18,13 @@ export class ApiService {
   }
 
   // Generic POST method
-  async post<T>(url: string, data?: any, config?: AxiosRequestConfig): Promise<T> {
+  async post<T>(url: string, data?: never, config?: AxiosRequestConfig): Promise<T> {
     const response: AxiosResponse<T> = await this.api.post(url, data, config);
     return response.data;
   }
 
   // Generic PUT method
-  async put<T>(url: string, data?: any, config?: AxiosRequestConfig): Promise<T> {
+  async put<T>(url: string, data?: never, config?: AxiosRequestConfig): Promise<T> {
     const response: AxiosResponse<T> = await this.api.put(url, data, config);
     return response.data;
   }
@@ -44,11 +44,11 @@ export class UserService extends ApiService {
 
   // Get user by ID
   async getUserById(id: string) {
-    return this.get<any>(`/${id}`);
+    return this.get<never>(`/${id}`);
   }
 
   // Create a new user
-  async createUser(userData: any) {
-    return this.post<any>('/', userData);
+  async createUser(userData: never) {
+    return this.post<never>('/', userData);
   }
 }
