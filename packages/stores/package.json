@@ -11,7 +11,7 @@
   "scripts": {
     "dev": "vite",
     "clean": "rimraf dist && rimraf tsconfig.build.tsbuildinfo",
-    "build": "yarn clean && vite build",
+    "build": "yarn clean && tsc --p ./tsconfig.build.json && vite build",
     "preview": "vite preview",
     "test": "jest"
   },
