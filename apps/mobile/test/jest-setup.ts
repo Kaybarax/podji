@@ -1,7 +1,8 @@
 import '@testing-library/jest-dom';
+import React from 'react';
 
-// Define __DEV__ global variable
-global.__DEV__ = true;
+// Define __DEV__ global variable - use type assertion to avoid conflicts
+(global as any).__DEV__ = true;
 
 // Mock React Query
 jest.mock('@tanstack/react-query', () => {
@@ -14,7 +15,7 @@ jest.mock('@tanstack/react-query', () => {
       mount: jest.fn(),
       unmount: jest.fn(),
     })),
-    QueryClientProvider: ({ children }) => children,
+    QueryClientProvider: ({ children }: { children: React.ReactNode }) => children,
   };
 });
 
