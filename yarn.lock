@@ -4950,7 +4950,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tanstack/react-query@npm:^5.80.6":
+"@tanstack/react-query@npm:^5.80.6, @tanstack/react-query@npm:^5.81.5":
   version: 5.81.5
   resolution: "@tanstack/react-query@npm:5.81.5"
   dependencies:
@@ -14491,6 +14491,7 @@ __metadata:
     "@react-navigation/bottom-tabs": "npm:^7.3.10"
     "@react-navigation/elements": "npm:^2.3.8"
     "@react-navigation/native": "npm:^7.1.6"
+    "@tanstack/react-query": "npm:^5.81.5"
     "@testing-library/react-native": "npm:^12.4.3"
     "@types/jest": "npm:^29.5.12"
     "@types/react": "npm:~19.0.10"

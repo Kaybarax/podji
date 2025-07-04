@@ -101,7 +101,7 @@
       "prettier --write"
     ]
   },
-  "description": "React Next.js and Expo React Native Monorepo",
+  "description": "PodJi Monorepo",
   "author": "",
   "license": "ISC",
   "dependencies": {

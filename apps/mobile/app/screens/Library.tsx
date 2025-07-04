@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import { Dropdown, Modal, Slider, TextInput } from '@podji/mobile-ui';
-import NavigationBar from '../components/NavigationBar';
-import BottomNavigation from '../components/BottomNavigation';
+import { SimpleTextInput, SimpleDropdown, SimpleModal } from '../components/SimpleComponents';
+import { SimpleNavigationBar, SimpleBottomNavigation } from '../components/SimpleNavigation';
 
 // Define track interface
 interface Track {
@@ -161,7 +160,7 @@ const Library: React.FC<LibraryProps> = ({ activeTab, onTabPress }) => {
   return (
     <View style={styles.container}>
       {/* Top Navigation Bar */}
-      <NavigationBar
+      <SimpleNavigationBar
         title="Library"
         showNotification={true}
         showSearch={true}
@@ -172,14 +171,14 @@ const Library: React.FC<LibraryProps> = ({ activeTab, onTabPress }) => {
       {/* Search and Filter */}
       <View style={styles.searchContainer}>
         {/* @ts-ignore - React version mismatch with mobile-ui */}
-        <TextInput
+        <SimpleTextInput
           placeholder="Search tracks, artists, albums..."
           value={searchText}
           onChangeText={setSearchText}
           style={styles.searchInput}
         />
         {/* @ts-ignore - React version mismatch with mobile-ui */}
-        <Dropdown
+        <SimpleDropdown
           items={filterOptions}
           selectedValue={filterBy}
           onValueChange={handleSetFilterBy}
@@ -197,9 +196,8 @@ const Library: React.FC<LibraryProps> = ({ activeTab, onTabPress }) => {
 
       {/* Action Sheet Modal */}
       {/* @ts-ignore - React version mismatch with mobile-ui */}
-      <Modal visible={showActionSheet} onClose={() => setShowActionSheet(false)}>
+      <SimpleModal visible={showActionSheet} onClose={() => setShowActionSheet(false)} title="Track Options">
         <View style={styles.actionSheet}>
-          <Text style={styles.actionSheetTitle}>Track Options</Text>
           <TouchableOpacity style={styles.actionButton} onPress={handleAddToPlaylist}>
             <Text style={styles.actionButtonText}>Add to Playlist</Text>
           </TouchableOpacity>
@@ -207,10 +205,10 @@ const Library: React.FC<LibraryProps> = ({ activeTab, onTabPress }) => {
             <Text style={styles.actionButtonText}>Add to Queue</Text>
           </TouchableOpacity>
         </View>
-      </Modal>
+      </SimpleModal>
 
       {/* Bottom Tab Navigation */}
-      <BottomNavigation activeTab={activeTab} onTabPress={handleTabPress} />
+      <SimpleBottomNavigation activeTab={activeTab} onTabPress={handleTabPress} />
     </View>
   );
 };
