@@ -41,7 +41,7 @@
     "turbo:build:web": "turbo run build --filter=podji-web",
     "dev:mobile": "yarn workspace podji-mobile start -c",
     "turbo:dev:mobile": "turbo run dev --filter=podji-mobile",
-    "build": "yarn build:configs:tokens && yarn build:schemas && yarn build:services && yarn build:stores && yarn build:mobile-ui && yarn build:web-ui",
+    "build": "yarn build:tokens && yarn build:schemas && yarn build:services && yarn build:stores && yarn build:mobile-ui && yarn build:web-ui",
     "turbo:build:packages": "turbo run build --filter='./packages/**'",
     "turbo:build": "turbo run build",
     "turbo": "dotenv -- npx turbo run deploy",
