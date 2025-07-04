@@ -13,6 +13,7 @@
     "isolatedModules": true,
     "composite": true,
     "emitDeclarationOnly": true,
+    "noEmit": true,
     "jsx": "react-jsx",
 
     /* Linting */
@@ -21,6 +22,6 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["lib"],
+  "include": ["src", "lib"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /**
  * Pre-build script to prepare the build process
  *

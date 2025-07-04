@@ -9,7 +9,8 @@
     "dev": "vite",
     "clean": "rimraf dist && rimraf lib && rimraf tsconfig.tsbuildinfo",
     "prebuild": "node scripts/prebuild.js",
-    "build": "yarn clean && yarn run prebuild && tsc --p tsconfig.build.json && vite build",
+    "postbuild": "node scripts/postbuild.js",
+    "build": "yarn clean && yarn run prebuild && tsc --p tsconfig.build.json && vite build && yarn run postbuild",
     "preview": "vite preview"
   },
   "dependencies": {

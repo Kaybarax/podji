@@ -3,7 +3,7 @@
  * This file is used to fix the import error in the codegenNativeComponent.js file
  */
 
-// Export a dummy function that matches the signature of the original
+// Export a fake function that matches the signature of the original
 export default function requireNativeComponent(viewName, componentInterface, options) {
   return {
     __TYPE: 'NativeComponent',

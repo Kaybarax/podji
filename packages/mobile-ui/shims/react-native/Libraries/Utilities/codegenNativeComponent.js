@@ -7,9 +7,8 @@
 import { HostComponent } from '../../src/private/types/HostComponent.js';
 import requireNativeComponent from '../../Libraries/ReactNative/requireNativeComponent.js';
 
-// Export a dummy function that matches the signature of the original
+// Export a fake function that matches the signature of the original
 export default function codegenNativeComponent(componentName, options) {
   // Use HostComponent to avoid linting error
-  const componentType = HostComponent;
-  return requireNativeComponent(componentName, componentType, options);
+  return requireNativeComponent(componentName, HostComponent, options);
 }
