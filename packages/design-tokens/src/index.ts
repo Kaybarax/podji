@@ -1,5 +1,5 @@
-// Build utility is not exported as it's only used during build time
-// export * from './buildTokens.ts';
+// Export build utility
+export * from './buildTokens';
 
 // Export type definitions
 export * from './types';
@@ -12,7 +12,7 @@ export const getWebTheme = async (): Promise<Record<string, any>> => {
   try {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore - This file is generated during build
-    const theme = (await import('../dist/web/theme')) as WebTheme;
+    const theme = (await import('../dist/web/theme.js')) as WebTheme;
     return theme.theme;
   } catch (error) {
     console.error('Failed to load web theme:', error);

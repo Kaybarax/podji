@@ -15,159 +15,6 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 /**
- * Preprocesses the design tokens JSON to fix reference issues
- */
-function preprocessTokens(inputPath, outputPath) {
-  console.log(`Preprocessing tokens from ${inputPath} to ${outputPath}...`);
-
-  // Read the original tokens file
-  const tokensContent = fs.readFileSync(inputPath, 'utf8');
-  const tokens = JSON.parse(tokensContent);
-
-  // Process the tokens to handle references correctly
-  const processTokens = obj => {
-    for (const key in obj) {
-      if (typeof obj[key] === 'object' && obj[key] !== null) {
-        if (
-          obj[key].value &&
-          typeof obj[key].value === 'string' &&
-          obj[key].value.includes('{') &&
-          obj[key].value.includes('}')
-        ) {
-          // Handle references in the format {color.primitive.cyan.value}
-          obj[key].value = obj[key].value.replace(/\{([^}]+)\.value\}/g, '{$1}');
-
-          // Handle references with hyphens in the path
-          if (obj[key].value.includes('-')) {
-            // Replace hyphens in token names with underscores
-            obj[key].value = obj[key].value.replace(/\{([^}]+)-([^}]+)\.([^}]+)\}/g, '{$1_$2.$3}');
-            obj[key].value = obj[key].value.replace(/\{([^}]+)\.([^}]+)-([^}]+)\.([^}]+)\}/g, '{$1.$2_$3.$4}');
-            obj[key].value = obj[key].value.replace(/\{([^}]+)\.([^}]+)\.([^}]+)-([^}]+)\}/g, '{$1.$2.$3_$4}');
-          }
-        }
-        processTokens(obj[key]);
-      }
-    }
-    return obj;
-  };
-
-  // Process token references
-  const processedTokens = processTokens(tokens);
-
-  // Add missing slider component references
-  const addMissingReferences = obj => {
-    // Check if component.theme exists
-    if (obj.component && obj.component.theme) {
-      // Add missing light slider references
-      if (obj.component.theme.light && obj.component.theme.light.slider) {
-        // Add color.component.light if it doesn't exist
-        if (!obj.color) obj.color = {};
-        if (!obj.color.component) obj.color.component = {};
-        if (!obj.color.component.light) obj.color.component.light = {};
-        if (!obj.color.component.light.slider) obj.color.component.light.slider = {};
-
-        // Add missing track background
-        if (!obj.color.component.light.slider.track) obj.color.component.light.slider.track = {};
-        if (!obj.color.component.light.slider.track.background) {
-          obj.color.component.light.slider.track.background = {
-            value: '#EEEEEE',
-            type: 'color',
-          };
-        }
-
-        // Add missing thumb background
-        if (!obj.color.component.light.slider.thumb) obj.color.component.light.slider.thumb = {};
-        if (!obj.color.component.light.slider.thumb.background) {
-          obj.color.component.light.slider.thumb.background = {
-            value: '#ACEEF3',
-            type: 'color',
-          };
-        }
-
-        // Add missing thumb shadow
-        if (!obj.color.component.light.slider.thumb.shadow) {
-          obj.color.component.light.slider.thumb.shadow = {
-            value: 'rgba(0, 0, 0, 0.2)',
-            type: 'color',
-          };
-        }
-      }
-
-      // Add missing dark slider references
-      if (obj.component.theme.dark && obj.component.theme.dark.slider) {
-        // Add color.component.dark if it doesn't exist
-        if (!obj.color) obj.color = {};
-        if (!obj.color.component) obj.color.component = {};
-        if (!obj.color.component.dark) obj.color.component.dark = {};
-        if (!obj.color.component.dark.slider) obj.color.component.dark.slider = {};
-
-        // Add missing track background
-        if (!obj.color.component.dark.slider.track) obj.color.component.dark.slider.track = {};
-        if (!obj.color.component.dark.slider.track.background) {
-          obj.color.component.dark.slider.track.background = {
-            value: '#424242',
-            type: 'color',
-          };
-        }
-
-        // Add missing thumb background
-        if (!obj.color.component.dark.slider.thumb) obj.color.component.dark.slider.thumb = {};
-        if (!obj.color.component.dark.slider.thumb.background) {
-          obj.color.component.dark.slider.thumb.background = {
-            value: '#289BAA',
-            type: 'color',
-          };
-        }
-
-        // Add missing thumb shadow
-        if (!obj.color.component.dark.slider.thumb.shadow) {
-          obj.color.component.dark.slider.thumb.shadow = {
-            value: 'rgba(0, 0, 0, 0.4)',
-            type: 'color',
-          };
-        }
-      }
-    }
-
-    return obj;
-  };
-
-  // Add missing references
-  const processedTokensWithAddedReferences = addMissingReferences(processedTokens);
-
-  // Also fix token names with hyphens
-  const fixTokenNames = (obj, path = []) => {
-    const result = {};
-
-    for (const key in obj) {
-      const newKey = key.replace(/-/g, '_');
-      const newPath = [...path, newKey];
-
-      if (typeof obj[key] === 'object' && obj[key] !== null) {
-        if (obj[key].value !== undefined) {
-          // This is a token
-          result[newKey] = { ...obj[key] };
-        } else {
-          // This is a group
-          result[newKey] = fixTokenNames(obj[key], newPath);
-        }
-      } else {
-        result[newKey] = obj[key];
-      }
-    }
-
-    return result;
-  };
-
-  // Fix token names with hyphens
-  const processedTokensWithFixedNames = fixTokenNames(processedTokensWithAddedReferences);
-
-  // Write the processed tokens to the output file
-  fs.writeFileSync(outputPath, JSON.stringify(processedTokensWithFixedNames, null, 2));
-  console.log(`Tokens preprocessed successfully to ${outputPath}`);
-}
-
-/**
  * Ensures that the specified directory exists
  */
 function ensureDirectoryExists(dirPath) {
@@ -487,30 +334,6 @@ async function buildTokens() {
   ensureDirectoryExists(webDistDir);
   ensureDirectoryExists(mobileDistDir);
 
-  // Create a temporary directory for processed tokens
-  const tempDir = path.join(packageDir, 'temp');
-  ensureDirectoryExists(tempDir);
-
-  // Preprocess the design tokens
-  const originalTokensPath = path.join(packageDir, 'tokens', 'tokens.json');
-  const processedTokensPath = path.join(tempDir, 'processed-tokens.json');
-  preprocessTokens(originalTokensPath, processedTokensPath);
-
-  // Update the source path in the style dictionary config files
-  const updateConfigFile = configPath => {
-    let configContent = fs.readFileSync(configPath, 'utf8');
-    configContent = configContent.replace(
-      /source: \[['"]tokens\.json['"]\],/,
-      `source: ['temp/processed-tokens.json'],`,
-    );
-    fs.writeFileSync(configPath, configContent);
-  };
-
-  // Update all config files
-  updateConfigFile(path.join(packageDir, 'sd.config.web.js'));
-  updateConfigFile(path.join(packageDir, 'sd.config.mobile.js'));
-  updateConfigFile(path.join(packageDir, 'sd.config.react-native.js'));
-
   try {
     // Build web tokens
     console.log('Building web tokens...');
@@ -535,7 +358,7 @@ async function buildTokens() {
 
     // Compile TypeScript files to JavaScript
     console.log('Compiling TypeScript files to JavaScript...');
-    execSync('tsc --project tsconfig.build.json', {
+    execSync('tsc --project tsconfig.dist.json', {
       cwd: packageDir,
       stdio: 'inherit',
     });
@@ -546,50 +369,9 @@ async function buildTokens() {
     // Create index files
     createIndexFile(distDir);
 
-    // Clean up temporary files
-    if (fs.existsSync(tempDir)) {
-      fs.rmSync(tempDir, { recursive: true, force: true });
-    }
-
-    // Restore original config files
-    const restoreConfigFile = configPath => {
-      let configContent = fs.readFileSync(configPath, 'utf8');
-      configContent = configContent.replace(
-        /source: \[['"]temp\/processed-tokens\.json['"]\],/,
-        `source: ['tokens.json'],`,
-      );
-      fs.writeFileSync(configPath, configContent);
-    };
-
-    // Restore all config files
-    restoreConfigFile(path.join(packageDir, 'sd.config.web.js'));
-    restoreConfigFile(path.join(packageDir, 'sd.config.mobile.js'));
-    restoreConfigFile(path.join(packageDir, 'sd.config.react-native.js'));
-
     console.log('Design tokens built successfully!');
   } catch (error) {
     console.error('Error building design tokens:', error);
-
-    // Clean up temporary files even if there's an error
-    if (fs.existsSync(tempDir)) {
-      fs.rmSync(tempDir, { recursive: true, force: true });
-    }
-
-    // Restore original config files
-    const restoreConfigFile = configPath => {
-      let configContent = fs.readFileSync(configPath, 'utf8');
-      configContent = configContent.replace(
-        /source: \[['"]temp\/processed-tokens\.json['"]\],/,
-        `source: ['tokens.json'],`,
-      );
-      fs.writeFileSync(configPath, configContent);
-    };
-
-    // Restore all config files
-    restoreConfigFile(path.join(packageDir, 'sd.config.web.js'));
-    restoreConfigFile(path.join(packageDir, 'sd.config.mobile.js'));
-    restoreConfigFile(path.join(packageDir, 'sd.config.react-native.js'));
-
     throw error;
   }
 }

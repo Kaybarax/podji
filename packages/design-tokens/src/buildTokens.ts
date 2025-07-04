@@ -31,8 +31,8 @@ export function buildTokens(): void {
   const packageDir = path.resolve(__dirname, '..');
 
   // Ensure the web and mobile directories exist in dist
-  const webDistDir = path.join(packageDir, 'lib', 'web');
-  const mobileDistDir = path.join(packageDir, 'lib', 'mobile');
+  const webDistDir = path.join(packageDir, 'dist', 'web');
+  const mobileDistDir = path.join(packageDir, 'dist', 'mobile');
 
   ensureDirectoryExists(webDistDir);
   ensureDirectoryExists(mobileDistDir);

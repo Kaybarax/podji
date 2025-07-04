@@ -26,31 +26,27 @@ export function generateReactNativeStylesheet(mobileDistDir) {
     let match;
     while ((match = lightColorRegex.exec(themeContent)) !== null) {
       const colorName = match[1];
-      const colorValue = match[2];
-      lightColors[colorName] = colorValue;
+      lightColors[colorName] = match[2];
     }
 
-    // Extract color tokens for dark theme
+    // Extract color tokens for a dark theme
     const darkColorRegex = /export const (Color(?:Background|Text|Border).*?Dark) = "([^"]+)"/g;
     while ((match = darkColorRegex.exec(themeContent)) !== null) {
       const colorName = match[1];
-      const colorValue = match[2];
-      darkColors[colorName] = colorValue;
+      darkColors[colorName] = match[2];
     }
 
     // Extract reference colors
     const refLightColorRegex = /export const (ColorRefLight\w+) = "([^"]+)"/g;
     while ((match = refLightColorRegex.exec(themeContent)) !== null) {
       const colorName = match[1];
-      const colorValue = match[2];
-      lightColors[colorName] = colorValue;
+      lightColors[colorName] = match[2];
     }
 
     const refDarkColorRegex = /export const (ColorRefDark\w+) = "([^"]+)"/g;
     while ((match = refDarkColorRegex.exec(themeContent)) !== null) {
       const colorName = match[1];
-      const colorValue = match[2];
-      darkColors[colorName] = colorValue;
+      darkColors[colorName] = match[2];
     }
 
     const refNeutralColorRegex = /export const (ColorRefNeutral\w+) = "([^"]+)"/g;
@@ -65,42 +61,39 @@ export function generateReactNativeStylesheet(mobileDistDir) {
     const spacingRegex = /export const (Spacing\w+) = "([^"]+)"/g;
     while ((match = spacingRegex.exec(themeContent)) !== null) {
       const spacingName = match[1];
-      const spacingValue = match[2];
-      spacing[spacingName] = spacingValue;
+      spacing[spacingName] = match[2];
     }
 
     // Extract border radius tokens
     const borderRadiusRegex = /export const (BorderRadius\w+) = "([^"]+)"/g;
     while ((match = borderRadiusRegex.exec(themeContent)) !== null) {
       const borderRadiusName = match[1];
-      const borderRadiusValue = match[2];
-      borderRadius[borderRadiusName] = borderRadiusValue;
+      borderRadius[borderRadiusName] = match[2];
     }
 
     // Extract typography tokens
     const typographyRegex = /export const (Typography\w+) = "([^"]+)"/g;
     while ((match = typographyRegex.exec(themeContent)) !== null) {
       const typographyName = match[1];
-      const typographyValue = match[2];
-      typography[typographyName] = typographyValue;
+      typography[typographyName] = match[2];
     }
 
     // Extract shadow tokens
     const shadowRegex = /export const (Shadow\w+) = "([^"]+)"/g;
     while ((match = shadowRegex.exec(themeContent)) !== null) {
       const shadowName = match[1];
-      const shadowValue = match[2];
-      shadows[shadowName] = shadowValue;
+      shadows[shadowName] = match[2];
     }
 
-    // Create component styles for light theme
+    // Create component styles for the light theme
     const lightThemeStyles = createComponentStyles(lightColors, spacing, borderRadius, typography, shadows);
 
-    // Create component styles for dark theme
+    // Create component styles for the dark theme
     const darkThemeStyles = createComponentStyles(darkColors, spacing, borderRadius, typography, shadows);
 
     // Helper function to create component styles
-    function createComponentStyles(colors, spacing, borderRadius, typography, shadows) {
+    // eslint-disable-next-line no-inner-declarations
+    function createComponentStyles(colors, spacing, borderRadius, typography) {
       // Default font family for all text styles
       const defaultFontFamily = 'System';
 

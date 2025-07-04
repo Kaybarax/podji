@@ -148,7 +148,7 @@ export async function generateWebStylesheets(webDistDir) {
 function generateTailwindStylesheet(webDistDir, themeData) {
   const { colors, spacing, borderRadius, fontSize, fontWeight, lineHeight, boxShadow } = themeData;
 
-  // Create CSS variables for light theme
+  // Create CSS variables for a light theme
   let lightThemeVars = ':root {\n';
   // Add color variables
   Object.entries(colors).forEach(([key, value]) => {
@@ -182,9 +182,9 @@ function generateTailwindStylesheet(webDistDir, themeData) {
   });
   lightThemeVars += '}\n\n';
 
-  // Create CSS variables for dark theme
+  // Create CSS variables for the dark theme
   let darkThemeVars = '.dark {\n';
-  // Add color variables for dark theme
+  // Add color variables for the dark theme
   Object.entries(colors).forEach(([key, value]) => {
     if (key.includes('dark')) {
       darkThemeVars += `  --color-${key.replace(/\./g, '-')}: ${value};\n`;
@@ -337,7 +337,7 @@ ${componentStyles}`;
 function generateSassStylesheet(webDistDir, themeData) {
   const { colors, spacing, borderRadius, fontSize, fontWeight, lineHeight, boxShadow } = themeData;
 
-  // Create SASS variables for light theme
+  // Create SASS variables for a light theme
   let lightThemeVars = '// Light theme variables\n';
   // Add color variables
   Object.entries(colors).forEach(([key, value]) => {
@@ -385,9 +385,9 @@ function generateSassStylesheet(webDistDir, themeData) {
 
   lightThemeVars += '\n';
 
-  // Create SASS variables for dark theme
+  // Create SASS variables for a dark theme
   let darkThemeVars = '// Dark theme variables\n';
-  // Add color variables for dark theme
+  // Add color variables for the dark theme
   Object.entries(colors).forEach(([key, value]) => {
     if (key.includes('dark')) {
       darkThemeVars += `$color-${key.replace(/\./g, '-')}: ${value};\n`;
@@ -533,7 +533,7 @@ ${darkThemeStyles}`;
 function generateCssStylesheet(webDistDir, themeData) {
   const { colors, spacing, borderRadius, fontSize, fontWeight, lineHeight, boxShadow } = themeData;
 
-  // Create CSS variables for light theme
+  // Create CSS variables for a light theme
   let lightThemeVars = ':root {\n';
   // Add color variables
   Object.entries(colors).forEach(([key, value]) => {
@@ -567,9 +567,9 @@ function generateCssStylesheet(webDistDir, themeData) {
   });
   lightThemeVars += '}\n\n';
 
-  // Create CSS variables for dark theme
+  // Create CSS variables for the dark theme
   let darkThemeVars = '.dark {\n';
-  // Add color variables for dark theme
+  // Add color variables for the dark theme
   Object.entries(colors).forEach(([key, value]) => {
     if (key.includes('dark')) {
       darkThemeVars += `  --color-${key.replace(/\./g, '-')}: ${value};\n`;
