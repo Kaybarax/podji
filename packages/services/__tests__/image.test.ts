@@ -1,4 +1,4 @@
-import { constructImageUrl } from './image';
+import { constructImageUrl } from '../lib/utils';
 
 describe('image utils', () => {
   describe('constructImageUrl', () => {

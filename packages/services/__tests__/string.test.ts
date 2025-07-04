@@ -1,4 +1,4 @@
-import { capitalize } from './string';
+import { capitalize } from '../lib/utils';
 
 describe('string utils', () => {
   describe('capitalize', () => {

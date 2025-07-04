@@ -1,7 +1,7 @@
 // noinspection ES6ConvertVarToLetConst
 
 import '@testing-library/jest-dom';
-import { queryClient } from '../queryClient';
+import { queryClient } from '../lib/queryClient';
 
 // Reset the QueryClient before each test
 beforeEach(() => {
@@ -13,7 +13,6 @@ beforeEach(() => {
 // Adds the property to the global object
 declare global {
   // eslint-disable-next-line no-var
-  var IS_REACT_ACT_ENVIRONMENT: boolean;
 }
 
 global.IS_REACT_ACT_ENVIRONMENT = true;

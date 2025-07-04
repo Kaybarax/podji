@@ -1,9 +1,9 @@
 import { renderHook, waitFor } from '@testing-library/react';
-import { useProfileById } from './useProfileById';
+import { useProfileById } from '../lib/hooks';
 import { fetchProfileById } from '@podji/services';
 import { validateProfile } from '@podji/schemas';
-import { createWrapper } from '../test-utils';
-import { queryClient } from '../queryClient';
+import { createWrapper } from './test-utils';
+import { queryClient } from '../lib/queryClient';
 
 // Mock the fetchProfileById function
 jest.mock('@podji/services/src/api/profiles', () => ({

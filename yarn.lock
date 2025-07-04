@@ -3632,7 +3632,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@podji/schemas@npm:*, @podji/schemas@npm:^1.0.0, @podji/schemas@workspace:packages/schemas":
+"@podji/schemas@npm:*, @podji/schemas@workspace:packages/schemas":
   version: 0.0.0-use.local
   resolution: "@podji/schemas@workspace:packages/schemas"
   dependencies:
@@ -3653,7 +3653,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@podji/services@npm:*, @podji/services@npm:^1.0.0, @podji/services@workspace:packages/services":
+"@podji/services@npm:*, @podji/services@workspace:packages/services":
   version: 0.0.0-use.local
   resolution: "@podji/services@workspace:packages/services"
   dependencies:
@@ -3673,16 +3673,19 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@podji/stores@workspace:packages/stores"
   dependencies:
-    "@podji/schemas": "npm:^1.0.0"
-    "@podji/services": "npm:^1.0.0"
+    "@podji/schemas": "npm:*"
+    "@podji/services": "npm:*"
     "@tanstack/react-query": "npm:^5.80.6"
     "@testing-library/react-hooks": "npm:^8.0.1"
     "@types/jest": "npm:^29.0.0"
+    "@vitejs/plugin-react": "npm:^4.4.1"
     jest: "npm:^29.0.0"
     rimraf: "npm:^5.0.0"
     ts-jest: "npm:^29.0.0"
     ts-node: "npm:^10.9.1"
     typescript: "npm:~5.8.3"
+    vite: "npm:^6.3.5"
+    vite-plugin-dts: "npm:^4.5.4"
     zustand: "npm:^4.4.1"
   languageName: unknown
   linkType: soft

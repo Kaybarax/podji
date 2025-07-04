@@ -1,5 +1,4 @@
-import { QueryClient } from '@tanstack/react-query';
-import { queryClient } from './queryClient';
+import { queryClient } from '../lib/queryClient';
 
 // Reset the QueryClient before each test
 global.beforeEach(() => {

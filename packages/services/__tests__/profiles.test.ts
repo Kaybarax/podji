@@ -1,4 +1,4 @@
-import { fetchProfiles } from './profiles';
+import { fetchProfiles } from '../lib/api';
 import axios from 'axios';
 
 // Mock axios
