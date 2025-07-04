@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /**
  * Script to overwrite theme.ts with a React Native stylesheet
  */

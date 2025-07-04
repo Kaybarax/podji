@@ -20,6 +20,13 @@ export default defineConfig({
     },
     rollupOptions: {
       external: ['react', 'react/jsx-runtime', 'react-native'],
+      onwarn(warning, warn) {
+        // Ignore warnings about "use client" directives
+        if (warning.code === 'MODULE_LEVEL_DIRECTIVE' && warning.message.includes('"use client"')) {
+          return;
+        }
+        warn(warning);
+      },
     },
     copyPublicDir: false,
   },

@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /**
  * Generates React Native StyleSheet from token values
  */

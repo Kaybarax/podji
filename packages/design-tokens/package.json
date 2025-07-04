@@ -5,23 +5,30 @@
   "type": "module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
+    "dev": "vite",
     "clean": "rimraf dist && rimraf tsconfig.tsbuildinfo",
-    "build": "yarn clean && tsc --project tsconfig.build.json && yarn build:tokens && tsc --project tsconfig.dist.json",
     "build:tokens": "node scripts/buildTokens.js",
     "build:tokens:legacy": "style-dictionary build",
     "build:tokens:web": "style-dictionary build --config sd.config.web.js",
     "build:tokens:mobile": "style-dictionary build --config sd.config.mobile.js && node scripts/generateThemeStylesheet.js && node scripts/fixStyledTheme.js && node scripts/finalFixes.js",
     "build:tokens:react-native": "style-dictionary build --config sd.config.react-native.js",
-    "lint": "eslint src --ext .ts,.tsx",
-    "test": "jest"
+    "build": "yarn clean yarn build:tokens && tsc --p ./tsconfig.build.json && vite build",
+    "test": "jest",
+    "preview": "vite preview"
   },
   "devDependencies": {
     "@types/jest": "^29.0.0",
+    "@vitejs/plugin-react": "^4.4.1",
     "jest": "^29.0.0",
     "rimraf": "^5.0.0",
     "style-dictionary": "^5.0.0",
     "ts-jest": "^29.0.0",
-    "typescript": "~5.8.3"
+    "typescript": "~5.8.3",
+    "vite": "^6.3.5",
+    "vite-plugin-dts": "^4.5.4"
   }
 }

@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /**
  * Script to rewrite style-values.ts to use imported constants instead of hardcoded values
  */

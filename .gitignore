@@ -117,7 +117,7 @@ __pycache__/
 .output.txt
 /packages/schemas/src/generated/
 /packages/stores/src/generated/
-/packages/design-tokens/src/generated/
+/packages/design-tokens/lib/generated/
 /packages/@shared-components/src/generated/
 /backup/*
 /backup/

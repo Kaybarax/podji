@@ -3540,11 +3540,14 @@ __metadata:
   resolution: "@podji/design-tokens@workspace:packages/design-tokens"
   dependencies:
     "@types/jest": "npm:^29.0.0"
+    "@vitejs/plugin-react": "npm:^4.4.1"
     jest: "npm:^29.0.0"
     rimraf: "npm:^5.0.0"
     style-dictionary: "npm:^5.0.0"
     ts-jest: "npm:^29.0.0"
     typescript: "npm:~5.8.3"
+    vite: "npm:^6.3.5"
+    vite-plugin-dts: "npm:^4.5.4"
   languageName: unknown
   linkType: soft
 

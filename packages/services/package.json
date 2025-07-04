@@ -10,8 +10,8 @@
   ],
   "scripts": {
     "dev": "vite",
-    "clean": "rimraf dist && rimraf tsconfig-build.tsbuildinfo",
-    "build": "yarn clean && tsc --p ./tsconfig-build.json && vite build",
+    "clean": "rimraf dist && rimraf tsconfig.build.tsbuildinfo",
+    "build": "yarn clean && tsc --p ./tsconfig.build.json && vite build",
     "preview": "vite preview",
     "test": "jest"
   },

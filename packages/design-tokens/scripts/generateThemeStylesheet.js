@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /**
  * Script to generate a React Native stylesheet for style-values.ts
  */
@@ -388,7 +389,7 @@ export declare const lightTheme: ReturnType<typeof StyleSheet.create>;
 // Dark theme styles type
 export declare const darkTheme: ReturnType<typeof StyleSheet.create>;
 
-// Export both themes type
+// Export both theme types
 declare const themes: {
   light: ReturnType<typeof StyleSheet.create>;
   dark: ReturnType<typeof StyleSheet.create>;

@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /**
  * Generates web stylesheets from token values:
  * - styled-tailwind-theme.css (Tailwind CSS)

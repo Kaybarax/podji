@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /**
  * Build utility for generating design tokens for web and mobile platforms
  */
@@ -534,7 +535,7 @@ async function buildTokens() {
 
     // Compile TypeScript files to JavaScript
     console.log('Compiling TypeScript files to JavaScript...');
-    execSync('tsc --project tsconfig.dist.json', {
+    execSync('tsc --project tsconfig.build.json', {
       cwd: packageDir,
       stdio: 'inherit',
     });

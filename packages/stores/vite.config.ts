@@ -14,10 +14,7 @@ export default defineConfig({
     rollupOptions: {
       onwarn(warning, warn) {
         // Ignore warnings about "use client" directives
-        if (
-          warning.code === 'MODULE_LEVEL_DIRECTIVE' && 
-          warning.message.includes('"use client"')
-        ) {
+        if (warning.code === 'MODULE_LEVEL_DIRECTIVE' && warning.message.includes('"use client"')) {
           return;
         }
         warn(warning);

@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /**
  * Script to make final fixes to style-values.ts
  */

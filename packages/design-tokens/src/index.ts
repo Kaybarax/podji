@@ -1,11 +1,8 @@
-// Export constants
-export * from './constants';
-
 // Export build utility
-export * from './buildTokens';
+export * from './buildTokens.ts';
 
 // Export type definitions
-export * from './types';
+export * from './types.ts';
 
 // Web platform exports
 // Export web theme
@@ -13,8 +10,9 @@ export * from './types';
 // and not during build time, as the theme.js file is generated during build
 export const getWebTheme = async (): Promise<Record<string, any>> => {
   try {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore - This file is generated during build
-    const theme = (await import('../dist/web/theme.js')) as WebTheme;
+    const theme = (await import('../dist/web/theme')) as WebTheme;
     return theme.theme;
   } catch (error) {
     console.error('Failed to load web theme:', error);
@@ -27,6 +25,7 @@ export const getWebTheme = async (): Promise<Record<string, any>> => {
 // and not during build time, as the tailwind-tokens.js file is generated during build
 export const getWebTailwindTokens = async (): Promise<{ theme: { extend: Record<string, any> } }> => {
   try {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore - This file is generated during build
     const tokens = (await import('../dist/web/tailwind-tokens.js')) as WebTailwindTokens;
     return tokens;
