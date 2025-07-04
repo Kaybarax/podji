@@ -17,7 +17,7 @@ config.resolver.blockList = [/.*\.test\.[jt]sx?$/, /.*\/__tests__\/.*/, /.*\/tes
 // Add custom resolver for zod package
 config.resolver.extraNodeModules = {
   ...config.resolver.extraNodeModules,
-  'zod': path.resolve(__dirname, '../../node_modules/zod/index.js')
+  zod: path.resolve(__dirname, '../../node_modules/zod/index.js'),
 };
 
 module.exports = config;
