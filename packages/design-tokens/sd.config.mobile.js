@@ -7,14 +7,6 @@
 
 export default {
   source: ['tokens/**/*.json'],
-  parsers: [
-    {
-      pattern: /\.json$/,
-      parse: ({ filePath, contents }) => {
-        return JSON.parse(contents);
-      },
-    },
-  ],
   format: {
     // Custom format for React Native StyleSheet
     'react-native/stylesheet': function ({ dictionary, file, options }) {

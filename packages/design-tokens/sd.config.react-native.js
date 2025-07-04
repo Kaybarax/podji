@@ -7,14 +7,6 @@
 
 export default {
   source: ['tokens/**/*.json'],
-  parsers: [
-    {
-      pattern: /\.json$/,
-      parse: ({ filePath, contents }) => {
-        return JSON.parse(contents);
-      },
-    },
-  ],
   transform: {
     // Add transforms for token references
     'attribute/cti': {
