@@ -20,8 +20,8 @@
   "scripts": {
     "prepare": "husky",
     "format": "prettier . --write --ignore-path .prettierignore",
-    "build:configs:tokens": "yarn workspace @podji/design-tokens build:tokens",
-    "turbo:configs:tokens": "turbo run build --filter=@podji/design-tokens",
+    "build:tokens": "yarn workspace @podji/design-tokens build:tokens",
+    "turbo:tokens": "turbo run build --filter=@podji/design-tokens",
     "build:schemas": "yarn workspace @podji/schemas build",
     "turbo:schemas": "turbo run build --filter=@podji/schemas",
     "build:services": "yarn workspace @podji/services build",
@@ -106,6 +106,7 @@
   "license": "ISC",
   "dependencies": {
     "rimraf": "^6.0.1",
-    "sass": "^1.89.2"
+    "sass": "^1.89.2",
+    "style-dictionary": "^5.0.1"
   }
 }
