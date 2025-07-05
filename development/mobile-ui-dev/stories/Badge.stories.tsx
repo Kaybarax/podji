@@ -4,7 +4,7 @@ import { View, Text } from 'react-native';
 import { Badge } from '../lib/components/Badge';
 
 const meta = {
-  title: 'Components/Badge',
+  title: 'UI/Badge',
   component: Badge,
   decorators: [
     Story => (

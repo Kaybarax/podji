@@ -7,7 +7,7 @@ import { useState } from 'react';
 import { Toggle } from '@/lib/components/Toggle';
 
 const meta = {
-  title: 'Components/Toggle',
+  title: 'UI/Toggle',
   component: Toggle,
   decorators: [
     Story => (
@@ -45,6 +45,7 @@ export const Default: Story = {
   render: args => <InteractiveToggle {...args} />,
   args: {
     label: 'Toggle me',
+    value: false,
   },
 };
 
@@ -69,6 +70,7 @@ export const WithLabelOnRight: Story = {
   args: {
     label: 'Label on right',
     labelPosition: 'right',
+    value: false,
   },
 };
 
@@ -77,6 +79,7 @@ export const WithLabelOnLeft: Story = {
   args: {
     label: 'Label on left',
     labelPosition: 'left',
+    value: false,
   },
 };
 
@@ -85,6 +88,7 @@ export const Disabled: Story = {
   args: {
     label: 'Disabled toggle',
     disabled: true,
+    value: false,
   },
 };
 
@@ -101,6 +105,7 @@ export const WithCustomStyles: Story = {
   render: args => <InteractiveToggle {...args} />,
   args: {
     label: 'Custom styled toggle',
+    value: false,
     containerStyle: { backgroundColor: '#f0f0f0', padding: 10, borderRadius: 8 },
     labelStyle: { color: '#6200ee', fontWeight: 'bold' },
     toggleStyle: { backgroundColor: '#e0e0e0', borderWidth: 1, borderColor: '#cccccc' },
@@ -116,4 +121,8 @@ export const MultipleToggles: Story = {
       <InteractiveToggle label="High Quality Audio" value={true} />
     </View>
   ),
+  args: {
+    value: false,
+    onValueChange: fn(),
+  },
 };
