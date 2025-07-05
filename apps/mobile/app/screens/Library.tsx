@@ -1,7 +1,23 @@
 import React, { useState } from 'react';
 import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import { SimpleTextInput, SimpleDropdown, SimpleModal } from '../components/SimpleComponents';
-import { SimpleNavigationBar, SimpleBottomNavigation } from '../components/SimpleNavigation';
+import {
+  Dropdown as MobileDropdown,
+  DropdownProps,
+  Modal as MobileModal,
+  ModalProps,
+  Slider as MobileSlider,
+  SliderProps,
+  TextInput as MobileTextInput,
+  TextInputProps,
+} from '@podji/mobile-ui';
+import NavigationBar from '../components/NavigationBar';
+import BottomNavigation from '../components/BottomNavigation';
+
+// Wrapper components to fix TypeScript errors
+const Slider = (props: SliderProps): React.ReactNode => <MobileSlider {...props} />;
+const TextInput = (props: TextInputProps): React.ReactNode => <MobileTextInput {...props} />;
+const Dropdown = (props: DropdownProps): React.ReactNode => <MobileDropdown {...props} />;
+const Modal = (props: ModalProps): React.ReactNode => <MobileModal {...props} />;
 
 // Define track interface
 interface Track {
@@ -47,7 +63,6 @@ const TrackItem: React.FC<TrackItemProps> = ({ track, onTrackSelect }) => {
           </TouchableOpacity>
         </View>
         <View style={styles.waveformContainer}>
-          {/* @ts-ignore - React version mismatch with mobile-ui */}
           <Slider value={0.5} minimumValue={0} maximumValue={1} onValueChange={() => {}} disabled={true} />
           <TouchableOpacity style={styles.previewButton}>
             <Text style={styles.previewButtonText}>▶</Text>
@@ -160,7 +175,7 @@ const Library: React.FC<LibraryProps> = ({ activeTab, onTabPress }) => {
   return (
     <View style={styles.container}>
       {/* Top Navigation Bar */}
-      <SimpleNavigationBar
+      <NavigationBar
         title="Library"
         showNotification={true}
         showSearch={true}
@@ -170,16 +185,14 @@ const Library: React.FC<LibraryProps> = ({ activeTab, onTabPress }) => {
 
       {/* Search and Filter */}
       <View style={styles.searchContainer}>
-        {/* @ts-ignore - React version mismatch with mobile-ui */}
-        <SimpleTextInput
+        <TextInput
           placeholder="Search tracks, artists, albums..."
           value={searchText}
           onChangeText={setSearchText}
           style={styles.searchInput}
         />
-        {/* @ts-ignore - React version mismatch with mobile-ui */}
-        <SimpleDropdown
-          items={filterOptions}
+        <Dropdown
+          options={filterOptions}
           selectedValue={filterBy}
           onValueChange={handleSetFilterBy}
           placeholder="Filter by"
@@ -195,8 +208,7 @@ const Library: React.FC<LibraryProps> = ({ activeTab, onTabPress }) => {
       </ScrollView>
 
       {/* Action Sheet Modal */}
-      {/* @ts-ignore - React version mismatch with mobile-ui */}
-      <SimpleModal visible={showActionSheet} onClose={() => setShowActionSheet(false)} title="Track Options">
+      <Modal visible={showActionSheet} onClose={() => setShowActionSheet(false)} title="Track Options">
         <View style={styles.actionSheet}>
           <TouchableOpacity style={styles.actionButton} onPress={handleAddToPlaylist}>
             <Text style={styles.actionButtonText}>Add to Playlist</Text>
@@ -205,10 +217,10 @@ const Library: React.FC<LibraryProps> = ({ activeTab, onTabPress }) => {
             <Text style={styles.actionButtonText}>Add to Queue</Text>
           </TouchableOpacity>
         </View>
-      </SimpleModal>
+      </Modal>
 
       {/* Bottom Tab Navigation */}
-      <SimpleBottomNavigation activeTab={activeTab} onTabPress={handleTabPress} />
+      <BottomNavigation activeTab={activeTab} onTabPress={handleTabPress} />
     </View>
   );
 };
@@ -311,12 +323,6 @@ const styles = StyleSheet.create({
   },
   actionSheet: {
     padding: 16,
-  },
-  actionSheetTitle: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    textAlign: 'center',
-    marginBottom: 16,
   },
   actionButton: {
     padding: 16,

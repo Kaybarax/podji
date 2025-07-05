@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { View, StyleSheet, ScrollView, RefreshControl } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { SimpleFeedCard, SimpleFloatingActionButton } from '../components/SimpleFeedComponents';
-import { SimpleNavigationBar, SimpleBottomNavigation } from '../components/SimpleNavigation';
+import { FeedCard, FloatingActionButton } from '@podji/mobile-ui';
+import NavigationBar from '../components/NavigationBar';
+import BottomNavigation from '../components/BottomNavigation';
 
 // Sample data for feed cards
 const feedData = [
@@ -81,7 +82,7 @@ const Home: React.FC<HomeProps> = ({ activeTab, onTabPress }) => {
   return (
     <View style={styles.container}>
       {/* Top Navigation Bar */}
-      <SimpleNavigationBar
+      <NavigationBar
         title="PodJi"
         showNotification={true}
         showSearch={true}
@@ -96,7 +97,7 @@ const Home: React.FC<HomeProps> = ({ activeTab, onTabPress }) => {
       >
         <View style={styles.feedContainer}>
           {feedData.map(item => (
-            <SimpleFeedCard
+            <FeedCard
               key={item.id}
               title={item.title}
               creator={item.creator}
@@ -116,7 +117,7 @@ const Home: React.FC<HomeProps> = ({ activeTab, onTabPress }) => {
       </ScrollView>
 
       {/* Floating Action Button */}
-      <SimpleFloatingActionButton
+      <FloatingActionButton
         icon="🎵"
         onPress={handleFabPress}
         position="bottomRight"
@@ -125,7 +126,7 @@ const Home: React.FC<HomeProps> = ({ activeTab, onTabPress }) => {
       />
 
       {/* Bottom Tab Navigation */}
-      <SimpleBottomNavigation activeTab={activeTab} onTabPress={handleTabPress} />
+      <BottomNavigation activeTab={activeTab} onTabPress={handleTabPress} />
     </View>
   );
 };
