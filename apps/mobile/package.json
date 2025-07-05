@@ -1,6 +1,6 @@
 {
   "name": "podji-mobile",
-  "main": "expo-router/entry",
+  "main": "App.tsx",
   "version": "1.0.0",
   "scripts": {
     "start": "expo start",
