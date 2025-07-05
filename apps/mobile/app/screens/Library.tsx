@@ -14,10 +14,10 @@ import NavigationBar from '../components/NavigationBar';
 import BottomNavigation from '../components/BottomNavigation';
 
 // Wrapper components to fix TypeScript errors
-const Slider = (props: SliderProps): React.ReactNode => <MobileSlider {...props} />;
-const TextInput = (props: TextInputProps): React.ReactNode => <MobileTextInput {...props} />;
-const Dropdown = (props: DropdownProps): React.ReactNode => <MobileDropdown {...props} />;
-const Modal = (props: ModalProps): React.ReactNode => <MobileModal {...props} />;
+const Slider = MobileSlider as any;
+const TextInput = MobileTextInput as any;
+const Dropdown = MobileDropdown as any;
+const Modal = MobileModal as any;
 
 // Define track interface
 interface Track {
