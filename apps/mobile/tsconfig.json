@@ -8,12 +8,5 @@
       "@/*": ["./*"]
     }
   },
-  "include": [
-    "app/**/*.ts", 
-    "app/**/*.tsx", 
-    "test/**/*.ts", 
-    "test/**/*.tsx",
-    ".expo/types/**/*.ts",
-    "expo-env.d.ts"
-  ]
+  "include": ["app/**/*.ts", "app/**/*.tsx", "test/**/*.ts", "test/**/*.tsx", ".expo/types/**/*.ts", "expo-env.d.ts"]
 }
