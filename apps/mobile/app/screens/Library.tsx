@@ -133,7 +133,7 @@ interface LibraryProps {
   onTabPress: (tabKey: string) => void;
 }
 
-const Library: React.FC<LibraryProps> = ({ activeTab, onTabPress }) => {
+export const Library: React.FC<LibraryProps> = ({ activeTab, onTabPress }) => {
   const [searchText, setSearchText] = useState('');
   const [filterBy, setFilterBy] = useState('artist');
   const [showActionSheet, setShowActionSheet] = useState(false);

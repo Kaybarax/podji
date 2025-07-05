@@ -54,7 +54,7 @@ interface HomeProps {
   onTabPress: (tabKey: string) => void;
 }
 
-const Home: React.FC<HomeProps> = ({ activeTab, onTabPress }) => {
+export const Home: React.FC<HomeProps> = ({ activeTab, onTabPress }) => {
   const insets = useSafeAreaInsets();
   const [refreshing, setRefreshing] = useState(false);
 

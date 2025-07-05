@@ -84,7 +84,7 @@ module.exports = {
       // We're not using the react-native preset directly to avoid window property conflicts
       // Instead, we're configuring the necessary parts manually
       testEnvironment: 'jsdom',
-      setupFilesAfterEnv: ['<rootDir>/test/jest-setup.ts'],
+      setupFilesAfterEnv: ['<rootDir>/__tests__/jest-setup.ts'],
       testMatch: ['<rootDir>/**/*.test.{ts,tsx}'],
       transformIgnorePatterns: [
         'node_modules/(?!(react-native|@react-native|react-native-reanimated|@testing-library/react-native|expo|@expo|@unimodules|@react-navigation|@react-native-community)/)',
