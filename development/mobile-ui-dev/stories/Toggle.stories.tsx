@@ -7,7 +7,7 @@ import { useState } from 'react';
 import { Toggle } from '@/lib/components/Toggle';
 
 const meta = {
-  title: 'UI/Toggle',
+  title: 'Components/Toggle',
   component: Toggle,
   decorators: [
     Story => (

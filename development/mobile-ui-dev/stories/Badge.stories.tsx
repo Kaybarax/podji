@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react-native-web-vite';
-import { View, Text } from 'react-native';
+import { View } from 'react-native';
 
 import { Badge } from '../lib/components/Badge';
 
 const meta = {
-  title: 'UI/Badge',
+  title: 'Components/Badge',
   component: Badge,
   decorators: [
     Story => (
