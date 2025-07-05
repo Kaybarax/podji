@@ -51,8 +51,13 @@
     "test:mobile": "cd apps/mobile && jest --config=jest.config.js",
     "storybook:web": "yarn workspace @podji/web-ui-dev storybook",
     "storybook:mobile": "yarn workspace @podji/mobile-ui-dev storybook",
-    "backstop:reference": "backstop reference --config=backstop.config.js",
-    "backstop:test": "backstop test --config=backstop.config.js"
+    "backstop:reference:mobile": "yarn workspace @podji/mobile-ui-dev backstop:reference",
+    "backstop:test:mobile": "yarn workspace @podji/mobile-ui-dev backstop:test",
+    "backstop:reference:web": "yarn workspace @podji/web-ui-dev backstop:reference",
+    "backstop:test:web": "yarn workspace @podji/web-ui-dev backstop:test"
+  },
+  "dependencies": {
+    "rimraf": "^5.0.5"
   },
   "devDependencies": {
     "@babel/core": "^7.27.4",
@@ -63,7 +68,6 @@
     "@babel/preset-env": "^7.27.2",
     "@babel/preset-react": "^7.27.1",
     "@babel/preset-typescript": "^7.27.1",
-    "@chromatic-com/storybook": "^4.0.0",
     "@eslint-community/eslint-utils": "^4.2.0",
     "@eslint/eslintrc": "^2.1.4",
     "@eslint/js": "8.57.1",
@@ -72,12 +76,10 @@
     "@testing-library/react": "^16.3.0",
     "@types/babel__core": "^7",
     "@types/babel__preset-env": "^7",
-    "@types/backstopjs": "^6",
     "@types/jest": "^29.0.0",
     "@typescript-eslint/eslint-plugin": "^5.59.6",
     "@typescript-eslint/parser": "^5.59.6",
     "babel-jest": "30.0.0-beta.3",
-    "backstopjs": "^6.3.25",
     "eslint": "^8.40.0",
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-hooks": "^4.6.0",
@@ -88,9 +90,10 @@
     "jest-environment-jsdom": "30.0.0-beta.3",
     "lint-staged": "^13.2.2",
     "prettier": "^2.8.8",
-    "sass-embedded": "^1.89.2",
     "ts-jest": "^29.0.0",
     "turbo": "^2.5.4",
+    "@types/backstopjs": "^6",
+    "backstopjs": "^6.3.25",
     "typescript": "~5.8.3"
   },
   "lint-staged": {
@@ -102,11 +105,6 @@
     ]
   },
   "description": "PodJi Monorepo",
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "rimraf": "^6.0.1",
-    "sass": "^1.89.2",
-    "style-dictionary": "^5.0.1"
-  }
+  "author": "Kevin",
+  "license": "ISC"
 }

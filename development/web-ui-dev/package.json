@@ -10,7 +10,9 @@
     "build-storybook": "storybook build",
     "test": "jest --config=jest.config.cjs",
     "test:watch": "jest --config=jest.config.cjs --watch",
-    "clean": "rm -rf dist"
+    "clean": "rm -rf dist",
+    "backstop:reference": "backstop reference --config=../../backstop.web.config.js",
+    "backstop:test": "backstop test --config=../../backstop.web.config.js"
   },
   "dependencies": {
     "@podji/design-tokens": "*",

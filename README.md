@@ -131,7 +131,7 @@ monorepo/
 │   └── cleanup.js        # Cleanup script for the monorepo
 ├── .husky/               # Git hooks for pre-commit and pre-push checks
 ├── babel.config.js       # Babel configuration
-├── backstop.config.js    # BackstopJS configuration for visual regression testing of UI components
+├── backstop.mobile.config.js    # BackstopJS configuration for visual regression testing of UI components
 ├── backstop.json         # BackstopJS test scenarios
 ├── jest.config.js        # Jest testing configuration
 ├── tsconfig.json         # TypeScript configuration

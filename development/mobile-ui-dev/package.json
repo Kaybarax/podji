@@ -10,7 +10,9 @@
     "lint": "expo lint",
     "storybook": "storybook dev -p 6007",
     "build-storybook": "storybook build",
-    "test": "jest"
+    "test": "jest",
+    "backstop:reference": "backstop reference --config=../../backstop.mobile.config.js",
+    "backstop:test": "backstop test --config=../../backstop.mobile.config.js"
   },
   "dependencies": {
     "@expo/vector-icons": "^14.1.0",
