@@ -70,8 +70,7 @@ jest.mock('react-native', () => {
 
     // Mock StyleSheet
     StyleSheet: {
-      create: jest.fn(styles => styles),
-      flatten: jest.fn(styles => styles),
+      create: (styles: any) => styles,
     },
 
     // Mock Platform
@@ -98,7 +97,35 @@ jest.mock('expo-constants', () => ({
   },
 }));
 
+// Mock BottomNavigation component
+jest.mock('../app/components/BottomNavigation', () => {
+  return function BottomNavigation({ activeTab, onTabPress }: any) {
+    return require('react').createElement('View', { testID: 'BottomNavigation' });
+  };
+});
+
 // Add any global test setup here
+
+jest.mock('@podji/mobile-ui', () => ({
+  FloatingActionButton: ({ children, ...props }: any) =>
+    require('react').createElement('View', { testID: 'FloatingActionButton', ...props }, children),
+  NavigationBar: ({ children, ...props }: any) =>
+    require('react').createElement('View', { testID: 'NavigationBar', ...props }, children),
+  Slider: ({ children, ...props }: any) =>
+    require('react').createElement('View', { testID: 'Slider', ...props }, children),
+  BottomTabNavigator: ({ children, ...props }: any) =>
+    require('react').createElement('View', { testID: 'BottomTabNavigator', ...props }, children),
+}));
+
+// Mock react-native-safe-area-context
+jest.mock('react-native-safe-area-context', () => ({
+  useSafeAreaInsets: () => ({ top: 0, bottom: 0, left: 0, right: 0 }),
+}));
+
+// Mock @simform_solutions/react-native-audio-waveform
+jest.mock('@simform_solutions/react-native-audio-waveform', () => ({
+  AudioWaveform: 'AudioWaveform',
+}));
 
 // Mock the Index component
 jest.mock('../app/index', () => {

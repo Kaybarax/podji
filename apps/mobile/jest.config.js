@@ -3,13 +3,18 @@ module.exports = {
   // Instead, we're configuring the necessary parts manually
   testEnvironment: 'jsdom',
   transformIgnorePatterns: [
-    'node_modules/(?!(react-native|@react-native|react-native-reanimated|@testing-library/react-native|expo|@expo|@unimodules|@react-navigation|@react-native-community)/)',
+    'node_modules/(?!(react-native|@react-native|react-native-reanimated|@testing-library/react-native|expo|@expo|@unimodules|@react-navigation|@react-native-community|@simform_solutions/react-native-audio-waveform)/)',
   ],
   transform: {
     '^.+\\.(js|jsx|ts|tsx)$': ['babel-jest', { configFile: './babel.config.js' }],
   },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
   setupFilesAfterEnv: ['<rootDir>/__tests__/jest-setup.ts'],
+  testMatch: [
+    '**/__tests__/**/*.(test|spec).(ts|tsx|js|jsx)',
+    '!**/__tests__/jest-setup.ts',
+    '!**/__tests__/__mocks__/**',
+  ],
   collectCoverage: true,
   collectCoverageFrom: [
     '**/*.{ts,tsx}',
@@ -17,6 +22,7 @@ module.exports = {
     '!**/node_modules/**',
     '!**/babel.config.js',
     '!**/jest.setup.js',
+    '!**/__tests__/**',
   ],
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/$1',
