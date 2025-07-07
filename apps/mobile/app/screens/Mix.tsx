@@ -4,8 +4,8 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { FloatingActionButton, NavigationBar, Slider } from '@podji/mobile-ui';
 import BottomNavigation from '../components/BottomNavigation';
 
-// Wrapper components to fix TypeScript errors
-const MobileSlider = Slider as any;
+// Fix type compatibility issues
+const SliderComponent = Slider as React.ComponentType<any>;
 
 interface MixProps {
   activeTab: string;
@@ -38,8 +38,7 @@ export const Mix: React.FC<MixProps> = ({ activeTab, onTabPress }) => {
         <View style={styles.deck}>
           <Text style={styles.deckTitle}>Deck A</Text>
           <View style={styles.waveformContainer}>
-            {/* Placeholder for waveform */}
-            <View style={styles.waveform} />
+            <View style={styles.waveformPlaceholder} />
           </View>
         </View>
 
@@ -47,15 +46,14 @@ export const Mix: React.FC<MixProps> = ({ activeTab, onTabPress }) => {
         <View style={styles.deck}>
           <Text style={styles.deckTitle}>Deck B</Text>
           <View style={styles.waveformContainer}>
-            {/* Placeholder for waveform */}
-            <View style={styles.waveform} />
+            <View style={styles.waveformPlaceholder} />
           </View>
         </View>
 
         {/* Crossfader */}
         <View style={styles.crossfaderContainer}>
           <Text style={styles.crossfaderLabel}>Crossfader</Text>
-          <MobileSlider minimumValue={-1} maximumValue={1} value={0} onValueChange={() => {}} />
+          <SliderComponent minimumValue={-1} maximumValue={1} value={0} onValueChange={() => {}} />
         </View>
       </View>
 
@@ -100,7 +98,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  waveform: {
+  waveformPlaceholder: {
     width: '90%',
     height: 50,
     backgroundColor: '#c0c0c0',
